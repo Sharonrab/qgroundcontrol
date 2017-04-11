@@ -1,25 +1,12 @@
-/*=====================================================================
- 
- QGroundControl Open Source Ground Control Station
- 
- (c) 2009 - 2014 QGROUNDCONTROL PROJECT <http://www.qgroundcontrol.org>
- 
- This file is part of the QGROUNDCONTROL project
- 
- QGROUNDCONTROL is free software: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation, either version 3 of the License, or
- (at your option) any later version.
- 
- QGROUNDCONTROL is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
- 
- You should have received a copy of the GNU General Public License
- along with QGROUNDCONTROL. If not, see <http://www.gnu.org/licenses/>.
- 
- ======================================================================*/
+/****************************************************************************
+ *
+ *   (c) 2009-2016 QGROUNDCONTROL PROJECT <http://www.qgroundcontrol.org>
+ *
+ * QGroundControl is licensed according to the terms in the file
+ * COPYING.md in the root of the source code directory.
+ *
+ ****************************************************************************/
+
 
 /// @file
 ///     @author Don Gagne <don@thegagnes.com>
@@ -31,53 +18,20 @@
 #include <QList>
 #include <QString>
 
-#include "UASInterface.h"
-#include "VehicleComponent.h"
 #include "AutoPilotPlugin.h"
-#include "QGCSingleton.h"
-#include "QGCMAVLink.h"
+#include "Vehicle.h"
+#include "QGCToolbox.h"
 
+class QGCApplication;
 
-/// AutoPilotPlugin manager is a singleton which maintains the list of AutoPilotPlugin objects.
-
-class AutoPilotPluginManager : public QGCSingleton
+class AutoPilotPluginManager : public QGCTool
 {
     Q_OBJECT
-    
-    DECLARE_QGC_SINGLETON(AutoPilotPluginManager, AutoPilotPluginManager)
 
 public:
-    /// Returns the singleton AutoPilotPlugin instance for the specified uas. Returned as QSharedPointer
-    /// to prevent shutdown ordering problems with Qml destruction happening after Facts are destroyed.
-    ///     @param uas Uas to get plugin for
-    QSharedPointer<AutoPilotPlugin> getInstanceForAutoPilotPlugin(UASInterface* uas);
-    
-    typedef struct {
-        uint8_t baseMode;
-        uint32_t customMode;
-    } FullMode_t;
+    AutoPilotPluginManager(QGCApplication* app) : QGCTool(app) { }
 
-    /// Returns the list of modes which are available for the specified autopilot type.
-    QList<FullMode_t> getModes(int autopilotType) const;
-    
-    /// @brief Returns a human readable short description for the specified mode.
-    QString getShortModeText(uint8_t baseMode, uint32_t customMode, int autopilotType) const;
-
-    /// @brief Returns a human hearable short description for the specified mode.
-    QString getAudioModeText(uint8_t baseMode, uint32_t customMode, int autopilotType) const;
-
-private slots:
-    void _uasCreated(UASInterface* uas);
-    void _uasDeleted(UASInterface* uas);
-
-private:
-    /// All access to singleton is through AutoPilotPluginManager::instance
-    AutoPilotPluginManager(QObject* parent = NULL);
-    ~AutoPilotPluginManager();
-    
-    MAV_AUTOPILOT _installedAutopilotType(MAV_AUTOPILOT autopilot);
-    
-    QMap<MAV_AUTOPILOT, QMap<int, QSharedPointer<AutoPilotPlugin> > > _pluginMap; ///< Map of AutoPilot plugins _pluginMap[MAV_TYPE][UASid]
+    AutoPilotPlugin* newAutopilotPluginForVehicle(Vehicle* vehicle);
 };
 
 #endif

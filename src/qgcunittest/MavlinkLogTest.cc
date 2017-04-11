@@ -1,25 +1,12 @@
-/*=====================================================================
- 
- QGroundControl Open Source Ground Control Station
- 
- (c) 2009 - 2014 QGROUNDCONTROL PROJECT <http://www.qgroundcontrol.org>
- 
- This file is part of the QGROUNDCONTROL project
- 
- QGROUNDCONTROL is free software: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation, either version 3 of the License, or
- (at your option) any later version.
- 
- QGROUNDCONTROL is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
- 
- You should have received a copy of the GNU General Public License
- along with QGROUNDCONTROL. If not, see <http://www.gnu.org/licenses/>.
- 
- ======================================================================*/
+/****************************************************************************
+ *
+ *   (c) 2009-2016 QGROUNDCONTROL PROJECT <http://www.qgroundcontrol.org>
+ *
+ * QGroundControl is licensed according to the terms in the file
+ * COPYING.md in the root of the source code directory.
+ *
+ ****************************************************************************/
+
 
 /// @file
 ///     @brief Test for mavlink log collection
@@ -31,8 +18,8 @@
 #include "MockLink.h"
 #include "QGCTemporaryFile.h"
 #include "QGCApplication.h"
-
-UT_REGISTER_TEST(MavlinkLogTest)
+#include "UAS.h"
+#include "MultiVehicleManager.h"
 
 const char* MavlinkLogTest::_tempLogFileTemplate = "FlightDataXXXXXX"; ///< Template for temporary log file
 const char* MavlinkLogTest::_logFileExtension = "mavlink";             ///< Extension for log files
@@ -51,7 +38,7 @@ void MavlinkLogTest::init(void)
     // Make sure temp directory is clear of mavlink logs
     QDir tmpDir(QStandardPaths::writableLocation(QStandardPaths::TempLocation));
     QStringList logFiles(tmpDir.entryList(QStringList(QString("*.%1").arg(_logFileExtension)), QDir::Files));
-    foreach(QString logFile, logFiles) {
+    foreach(const QString &logFile, logFiles) {
         bool success = tmpDir.remove(logFile);
         Q_UNUSED(success);
         Q_ASSERT(success);
@@ -89,7 +76,7 @@ void MavlinkLogTest::_bootLogDetectionCancel_test(void)
     setExpectedFileDialog(getSaveFileName, QStringList());
 
     // Kick the protocol to check for lost log files and wait for signals to move through
-    connect(this, &MavlinkLogTest::checkForLostLogFiles, MAVLinkProtocol::instance(), &MAVLinkProtocol::checkForLostLogFiles);
+    connect(this, &MavlinkLogTest::checkForLostLogFiles, qgcApp()->toolbox()->mavlinkProtocol(), &MAVLinkProtocol::checkForLostLogFiles);
     emit checkForLostLogFiles();
     QTest::qWait(1000);
     
@@ -104,12 +91,12 @@ void MavlinkLogTest::_bootLogDetectionSave_test(void)
     
     // We should get a message box, followed by a getSaveFileName dialog.
     setExpectedMessageBox(QMessageBox::Ok);
-    QDir logSaveDir(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
+    QDir logSaveDir(QStandardPaths::writableLocation(QStandardPaths::TempLocation));
     QString logSaveFile(logSaveDir.filePath(_saveLogFilename));
     setExpectedFileDialog(getSaveFileName, QStringList(logSaveFile));
     
     // Kick the protocol to check for lost log files and wait for signals to move through
-    connect(this, &MavlinkLogTest::checkForLostLogFiles, MAVLinkProtocol::instance(), &MAVLinkProtocol::checkForLostLogFiles);
+    connect(this, &MavlinkLogTest::checkForLostLogFiles, qgcApp()->toolbox()->mavlinkProtocol(), &MAVLinkProtocol::checkForLostLogFiles);
     emit checkForLostLogFiles();
     QTest::qWait(1000);
     
@@ -126,36 +113,47 @@ void MavlinkLogTest::_bootLogDetectionZeroLength_test(void)
     _createTempLogFile(true);
     
     // Kick the protocol to check for lost log files and wait for signals to move through
-    connect(this, &MavlinkLogTest::checkForLostLogFiles, MAVLinkProtocol::instance(), &MAVLinkProtocol::checkForLostLogFiles);
+    connect(this, &MavlinkLogTest::checkForLostLogFiles, qgcApp()->toolbox()->mavlinkProtocol(), &MAVLinkProtocol::checkForLostLogFiles);
     emit checkForLostLogFiles();
     QTest::qWait(1000);
     
     // Zero length log files should not generate any additional UI pop-ups. It should just be deleted silently.
 }
 
-void MavlinkLogTest::_connectLog_test(void)
+void MavlinkLogTest::_connectLogWorker(bool arm)
 {
-    LinkManager* linkMgr = LinkManager::instance();
-    Q_CHECK_PTR(linkMgr);
-    
-    MockLink* link = new MockLink();
-    Q_CHECK_PTR(link);
-    LinkManager::instance()->_addLink(link);
-    linkMgr->connectLink(link);
-    QTest::qWait(5000); // Give enough time for UI to settle and heartbeats to go through
-    
-    // On Disconnect: We should get a getSaveFileName dialog.
-    QDir logSaveDir(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
-    QString logSaveFile(logSaveDir.filePath(_saveLogFilename));
-    setExpectedFileDialog(getSaveFileName, QStringList(logSaveFile));
-    
-    linkMgr->disconnectLink(link);
-    QTest::qWait(1000); // Need to allow signals to move between threads
+    _connectMockLink();
 
-    checkExpectedFileDialog();
+    QDir logSaveDir;
     
-    // Make sure the file is there and delete it
-    QCOMPARE(logSaveDir.remove(_saveLogFilename), true);
+    if (arm) {
+        qgcApp()->toolbox()->multiVehicleManager()->activeVehicle()->setArmed(true);
+        QTest::qWait(500); // Wait long enough for heartbeat to come through
+        
+        // On Disconnect: We should get a getSaveFileName dialog.
+        logSaveDir.setPath(QStandardPaths::writableLocation(QStandardPaths::TempLocation));
+        QString logSaveFile(logSaveDir.filePath(_saveLogFilename));
+        setExpectedFileDialog(getSaveFileName, QStringList(logSaveFile));
+    }
+    
+    _disconnectMockLink();
+
+    if (arm) {
+        checkExpectedFileDialog();
+    
+        // Make sure the file is there and delete it
+        QCOMPARE(logSaveDir.remove(_saveLogFilename), true);
+    }
+}
+
+void MavlinkLogTest::_connectLogNoArm_test(void)
+{
+    _connectLogWorker(false);
+}
+
+void MavlinkLogTest::_connectLogArm_test(void)
+{
+    _connectLogWorker(true);
 }
 
 void MavlinkLogTest::_deleteTempLogFiles_test(void)

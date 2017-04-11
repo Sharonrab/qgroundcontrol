@@ -29,11 +29,10 @@ CheckBox {
                 id:             text
                 text:           control.text
                 antialiasing:   true
-                font.pixelSize: ScreenTools.defaultFontPixelSize
-
-                anchors.centerIn: parent
-
-                color: control.__qgcPal.text
+                font.pointSize: ScreenTools.defaultFontPointSize
+                font.family:    ScreenTools.normalFontFamily
+                color:          control.__qgcPal.text
+                anchors.verticalCenter: parent.verticalCenter
             }
         }
     }
