@@ -35,9 +35,9 @@ This file is part of the QGROUNDCONTROL project
 #include "UASManager.h"
 #include "QGCMessageBox.h"
 
-#define PROTOCOL_TIMEOUT_MS 2000    ///< maximum time to wait for pending messages until timeout
-#define PROTOCOL_DELAY_MS 20        ///< minimum delay between sent messages
-#define PROTOCOL_MAX_RETRIES 5      ///< maximum number of send retries (after timeout)
+#define PROTOCOL_TIMEOUT_MS 800    ///< maximum time to wait for pending messages until timeout
+#define PROTOCOL_DELAY_MS 200        ///< minimum delay between sent messages
+#define PROTOCOL_MAX_RETRIES 7      ///< maximum number of send retries (after timeout)
 const float UASWaypointManager::defaultAltitudeHomeOffset   = 30.0f;
 UASWaypointManager::UASWaypointManager(UAS* _uas)
     : uas(_uas),
@@ -48,7 +48,8 @@ UASWaypointManager::UASWaypointManager(UAS* _uas)
       current_partner_systemid(0),
       current_partner_compid(0),
       currentWaypointEditable(),
-      protocol_timer(this)
+      protocol_timer(this),
+	  _updateWPlist_timer(this)
 {
     _offlineEditingModeMessage = tr("You are in offline editing mode. Make sure to save your mission to a file before connecting to a system - you will need to load the file into the system, the offline list will be cleared on connect.");
     
@@ -67,6 +68,9 @@ UASWaypointManager::UASWaypointManager(UAS* _uas)
     // We signal to ourselves here so that tiemrs are started and stopped on correct thread
     connect(this, SIGNAL(_startProtocolTimer(void)), this, SLOT(_startProtocolTimerOnThisThread(void)));
     connect(this, SIGNAL(_stopProtocolTimer(void)), this, SLOT(_stopProtocolTimerOnThisThread(void)));
+	_updateWPlist_timer.setInterval(1500);
+	_updateWPlist_timer.setSingleShot(true);
+	connect(&_updateWPlist_timer, SIGNAL(timeout()), this, SLOT(_updateWPonTimer()));
 }
 
 UASWaypointManager::~UASWaypointManager()
@@ -167,8 +171,20 @@ void UASWaypointManager::handleWaypointCount(quint8 systemId, quint8 compId, qui
 
 
     } else {
-        qDebug("Rejecting waypoint count message, check mismatch: current_state: %d == %d, system id %d == %d, comp id %d == %d", current_state, WP_GETLIST, current_partner_systemid, systemId, current_partner_compid, compId);
-    }
+		/*if (current_state != WP_GETLIST_GETWPS && systemId == current_partner_systemid)
+		{
+			qDebug("Requesting new waypoints. Propably changed onboard.");
+			if (!_updateWPlist_timer.isActive())
+			{
+				current_state = WP_IDLE;
+				_updateWPlist_timer.start();
+			}
+		}
+		else
+		{
+			qDebug("Rejecting waypoint count message, check mismatch: current_state: %d == %d, system id %d == %d, comp id %d == %d", current_state, WP_GETLIST, current_partner_systemid, systemId, current_partner_compid, compId);
+		}*/
+	}
 }
 
 void UASWaypointManager::handleWaypoint(quint8 systemId, quint8 compId, mavlink_mission_item_t *wp)
@@ -179,12 +195,37 @@ void UASWaypointManager::handleWaypoint(quint8 systemId, quint8 compId, mavlink_
 
         if(wp->seq == current_wp_id) {
 
-            Waypoint *lwp_vo = new Waypoint(wp->seq, wp->x, wp->y, wp->z, wp->param1, wp->param2, wp->param3, wp->param4, wp->autocontinue, wp->current, (MAV_FRAME) wp->frame, (MAV_CMD) wp->command);
+            Waypoint *lwp_vo = new Waypoint(
+                NULL,
+                wp->seq, wp->x,
+                wp->y,
+                wp->z,
+                wp->param1,
+                wp->param2,
+                wp->param3,
+                wp->param4,
+                wp->autocontinue,
+                wp->current,
+                (MAV_FRAME) wp->frame,
+                (MAV_CMD) wp->command);
+
             addWaypointViewOnly(lwp_vo);
 
-
             if (read_to_edit == true) {
-                Waypoint *lwp_ed = new Waypoint(wp->seq, wp->x, wp->y, wp->z, wp->param1, wp->param2, wp->param3, wp->param4, wp->autocontinue, wp->current, (MAV_FRAME) wp->frame, (MAV_CMD) wp->command);
+                Waypoint *lwp_ed = new Waypoint(
+                    NULL,
+                    wp->seq,
+                    wp->x,
+                    wp->y,
+                    wp->z,
+                    wp->param1,
+                    wp->param2,
+                    wp->param3,
+                    wp->param4,
+                    wp->autocontinue,
+                    wp->current,
+                    (MAV_FRAME) wp->frame,
+                    (MAV_CMD) wp->command);
                 addWaypointEditable(lwp_ed, false);
                 if (wp->current == 1) currentWaypointEditable = lwp_ed;
             }
@@ -216,7 +257,20 @@ void UASWaypointManager::handleWaypoint(quint8 systemId, quint8 compId, mavlink_
             && wp->seq < waypointsViewOnly.size() && waypointsViewOnly[wp->seq]->getAction()) {
         // accept single sent waypoints because they can contain updates about remaining DO_JUMP repetitions
         // but only update view only side
-        Waypoint *lwp_vo = new Waypoint(wp->seq, wp->x, wp->y, wp->z, wp->param1, wp->param2, wp->param3, wp->param4, wp->autocontinue, wp->current, (MAV_FRAME) wp->frame, (MAV_CMD) wp->command);
+        Waypoint *lwp_vo = new Waypoint(
+            NULL,
+            wp->seq,
+            wp->x,
+            wp->y,
+            wp->z,
+            wp->param1,
+            wp->param2,
+            wp->param3,
+            wp->param4,
+            wp->autocontinue,
+            wp->current,
+            (MAV_FRAME) wp->frame,
+            (MAV_CMD) wp->command);
 
         waypointsViewOnly.replace(wp->seq, lwp_vo);
         emit waypointViewOnlyListChanged();
@@ -585,8 +639,11 @@ void UASWaypointManager::loadWaypoints(const QString &loadFile)
             Waypoint *t = new Waypoint();
             if(t->load(in))
             {
-                t->setId(waypointsEditable.count());
-                waypointsEditable.insert(waypointsEditable.count(), t);
+              //Use the existing function to add waypoints to the map instead of doing it manually
+              //Indeed, we should connect our waypoints to the map in order to synchronize them
+              //t->setId(waypointsEditable.count());
+              // waypointsEditable.insert(waypointsEditable.count(), t);
+              addWaypointEditable(t, false);
             }
             else
             {
@@ -978,6 +1035,74 @@ void UASWaypointManager::writeWaypoints()
     }
 }
 
+void UASWaypointManager::writeNewWaypoint(quint16 seq)
+{
+	if (current_state == WP_IDLE) {
+		// Send clear all if count == 0
+		if (waypointsEditable.count() > 0) {
+			emit _startProtocolTimer();  // Start timer on our thread
+			current_retries = PROTOCOL_MAX_RETRIES;
+
+			current_count = 1;
+			current_state = WP_SENDLIST;
+			current_wp_id = seq;
+			current_partner_systemid = uasid;
+			current_partner_compid = MAV_COMP_ID_MISSIONPLANNER;
+
+			//clear local buffer
+			// Why not replace with waypoint_buffer.clear() ?
+			// because this will lead to memory leaks, the waypoint-structs
+			// have to be deleted, clear() would only delete the pointers.
+			while (!waypoint_buffer.empty()) {
+				delete waypoint_buffer.back();
+				waypoint_buffer.pop_back();
+			}
+
+			bool noCurrent = true;
+			int i = seq;
+			//copy waypoint data to local buffer
+			//for (int i = 0; i < current_count; i++) {
+				waypoint_buffer.push_back(new mavlink_mission_item_t);
+				mavlink_mission_item_t *cur_d = waypoint_buffer.back();
+				memset(cur_d, 0, sizeof(mavlink_mission_item_t));   //initialize with zeros
+				const Waypoint *cur_s = waypointsEditable.at(i);
+
+				cur_d->autocontinue = cur_s->getAutoContinue();
+				cur_d->current = cur_s->getCurrent() & noCurrent;   //make sure only one current waypoint is selected, the first selected will be chosen
+				cur_d->param1 = cur_s->getParam1();
+				cur_d->param2 = cur_s->getParam2();
+				cur_d->param3 = cur_s->getParam3();
+				cur_d->param4 = cur_s->getParam4();
+				cur_d->frame = cur_s->getFrame();
+				cur_d->command = cur_s->getAction();
+				cur_d->seq = 0;     // don't read out the sequence number of the waypoint class
+				cur_d->x = cur_s->getX();
+				cur_d->y = cur_s->getY();
+				cur_d->z = cur_s->getZ();
+
+				if (cur_s->getCurrent() && noCurrent)
+					noCurrent = false;
+				if (i == (current_count - 1) && noCurrent == true) //not a single waypoint was set as "current"
+					cur_d->current = true; // set the last waypoint as current. Or should it better be the first waypoint ?
+		//	}
+
+
+
+
+			//send the waypoint count to UAS (this starts the send transaction)
+			sendWaypointCount();
+		}
+		else if (waypointsEditable.count() == 0)
+		{
+			clearWaypointList();
+		}
+	}
+	else
+	{
+		// We're in another transaction, ignore command
+		qDebug() << tr("UASWaypointManager::sendWaypoints() doing something else. Ignoring command");
+	}
+}
 void UASWaypointManager::sendWaypointClearAll()
 {
     if (!uas) return;
@@ -1155,4 +1280,14 @@ void UASWaypointManager::_startProtocolTimerOnThisThread(void)
 void UASWaypointManager::_stopProtocolTimerOnThisThread(void)
 {
     protocol_timer.stop();
+}
+
+
+void UASWaypointManager::_updateWPonTimer()
+{
+    while (current_state != WP_IDLE)
+    {
+        QGC::SLEEP::msleep(100);
+    }
+    readWaypoints(true);
 }

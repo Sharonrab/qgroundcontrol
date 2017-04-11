@@ -20,6 +20,8 @@ public:
     explicit QGCWaypointListMulti(QWidget *parent = 0);
     ~QGCWaypointListMulti();
 
+//    WaypointList* getWaypointList(QObject* uas);
+
 protected:
     // Override from Widget
     virtual void changeEvent(QEvent *e);

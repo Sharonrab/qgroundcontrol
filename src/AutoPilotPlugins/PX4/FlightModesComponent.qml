@@ -21,874 +21,388 @@
 
  ======================================================================*/
 
-import QtQuick 2.2
-import QtQuick.Controls 1.2
-import QtQuick.Controls.Styles 1.2
+import QtQuick                  2.2
+import QtQuick.Controls         1.2
+import QtQuick.Controls.Styles  1.2
+import QtQuick.Dialogs          1.2
+import QtQuick.Layouts          1.1
 
-import QGroundControl.FactSystem 1.0
-import QGroundControl.FactControls 1.0
-import QGroundControl.Palette 1.0
-import QGroundControl.Controls 1.0
-import QGroundControl.Controllers 1.0
-import QGroundControl.ScreenTools 1.0
+import QGroundControl.FactSystem    1.0
+import QGroundControl.FactControls  1.0
+import QGroundControl.Palette       1.0
+import QGroundControl.Controls      1.0
+import QGroundControl.Controllers   1.0
+import QGroundControl.ScreenTools   1.0
 
-Item {
-    Loader {
-        property FlightModesComponentController controller: FlightModesComponentController { }
-        property QGCPalette qgcPal: QGCPalette { colorGroupEnabled: true }
-        property ScreenTools screenTools: ScreenTools { }
-        property bool loading: true
+QGCView {
+    id:         rootQGCView
+    viewPanel:  panel
 
-        anchors.fill: parent
-        sourceComponent: controller.validConfiguration ? validComponent : invalidComponent
+    readonly property int monitorThresholdCharWidth: 8  // Character width of Monitor and Threshold labels
 
-        onLoaded: loading = false
+    // User visible strings
+
+    property string topHelpText:                        "Assign Flight Modes to radio control channels and adjust the thresholds for triggering them. " +
+                                                        "You can assign multiple flight modes to a single channel. " +
+                                                        "Turn your radio control on to test switch settings. " +
+                                                        "The following channels: " + controller.reservedChannels +
+                                                        " are not available for Flight Modes since they are already in use for other functions."
+
+
+    readonly property string fwManualModeName:          "Manual/Main"
+    readonly property string mrManualModeName:          "Stabilized/Main"
+    readonly property string fwManualModeDescription:   "The pilot has full control of the aircraft, no assistance is provided. " +
+                                                        "The Main mode switch must always be assigned to a channel in order to fly"
+    readonly property string mrManualModeDescription:   "Roll and Pitch control angle of multi-rotor in respective direction. " +
+                                                        "Centering Roll/Pitch will return multirotor to level attitude. " +
+                                                        "Position is not automatically held, multi-rotor will continue drifting in the direction it was previously travelling. " +
+                                                        "Altitude is controlled fully by pilot using the Throttle stick. " +
+                                                        "The Main mode switch must always be assigned to a channel in order to fly"
+
+    readonly property string assistModeName:            "Assist"
+    readonly property string assistModeDescription:     "If Position Control is placed on a seperate channel from the Main mode channel, an additional 'Assist' mode is added to the Main switch. " +
+                                                        "In order for the Attitude Control/Position Control switch to be active, the Main switch must be in Assist mode."
+
+    readonly property string autoModeName:              "Auto"
+    readonly property string autoModeDescription:       "If Loiter is placed on a seperate channel from the Main mode channel, an additional 'Auto' mode is added to the Main switch. " +
+                                                        "In order for the Mission/Loiter switch to be active, the Main switch must be in Auto mode."
+
+    readonly property string fwAcroModeName:            "Stabilized"
+    readonly property string mrAcroModeName:            "Acro"
+    readonly property string fwAcroModeDescription:     "Roll and Pitch control angle of aircraft in respective direction. " +
+                                                        "Centering Roll/Pitch will return the aircraft to a level attitude. " +
+                                                        "Neither altitude nor direction is automatically controlled. " +
+                                                        "Both Throttle and Yaw and in full control of pilot."
+    readonly property string mrAcroModeDescription:     "Roll and Pitch control angular rate of change of multi-rotor in respective direction. " +
+                                                        "This allows for multi-rotor to rotate through a full 360 degrees in roll and/or pitch. " +
+                                                        "Centering Roll/Pitch will return the multirotor to a level attitude. " +
+                                                        "Position is not automatically held, multi-rotor will continue drifting in the direction it was previously travelling. " +
+                                                        "Altitude is under manual control of pilot using the Throttle stick."
+
+    readonly property string altCtlModeName:            "Altitude Control"
+    readonly property string fwAltCtlModeDescription:   "Current Altitude is maintained automatically when Pitch is centered. " +
+                                                        "Roll and Pitch centered gives level flight, but does not maintain straight line direction against wind. " +
+                                                        "Throttle controls speed, Pitch controls climb/sink rate, Roll controls turn rate. " +
+                                                        "Position Control and Attitude Control must always be on the same channel."
+    readonly property string mrAltCtlModeDescription:   "Same as Stablized mode except that Throttle controls climb/sink rate. Centered Throttle holds altitude steady."
+
+    readonly property string posCtlModeName:            "Position Control"
+    readonly property string fwPosCtlModeDescription:   "Current Altitude is maintained automatically when Pitch is centered. " +
+                                                        "Roll and Pitch centered gives level flight in a straight line compensating against wind. " +
+                                                        "Throttle controls speed, Pitch controls climb/sink rate, Roll controls turn rate. " +
+                                                        "Position Control and Attitude Control must always be on the same channel."
+    readonly property string mrPosCtlModeDescription:   "Roll and Pitch control left-right and front-back speed over ground respectively. " +
+                                                        "Centering Roll/Pitch will level and hold position. " +
+                                                        "Yaw controls yaw rate as in Stablized mode. " +
+                                                        "Centered throttle holds current altitude. " +
+                                                        "Throttle above/below center controls climb/sink rate. " +
+                                                        "Position Control and Attitude Control must always be on the same channel."
+
+    readonly property string missionModeName:           "Mission"
+    readonly property string missionModeDescription:    "The aircraft obeys the programmed mission sent by QGroundControl. " +
+                                                        "If no mission was sent, aircraft will Loiter at current position instead."
+
+    readonly property string loiterModeName:            "Loiter"
+    readonly property string fwLoiterModeDescription:   "The aircraft flies in a circle around the current position at the current altitude. " +
+                                                        "Loiter and Mission must always be on the same channel."
+    readonly property string mrLoiterModeDescription:   "The multirotor hovers at the current position and altitude. " +
+                                                        "Loiter and Mission must always be on the same channel."
+
+    readonly property string returnModeName:            "Return"
+    readonly property string returnModeDescription:     "The vehicle returns to the home position, loiters and then lands. " +
+                                                        "The settings which control this sequence can be found under Setup - Safety."
+
+    readonly property string offboardModeName:          "Offboard"
+    readonly property string offboardModeDescription:   "All flight control aspects are controlled by an offboard system."
+
+    readonly property real modeSpacing: ScreenTools.defaultFontPixelHeight / 3
+
+    QGCPalette { id: qgcPal; colorGroupEnabled: panel.enabled }
+
+    FlightModesComponentController {
+        id:         controller
+        factPanel:  panel
+
+        onModeRowsChanged: recalcModePositions()
     }
 
-    Component {
-        id: validComponent
+    Timer {
+        interval:   200
+        running:    true
 
-        Rectangle {
-            Fact { id: rc_map_throttle;     name: "RC_MAP_THROTTLE" }
-            Fact { id: rc_map_yaw;          name: "RC_MAP_YAW" }
-            Fact { id: rc_map_pitch;        name: "RC_MAP_PITCH" }
-            Fact { id: rc_map_roll;         name: "RC_MAP_ROLL" }
-            Fact { id: rc_map_flaps;        name: "RC_MAP_FLAPS" }
-            Fact { id: rc_map_aux1;         name: "RC_MAP_AUX1" }
-            Fact { id: rc_map_aux2;         name: "RC_MAP_AUX2" }
+        onTriggered: recalcModePositions()
+    }
 
-            Fact { id: rc_map_mode_sw;      name: "RC_MAP_MODE_SW" }
-            Fact { id: rc_map_posctl_sw;    name: "RC_MAP_POSCTL_SW" }
-            Fact { id: rc_map_return_sw;    name: "RC_MAP_RETURN_SW" }
-            Fact { id: rc_map_loiter_sw;    name: "RC_MAP_LOITER_SW" }
+    function recalcModePositions() {
+        var spacing = ScreenTools.defaultFontPixelHeight / 2
+        var nextY = manualMode.y + manualMode.height + spacing
 
-            Fact { id: rc_assist_th;        name: "RC_ASSIST_TH" }
-            Fact { id: rc_posctl_th;        name: "RC_POSCTL_TH" }
-            Fact { id: rc_auto_th;          name: "RC_AUTO_TH" }
-            Fact { id: rc_loiter_th;        name: "RC_LOITER_TH" }
-            Fact { id: rc_return_th;        name: "RC_RETURN_TH" }
+        for (var index = 0; index < 9; index++) {
+            if (controller.assistModeRow == index) {
+                if (controller.assistModeVisible) {
+                    assistMode.y = nextY
+                    assistMode.z = 9 - index
+                    nextY += assistMode.height + spacing
+                }
+            } else if (controller.autoModeRow == index) {
+                if (controller.autoModeVisible) {
+                    autoMode.y = nextY
+                    autoMode.z = 9 - index
+                    nextY += autoMode.height  + spacing
+                }
+            } else if (controller.acroModeRow == index) {
+                acroMode.y = nextY
+                acroMode.z = 9 - index
+                nextY += acroMode.height + spacing
+            } else if (controller.altCtlModeRow == index) {
+                altCtlMode.y = nextY
+                altCtlMode.z = 9 - index
+                nextY += altCtlMode.height + spacing
+            } else if (controller.posCtlModeRow == index) {
+                posCtlMode.y = nextY
+                posCtlMode.z = 9 - index
+                nextY += posCtlMode.height + spacing
+            } else if (controller.loiterModeRow == index) {
+                loiterMode.y = nextY
+                loiterMode.z = 9 - index
+                nextY += loiterMode.height + spacing
+            } else if (controller.missionModeRow == index) {
+                missionMode.y = nextY
+                missionMode.z = 9 - index
+                nextY += missionMode.height + spacing
+            } else if (controller.returnModeRow == index) {
+                returnMode.y = nextY
+                returnMode.z = 9 - index
+                nextY += returnMode.height + spacing
+            } else if (controller.offboardModeRow == index) {
+                offboardMode.y = nextY
+                offboardMode.z = 9 - index
+                nextY += offboardMode.height + spacing
+            }
+        }
 
-            Fact { id: rc_th_user;          name: "RC_TH_USER" }
+        scrollItem.height = nextY
+    }
 
-            property int throttleChannel:   rc_map_throttle.value
-            property int yawChannel:        rc_map_yaw.value
-            property int pitchChannel:      rc_map_pitch.value
-            property int rollChannel:       rc_map_roll.value
-            property int flapsChannel:      rc_map_flaps.value
-            property int aux1Channel:       rc_map_aux1.value
-            property int aux2Channel:       rc_map_aux2.value
+    QGCViewPanel {
+        id:             panel
+        anchors.fill:   parent
 
-            property int modeChannel:       rc_map_mode_sw.value
-            property int posCtlChannel:     rc_map_posctl_sw.value
-            property int returnChannel:     rc_map_return_sw.value
-            property int loiterChannel:     rc_map_loiter_sw.value
+        ScrollView {
+            id:                         scroll
+            anchors.fill:               parent
+            horizontalScrollBarPolicy:  Qt.ScrollBarAlwaysOff
 
-            property real rcThUserValue: rc_th_user.value
+            Item {
+                id:     scrollItem
+                width:  scroll.viewport.width
 
-            readonly property int channelCount: controller.channelCount
-
-            property bool inRedistribution: false
-
-            readonly property int tileWidth: 150
-            readonly property int tileHeight: 30
-
-            readonly property int progressBarHeight: 200
-
-            anchors.fill: parent
-
-
-            color: qgcPal.window
-
-            Component {
-                id: dragHandle
+                QGCLabel {
+                    id:             header
+                    width:          parent.width
+                    font.pixelSize: ScreenTools.largeFontPixelSize
+                    text:           "FLIGHT MODES CONFIG"
+                }
 
                 Item {
-                    id:     outerItem
-                    width:  parent.width
-                    height: parent.height
-
-                    Column {
-                        x: 4
-                        y: 4
-                        spacing: 3
-
-                        Repeater {
-                            model: (outerItem.height - 8) / 4
-                            Rectangle {
-                                color: qgcPal.text
-                                width: 15
-                                height: 1
-                            }
-                        }
-                    }
-                }
-            }
-
-            // This component is used to create draggable tiles for unassigned mode switches. It also
-            // creates the drop area for dragging an assigned mode switch tile back to an unassigned state.
-            // The following properties must be set in the Loader:
-            //  tileLabel - label for tile
-            //  tileParam - parameter to load from
-            //  tileDragEnabled - true: this tile can be dragged
-            Component {
-                id: unassignedModeTileComponent
-
-                Rectangle {
-                    Fact { id: fact; name: tileParam }
-                    property bool dragEnabled: fact.value == 0
-
-                    id:             outerRect
-                    width:          tileWidth
-                    height:         tileHeight
-                    color:          qgcPal.windowShadeDark
-                    border.width:   dragEnabled ? 1 : 0
-                    border.color:   qgcPal.text
-
-                    Drag.active:    mouseArea.drag.active
-                    Drag.hotSpot.x: width / 2
-                    Drag.hotSpot.y: height / 2
-                    Drag.keys:      [ "unassigned"]
-
-                    states: [
-                        State {
-                            when: dropArea.containsDrag
-                            PropertyChanges {
-                                target: outerRect
-                                color: "red"
-                            }
-                        }
-                    ]
-
-                    Loader {
-                        width: parent.width
-                        height: parent.height
-                        visible: dragEnabled
-                        sourceComponent: dragHandle
-                    }
-
-                    QGCLabel {
-                        width:                  parent.width
-                        height:                 parent.height
-                        text:                   tileLabel
-                        enabled:                dragEnabled
-                        horizontalAlignment:    Text.AlignHCenter
-                        verticalAlignment:      Text.AlignVCenter
-                    }
-
-                    MouseArea {
-                        id:             mouseArea
-                        width:          parent.width
-                        height:         parent.height
-                        drag.target:    dragEnabled ? parent : null
-
-                        onReleased: {
-                            // Move tile back to original position
-                            parent.x = 0; parent.y = 0;
-
-                            // If dropped over a channel target remap switch
-                            if (parent.Drag.target && parent.Drag.target.dropAllowed) {
-                                fact.value = parent.Drag.target.channel
-                            }
-                        }
-                    }
-
-                    DropArea {
-                        // This will cause to tile to go back to unassigned if dropped here
-                        readonly property int channel: 0
-                        property bool dropAllowed: true
-
-                        id:     dropArea
-                        width:  parent.width
-                        height: parent.height
-
-                        keys: [ "assigned" ]
-                    }
-                }
-            }
-
-            // This component is used to create draggable tiles for currently assigned mode switches. The following
-            // properties must be set in the Loader:
-            //  tileLabel - label for tile
-            //  tileVisible - visibility for tile
-            //  tileDragEnabled - true: this tile can be dragged
-            //  tileParam - parameter to load from
-            Component {
-                id: assignedModeTileComponent
-
-                Rectangle {
-                    Fact { id: fact; name: tileDragEnabled ? tileParam : "" }
-
-                    width:          tileWidth
-                    height:         tileHeight
-                    color:          qgcPal.windowShadeDark
-                    border.width:   tileDragEnabled ? 1 : 0
-                    border.color:   qgcPal.text
-                    visible:        tileVisible
-
-                    Drag.active:    mouseArea.drag.active
-                    Drag.hotSpot.x: width / 2
-                    Drag.hotSpot.y: height / 2
-                    Drag.keys:      [ "assigned" ]
-
-                    Loader {
-                        width: parent.width
-                        height: parent.height
-                        visible: tileDragEnabled
-                        sourceComponent: dragHandle
-                    }
-
-                    QGCLabel {
-                        width:                  parent.width
-                        height:                 parent.height
-                        enabled:                tileDragEnabled
-                        horizontalAlignment:    Text.AlignHCenter
-                        verticalAlignment:      Text.AlignVCenter
-                        text:                   tileLabel
-                    }
-
-                    MouseArea {
-                        id:             mouseArea
-                        width:          parent.width
-                        height:         parent.height
-                        drag.target:    tileDragEnabled ? parent : null
-
-                        onReleased: {
-                            // Move tile back to original position
-                            parent.x = 0; parent.y = 0;
-
-                            // If dropped over a channel target remap switch
-                            if (parent.Drag.target && parent.Drag.target.dropAllowed) {
-                                fact.value = parent.Drag.target.channel
-                            }
-                        }
-                    }
-                }
-            }
-
-            onModeChannelChanged: if (!inRedistribution) redistributeThresholds()
-            onReturnChannelChanged: if (!inRedistribution) redistributeThresholds()
-            onLoiterChannelChanged: if (!inRedistribution) redistributeThresholds()
-            onPosCtlChannelChanged: if (!inRedistribution) redistributeThresholds()
-            onRcThUserValue: if (!inRedistribution) redistributeThresholds()
-
-            function redistributeThresholds() {
-                if (loading || rcThUserValue != 0) {
-                    // User is specifying thresholds, do not auto-calculate
-                    return
-                }
-
-                if (modeChannel != 0) {
-                    var positions = 3  // Manual/Assist/Auto always exist
-
-                    var returnOnModeSwitch = modeChannel == returnChannel
-                    var loiterOnModeSwitch = modeChannel == loiterChannel
-                    var posCtlOnModeSwitch = modeChannel == posCtlChannel
-
-                    positions += returnOnModeSwitch ? 1 : 0
-                    positions += loiterOnModeSwitch ? 1 : 0
-                    positions += posCtlOnModeSwitch ? 1 : 0
-
-                    var increment = 1.0 / positions
-                    var currentThreshold = 0.0
-
-                    // Make sure we don't re-enter
-                    inRedistribution = true
-
-                    currentThreshold += increment
-                    rc_assist_th.value = currentThreshold
-                    if (posCtlOnModeSwitch) {
-                        currentThreshold += increment
-                        rc_posctl_th.value = currentThreshold
-                    }
-                    currentThreshold += increment
-                    rc_auto_th.value = currentThreshold
-                    if (loiterOnModeSwitch) {
-                        currentThreshold += increment
-                        rc_loiter_th.value = currentThreshold
-                    }
-                    if (returnOnModeSwitch) {
-                        currentThreshold += increment
-                        rc_return_th.value = currentThreshold
-                    }
-
-                    inRedistribution = false
-                }
-
-                if (returnChannel != 0 && returnChannel != modeChannel) {
-                    var positions = 2  // On/off always exist
-
-                    var loiterOnReturnSwitch = returnChannel == loiterChannel
-
-                    positions += loiterOnReturnSwitch ? 1 : 0
-
-                    var increment = 1.0 / positions
-                    var currentThreshold = 0.0
-
-                    if (positions == 2) {
-                        // If only two positions don't set threshold at midrange. Setting to 0.25
-                        // allows for this channel to work with either two or three position switch
-                        increment = 0.25
-                    }
-
-                    // Make sure we don't re-enter
-                    inRedistribution = true
-
-                    if (loiterOnReturnSwitch) {
-                        currentThreshold += increment
-                        rc_loiter_th.value = currentThreshold
-                    }
-                    currentThreshold += increment
-                    rc_return_th.value = currentThreshold
-
-                    inRedistribution = false
-                }
-
-                if (loiterChannel != 0 && loiterChannel != modeChannel && loiterChannel != returnChannel) {
-                    // If only two positions don't set threshold at midrange. Setting to 0.25
-                    // allows for this channel to work with either two or three position switch
-                    var increment = 0.25
-
-                    var currentThreshold = 0.0
-
-                    // Make sure we don't re-enter
-                    inRedistribution = true
-
-                    currentThreshold += increment
-                    rc_loiter_th.value = currentThreshold
-
-                    inRedistribution = false
-                }
-
-                if (posCtlChannel != 0 & posCtlChannel != modeChannel) {
-                    // If only two positions don't set threshold at midrange. Setting to 0.25
-                    // allows for this channel to work with either two or three position switch
-                    var increment = 0.25
-
-                    var currentThreshold = 0.0
-
-                    // Make sure we don't re-enter
-                    inRedistribution = true
-
-                    currentThreshold += increment
-                    rc_posctl_th.value = currentThreshold
-
-                    inRedistribution = false
-                }
-
-            }
-
-            Column {
-                anchors.fill: parent
-
-                QGCLabel {
-                    text: "FLIGHT MODES CONFIG"
-                    font.pointSize: screenTools.dpiAdjustedPointSize(20);
-                }
-
-                Item { height: 20; width: 10 } // spacer
-
-                QGCLabel {
-                    width: parent.width
-                    text: "Flight Mode switches can be assigned to any channel which is not currently being used for attitude control. All channels are displayed below. " +
-                        "You can drag Flight Modes from the Flight Modes section below to a channel and drop it there. You can also drag switches assigned to a channel " +
-                        "to another channel or back to the Unassigned Switches section. The Switch Display section at the very bottom will show you the results of your Flight Mode setup."
-                    wrapMode: Text.WordWrap
-                }
-
-                Item { height: 20; width: 10 } // spacer
-
-                QGCLabel {
-                    text: "Channel Assignments"
-                }
-                Flow {
-                    width: parent.width
-                    spacing: 5
-
-                    Repeater {
-                        model: channelCount
-
-                        Rectangle {
-                            property int channel:           modelData + 1
-                            property bool throttleMapped:   channel == throttleChannel
-                            property bool yawMapped:        channel == yawChannel
-                            property bool pitchMapped:      channel == pitchChannel
-                            property bool rollMapped:       channel == rollChannel
-                            property bool flapsMapped:      channel == flapsChannel
-                            property bool aux1Mapped:       channel == aux1Channel
-                            property bool aux2Mapped:       channel == aux2Channel
-
-                            property bool modeMapped:       channel == modeChannel
-                            property bool posCtlMapped:     channel == posCtlChannel
-                            property bool returnMapped:     channel == returnChannel
-                            property bool loiterMapped:     channel == loiterChannel
-
-                            property bool nonFlightModeMapping: throttleMapped | yawMapped | pitchMapped | rollMapped | flapsMapped | aux1Mapped | aux2Mapped
-                            property bool unassignedMapping: !(nonFlightModeMapping | modeMapped | posCtlMapped | returnMapped | loiterMapped)
-
-                            id:     channelTarget
-                            width:  tileWidth
-                            height: channelCol.implicitHeight
-
-                            color:  qgcPal.windowShadeDark
-
-                            states: [
-                                State {
-                                    when: dropArea.containsDrag && dropArea.dropAllowed
-                                    PropertyChanges {
-                                        target: channelHeader
-                                        color: "red"
-                                    }
-                                }
-                            ]
-
-                            Column {
-                                id:         channelCol
-                                spacing:    3
-
-                                Rectangle {
-                                    id: channelHeader
-                                    width:  tileWidth
-                                    height: tileHeight
-                                    color:  qgcPal.windowShade
-
-                                    QGCLabel {
-                                        verticalAlignment:      Text.AlignVCenter
-                                        horizontalAlignment:    Text.AlignHCenter
-                                        text:                   "Channel " + (modelData + 1) + (nonFlightModeMapping ? ": Unavailable" : "")
-                                    }
-                                }
-                                Loader {
-                                    property string tileLabel:      "Available"
-                                    property bool tileVisible:      visible
-                                    property bool tileDragEnabled:  false
-
-                                    visible:            unassignedMapping
-                                    sourceComponent:    assignedModeTileComponent
-                                }
-                                Loader {
-                                    property string tileLabel:      "Throttle"
-                                    property bool tileVisible:      visible
-                                    property bool tileDragEnabled:  false
-
-                                    visible:            throttleMapped
-                                    sourceComponent:    assignedModeTileComponent
-                                }
-                                Loader {
-                                    property string tileLabel:      "Yaw"
-                                    property bool tileVisible:      visible
-                                    property bool tileDragEnabled:  false
-
-                                    visible:            yawMapped
-                                    sourceComponent:    assignedModeTileComponent
-                                }
-                                Loader {
-                                    property string tileLabel:      "Pitch"
-                                    property bool tileVisible:      visible
-                                    property bool tileDragEnabled:  false
-
-                                    visible:            pitchMapped
-                                    sourceComponent:    assignedModeTileComponent
-                                }
-                                Loader {
-                                    property string tileLabel:      "Roll"
-                                    property bool tileVisible:      visible
-                                    property bool tileDragEnabled:  false
-
-                                    visible:            rollMapped
-                                    sourceComponent:    assignedModeTileComponent
-                                }
-                                Loader {
-                                    property string tileLabel:      "Flaps Switch"
-                                    property bool tileVisible:      visible
-                                    property bool tileDragEnabled:  false
-
-                                    visible:            flapsMapped
-                                    sourceComponent:    assignedModeTileComponent
-                                }
-                                Loader {
-                                    property string tileLabel:      "Aux1 Switch"
-                                    property bool tileVisible:      visible
-                                    property bool tileDragEnabled:  false
-
-                                    visible:            aux1Mapped
-                                    sourceComponent:    assignedModeTileComponent
-                                }
-                                Loader {
-                                    property string tileLabel:      "Aux2 Switch"
-                                    property bool tileVisible:      visible
-                                    property bool tileDragEnabled:  false
-
-                                    visible:            aux2Mapped
-                                    sourceComponent:    assignedModeTileComponent
-                                }
-                                Loader {
-                                    property string tileLabel:      "Main Mode"
-                                    property bool tileVisible:      visible
-                                    property bool tileDragEnabled:  true
-                                    property string tileParam:      "RC_MAP_MODE_SW"
-
-                                    visible:            modeMapped
-                                    sourceComponent:    assignedModeTileComponent
-                                }
-                                Loader {
-                                    property string tileLabel:      "Return"
-                                    property bool tileVisible:      visible
-                                    property bool tileDragEnabled:  true
-                                    property string tileParam:      "RC_MAP_RETURN_SW"
-
-                                    visible:            returnMapped
-                                    sourceComponent:    assignedModeTileComponent
-                                }
-                                Loader {
-                                    property string tileLabel:      "Loiter"
-                                    property bool tileVisible:      visible
-                                    property bool tileDragEnabled:  true
-                                    property string tileParam:      "RC_MAP_LOITER_SW"
-
-                                    visible:            loiterMapped
-                                    sourceComponent:    assignedModeTileComponent
-                                }
-                                Loader {
-                                    property string tileLabel:      "PosCtl"
-                                    property bool tileVisible:      visible
-                                    property bool tileDragEnabled:  true
-                                    property string tileParam:      "RC_MAP_POSCTL_SW"
-
-                                    visible:            posCtlMapped
-                                    sourceComponent:    assignedModeTileComponent
-                                }
-                            }
-
-                            DropArea {
-                                // Drops are not allowed on channels which are mapped to non-flight mode switches
-                                property bool dropAllowed: !nonFlightModeMapping
-                                property int channel: parent.channel
-
-                                id:     dropArea
-                                width:  parent.width
-                                height: parent.height
-
-                                keys: [ "unassigned", "assigned" ]
-                            }
-                        }
-                    }
-                }
-
-                Item { height: 20; width: 10 } // spacer
-
-                Row {
-                    spacing: 5
-
-                    QGCLabel {
-                        text: "Flight Modes"
-                    }
-                    QGCLabel {
-                        text: "(Mode Switch must be assigned to channel before flight is allowed)"
-                        visible: rc_map_mode_sw.value == 0
-                    }
-                }
-                Flow {
-                    width: parent.width
-                    spacing: 5
-
-                    Loader {
-                        property string tileLabel:  "Main Mode"
-                        property string tileParam:  "RC_MAP_MODE_SW"
-                        sourceComponent:            unassignedModeTileComponent
-                    }
-                    Loader {
-                        property string tileLabel:  "Return"
-                        property string tileParam:  "RC_MAP_RETURN_SW"
-                        sourceComponent:            unassignedModeTileComponent
-                    }
-                    Loader {
-                        property string tileLabel:  "Loiter"
-                        property string tileParam:  "RC_MAP_LOITER_SW"
-                        sourceComponent:            unassignedModeTileComponent
-                    }
-                    Loader {
-                        property string tileLabel:  "PosCtl"
-                        property string tileParam:  "RC_MAP_POSCTL_SW"
-                        sourceComponent:            unassignedModeTileComponent
-                    }
-                }
-
-                Item { height: 20; width: 10 } // spacer
-
-                FactCheckBox {
-                    checkedValue: 0
-                    uncheckedValue: 1
-                    fact: rc_th_user
-                    text: "Allow setup to generate the thresholds for the flight mode positions within a switch (recommended)"
-                }
-
-                Item { height: 20; width: 10 } // spacer
-
-                Row {
-                spacing: 20
-
-                    QGCLabel {
-                        text: "Switch Display"
-                    }
-                    QGCCheckBox {
-                        checked: controller.sendLiveRCSwitchRanges
-                        text: "Show live RC display"
-                        onClicked: {
-                            controller.sendLiveRCSwitchRanges = checked
-                        }
-                    }
-                }
-
-                Item { height: 20; width: 10 } // spacer
-
-                Row {
-                    property bool modeSwitchVisible: modeChannel != 0
-                    property bool returnSwitchVisible: returnChannel != 0 && returnChannel != modeChannel
-                    property bool loiterSwitchVisible: loiterChannel != 0 && loiterChannel != modeChannel && loiterChannel != returnChannel
-                    property bool posCtlSwitchVisible: posCtlChannel != 0 && posCtlChannel != modeChannel
-
-                    width:      parent.width
-                    spacing:    20
-
-                    Column {
-                        visible: parent.modeSwitchVisible
-
-                        QGCLabel { text: "Mode Switch" }
-
-                        Row {
-                            Item {
-                                height: progressBarHeight
-                                width:  150
-
-                                QGCLabel {
-                                    width:                  parent.width
-                                    y:                      (parent.height * (1.0 - rc_auto_th.value)) - (implicitHeight / 2)
-                                    visible:                modeChannel != returnChannel && modeChannel != loiterChannel
-                                    horizontalAlignment:    Text.AlignRight
-                                    text:                   "Auto"
-                                }
-
-                                QGCLabel {
-                                    width:                  parent.width
-                                    y:                      (parent.height * (1.0 - rc_return_th.value)) - (implicitHeight / 2)
-                                    visible:                modeChannel == returnChannel
-                                    horizontalAlignment:    Text.AlignRight
-                                    text:                   "Auto: Return"
-                                }
-
-                                QGCLabel {
-                                    width:                  parent.width
-                                    y:                      (parent.height * (1.0 - rc_loiter_th.value)) - (implicitHeight / 2)
-                                    visible:                modeChannel == loiterChannel
-                                    horizontalAlignment:    Text.AlignRight
-                                    text:                   "Auto: Loiter"
-                                }
-
-                                QGCLabel {
-                                    width:                  parent.width
-                                    y:                      (parent.height * (1.0 - rc_auto_th.value)) - (implicitHeight / 2)
-                                    visible:                modeChannel == loiterChannel
-                                    horizontalAlignment:    Text.AlignRight
-                                    text:                   "Auto: Mission"
-                                }
-
-                                QGCLabel {
-                                    width:                  parent.width
-                                    y:                      (parent.height * (1.0 - rc_auto_th.value)) - (implicitHeight / 2)
-                                    visible:                modeChannel == returnChannel && modeChannel != loiterChannel
-                                    horizontalAlignment:    Text.AlignRight
-                                    text:                   "Auto: Loiter/Mission"
-                                }
-
-                                QGCLabel {
-                                    width:                  parent.width
-                                    y:                      (parent.height * (1.0 - rc_assist_th.value)) - (implicitHeight / 2)
-                                    visible:                modeChannel != posCtlChannel
-                                    horizontalAlignment:    Text.AlignRight
-                                    text:                   "Assist"
-                                }
-
-                                QGCLabel {
-                                    width:                  parent.width
-                                    y:                      (parent.height * (1.0 - rc_posctl_th.value)) - (implicitHeight / 2)
-                                    visible:                modeChannel == posCtlChannel
-                                    horizontalAlignment:    Text.AlignRight
-                                    text:                   "Assist: PosCtl"
-                                }
-
-                                QGCLabel {
-                                    width:                  parent.width
-                                    y:                      (parent.height * (1.0 - rc_assist_th.value)) - (implicitHeight / 2)
-                                    visible:                modeChannel == posCtlChannel
-                                    horizontalAlignment:    Text.AlignRight
-                                    text:                   "Assist: AltCtl"
-                                }
-
-                                QGCLabel {
-                                    width:              parent.width
-                                    y:                  parent.height - (implicitHeight / 2)
-                                    text:               "Manual"
-                                    horizontalAlignment: Text.AlignRight
-                                }
-                            }
-
-                            ProgressBar {
-                                height:         progressBarHeight
-                                orientation:    Qt.Vertical
-                                value:          controller.modeSwitchLiveRange
-                            }
-                        }
-                    }
-
-                    Column {
-                        visible: parent.returnSwitchVisible
-
-                        QGCLabel { text: "Return Switch" }
-
-                        Row {
-                            Item {
-                                height: progressBarHeight
-                                width:  150
-
-                                QGCLabel {
-                                    width:                  parent.width
-                                    y:                      (parent.height * (1.0 - rc_return_th.value)) - (implicitHeight / 2)
-                                    horizontalAlignment:    Text.AlignRight
-                                    text:                   "Auto: Return"
-                                }
-
-                                QGCLabel {
-                                    width:                  parent.width
-                                    y:                      (parent.height * (1.0 - rc_loiter_th.value)) - (implicitHeight / 2)
-                                    visible:                returnChannel == loiterChannel
-                                    horizontalAlignment:    Text.AlignRight
-                                    text:                   "Auto: Loiter"
-                                }
-
-                                QGCLabel {
-                                    width:                  parent.width
-                                    y:                      parent.height - (implicitHeight / 2)
-                                    visible:                returnChannel == loiterChannel
-                                    horizontalAlignment:    Text.AlignRight
-                                    text:                   "Auto: Mission"
-                                }
-
-                                QGCLabel {
-                                    width:                  parent.width
-                                    y:                      parent.height - (implicitHeight / 2)
-                                    visible:                returnChannel != loiterChannel
-                                    horizontalAlignment:    Text.AlignRight
-                                    text:                   "Auto: Return Off"
-                                }
-                            }
-
-                            ProgressBar {
-                                height:         progressBarHeight
-                                orientation:    Qt.Vertical
-                                value:          controller.returnSwitchLiveRange
-                            }
-                        }
-                    }
-
-                    Column {
-                        visible: parent.loiterSwitchVisible
-
-                        QGCLabel { text: "Loiter Switch" }
-
-                        Row {
-                            Item {
-                                height: progressBarHeight
-                                width:  150
-
-                                QGCLabel {
-                                    width:                  parent.width
-                                    y:                      (parent.height * (1.0 - rc_loiter_th.value)) - (implicitHeight / 2)
-                                    horizontalAlignment:    Text.AlignRight
-                                    text:                   "Auto: Loiter"
-                                }
-
-                                QGCLabel {
-                                    width:                  parent.width
-                                    y:                      parent.height - (implicitHeight / 2)
-                                    horizontalAlignment:    Text.AlignRight
-                                    text:                   "Auto: Mission"
-                                }
-                            }
-
-                            ProgressBar {
-                                height:         progressBarHeight
-                                orientation:    Qt.Vertical
-                                value:          controller.loiterSwitchLiveRange
-                            }
-                        }
-                    }
-
-                    Column {
-                        visible: parent.posCtlSwitchVisible
-
-                        QGCLabel { text: "PosCtl Switch" }
-
-                        Row {
-                            Item {
-                                height: progressBarHeight
-                                width:  150
-
-                                QGCLabel {
-                                    width:                  parent.width
-                                    y:                      (parent.height * (1.0 - rc_posctl_th.value)) - (implicitHeight / 2)
-                                    horizontalAlignment:    Text.AlignRight
-                                    text:                   "Assist: PosCtl"
-                                }
-
-                                QGCLabel {
-                                    width:                  parent.width
-                                    y:                      parent.height - (implicitHeight / 2)
-                                    horizontalAlignment:    Text.AlignRight
-                                    text:                   "Assist: AltCtl"
-                                }
-                            }
-
-                            ProgressBar {
-                                height:         progressBarHeight
-                                orientation:    Qt.Vertical
-                                value:          controller.posCtlSwitchLiveRange
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    Component {
-        id: invalidComponent
-
-        Rectangle {
-            anchors.fill: parent
-            color: qgcPal.window
-
-            Column {
-                width: parent.width
-                spacing: 20
-
-                QGCLabel {
-                    text: "FLIGHT MODES CONFIG"
-                    font.pointSize: screenTools.dpiAdjustedPointSize(20);
+                    id:             headingSpacer
+                    anchors.top:    header.bottom
+                    height:         20
+                    width:          20
                 }
 
                 QGCLabel {
-                    width:      parent.width
-                    wrapMode:   Text.WordWrap
-                    text:       "There are errors in your current configuration which will need to be fixed before you can used Flight Config setup. " +
-                                "You will need to change Parameters directly using Parameters Setup to remove these errors."
+                    anchors.top:            headingSpacer.bottom
+                    anchors.left:           parent.left
+                    anchors.rightMargin:    ScreenTools.defaultFontPixelWidth
+                    anchors.right:          applyButton.left
+                    text:                   topHelpText
+                    wrapMode:               Text.WordWrap
                 }
 
-                QGCLabel {
-                    width:      parent.width
-                    wrapMode:   Text.WordWrap
-                    text:       controller.configurationErrors
+                QGCButton {
+                    id:                     applyButton
+                    anchors.top:            headingSpacer.bottom
+                    anchors.rightMargin:    ScreenTools.defaultFontPixelWidth
+                    anchors.right:          parent.right
+                    text:                   "Generate Thresholds"
+
+                    onClicked: controller.generateThresholds()
                 }
-            }
-        }
-    }
-}
+
+                Item {
+                    id:             lastSpacer
+                    anchors.top:    applyButton.bottom
+                    height:         20
+                    width:          10
+                }
+
+                ModeSwitchDisplay {
+                    id:                     manualMode
+                    anchors.top:            lastSpacer.bottom
+                    flightModeName:         controller.fixedWing ? fwManualModeName : mrManualModeName
+                    flightModeDescription:  controller.fixedWing ? fwManualModeDescription : mrManualModeDescription
+                    rcValue:                controller.manualModeRcValue
+                    modeChannelIndex:       controller.manualModeChannelIndex
+                    modeChannelEnabled:     true
+                    modeSelected:           controller.manualModeSelected
+                    thresholdValue:         controller.manualModeThreshold
+                    thresholdDragEnabled:   false
+
+                    onModeChannelIndexChanged: controller.manualModeChannelIndex = modeChannelIndex
+                }
+
+                ModeSwitchDisplay {
+                    id:                     assistMode
+                    visible:                controller.assistModeVisible
+                    flightModeName:         assistModeName
+                    flightModeDescription:  assistModeDescription
+                    rcValue:                controller.assistModeRcValue
+                    modeChannelIndex:       controller.assistModeChannelIndex
+                    modeChannelEnabled:     false
+                    modeSelected:           controller.assistModeSelected
+                    thresholdValue:         controller.assistModeThreshold
+                    thresholdDragEnabled:   true
+
+                    onThresholdValueChanged: controller.assistModeThreshold = thresholdValue
+
+                    Behavior on y { PropertyAnimation { easing.type: Easing.InOutQuad; duration: 1000 } }
+                }
+
+                ModeSwitchDisplay {
+                    id:                     autoMode
+                    visible:                controller.autoModeVisible
+                    flightModeName:         autoModeName
+                    flightModeDescription:  autoModeDescription
+                    rcValue:                controller.autoModeRcValue
+                    modeChannelIndex:       controller.autoModeChannelIndex
+                    modeChannelEnabled:     false
+                    modeSelected:           controller.autoModeSelected
+                    thresholdValue:         controller.autoModeThreshold
+                    thresholdDragEnabled:   true
+
+                    onThresholdValueChanged: controller.autoModeThreshold = thresholdValue
+
+                    Behavior on y { PropertyAnimation { easing.type: Easing.InOutQuad; duration: 1000 } }
+                }
+
+                ModeSwitchDisplay {
+                    id:                     acroMode
+                    flightModeName:         controller.fixedWing ? fwAcroModeName : mrAcroModeName
+                    flightModeDescription:  controller.fixedWing ? fwAcroModeDescription : mrAcroModeDescription
+                    rcValue:                controller.acroModeRcValue
+                    modeChannelIndex:       controller.acroModeChannelIndex
+                    modeChannelEnabled:     true
+                    modeSelected:           controller.acroModeSelected
+                    thresholdValue:         controller.acroModeThreshold
+                    thresholdDragEnabled:   true
+
+                    onModeChannelIndexChanged:  controller.acroModeChannelIndex = modeChannelIndex
+                    onThresholdValueChanged:    controller.acroModeThreshold = thresholdValue
+
+                    Behavior on y { PropertyAnimation { easing.type: Easing.InOutQuad; duration: 1000 } }
+                }
+
+                ModeSwitchDisplay {
+                    id:                     altCtlMode
+                    flightModeName:         altCtlModeName
+                    flightModeDescription:  controller.fixedWing ? fwAltCtlModeDescription : mrAltCtlModeDescription
+                    rcValue:                controller.altCtlModeRcValue
+                    modeChannelIndex:       controller.altCtlModeChannelIndex
+                    modeChannelEnabled:     false
+                    modeSelected:           controller.altCtlModeSelected
+                    thresholdValue:         controller.altCtlModeThreshold
+                    thresholdDragEnabled:   !controller.assistModeVisible
+
+                    onThresholdValueChanged:    controller.altCtlModeThreshold = thresholdValue
+
+                    Behavior on y { PropertyAnimation { easing.type: Easing.InOutQuad; duration: 1000 } }
+                }
+
+                ModeSwitchDisplay {
+                    id:                     posCtlMode
+                    flightModeName:         posCtlModeName
+                    flightModeDescription:  controller.fixedWing ? fwPosCtlModeDescription : mrPosCtlModeDescription
+                    rcValue:                controller.posCtlModeRcValue
+                    modeChannelIndex:       controller.posCtlModeChannelIndex
+                    modeChannelEnabled:     true
+                    modeSelected:           controller.posCtlModeSelected
+                    thresholdValue:         controller.posCtlModeThreshold
+                    thresholdDragEnabled:   true
+
+                    onModeChannelIndexChanged:  controller.posCtlModeChannelIndex = modeChannelIndex
+                    onThresholdValueChanged:    controller.posCtlModeThreshold = thresholdValue
+
+                    Behavior on y { PropertyAnimation { easing.type: Easing.InOutQuad; duration: 1000 } }
+                }
+
+                ModeSwitchDisplay {
+                    id:                     missionMode
+                    flightModeName:         missionModeName
+                    flightModeDescription:  missionModeDescription
+                    rcValue:                controller.missionModeRcValue
+                    modeChannelIndex:       controller.missionModeChannelIndex
+                    modeChannelEnabled:     false
+                    modeSelected:           controller.missionModeSelected
+                    thresholdValue:         controller.missionModeThreshold
+                    thresholdDragEnabled:   !controller.autoModeVisible
+
+                    onThresholdValueChanged: controller.missionModeThreshold = thresholdValue
+
+                    Behavior on y { PropertyAnimation { easing.type: Easing.InOutQuad; duration: 1000 } }
+                }
+
+                ModeSwitchDisplay {
+                    id:                     loiterMode
+                    flightModeName:         loiterModeName
+                    flightModeDescription:  controller.fixedWing ? fwLoiterModeDescription : mrLoiterModeDescription
+                    rcValue:                controller.loiterModeRcValue
+                    modeChannelIndex:       controller.loiterModeChannelIndex
+                    modeChannelEnabled:     true
+                    modeSelected:           controller.loiterModeSelected
+                    thresholdValue:         controller.loiterModeThreshold
+                    thresholdDragEnabled:   true
+
+                    onModeChannelIndexChanged:  controller.loiterModeChannelIndex = modeChannelIndex
+                    onThresholdValueChanged:    controller.loiterModeThreshold = thresholdValue
+
+                    Behavior on y { PropertyAnimation { easing.type: Easing.InOutQuad; duration: 1000 } }
+                }
+
+                ModeSwitchDisplay {
+                    id:                     returnMode
+                    flightModeName:         returnModeName
+                    flightModeDescription:  returnModeDescription
+                    rcValue:                controller.returnModeRcValue
+                    modeChannelIndex:       controller.returnModeChannelIndex
+                    modeChannelEnabled:     true
+                    modeSelected:           controller.returnModeSelected
+                    thresholdValue:         controller.returnModeThreshold
+                    thresholdDragEnabled:   true
+
+                    onModeChannelIndexChanged:  controller.returnModeChannelIndex = modeChannelIndex
+                    onThresholdValueChanged:    controller.returnModeThreshold = thresholdValue
+
+                    Behavior on y { PropertyAnimation { easing.type: Easing.InOutQuad; duration: 1000 } }
+                }
+
+                ModeSwitchDisplay {
+                    id:                     offboardMode
+                    flightModeName:         offboardModeName
+                    flightModeDescription:  offboardModeDescription
+                    rcValue:                controller.offboardModeRcValue
+                    modeChannelIndex:       controller.offboardModeChannelIndex
+                    modeChannelEnabled:     true
+                    modeSelected:           controller.offboardModeSelected
+                    thresholdValue:         controller.offboardModeThreshold
+                    thresholdDragEnabled:   true
+
+                    onModeChannelIndexChanged:  controller.offboardModeChannelIndex = modeChannelIndex
+                    onThresholdValueChanged:    controller.offboardModeThreshold = thresholdValue
+
+                    Behavior on y { PropertyAnimation { easing.type: Easing.InOutQuad; duration: 1000 } }
+                }
+            } // Item
+        } // Scroll View
+    } // QGCViewPanel
+} // QGCView

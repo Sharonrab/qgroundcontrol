@@ -104,10 +104,8 @@ void QGCLinkConfiguration::on_connectLinkButton_clicked()
                     LinkManager::instance()->disconnectLink(link);
                 }
             } else {
-                LinkInterface* link = LinkManager::instance()->createLink(config);
+                LinkInterface* link = LinkManager::instance()->createConnectedLink(config);
                 if(link) {
-                    // Connect it
-                    LinkManager::instance()->connectLink(link);
                     // Now go hunting for the parent so we can shut this down
                     QWidget* pQw = parentWidget();
                     while(pQw) {
@@ -137,6 +135,7 @@ void QGCLinkConfiguration::_fixUnnamed(LinkConfiguration* config)
     //-- Check for "Unnamed"
     if (config->name() == tr("Unnamed")) {
         switch(config->type()) {
+#ifndef __ios__
             case LinkConfiguration::TypeSerial: {
                 QString tname = dynamic_cast<SerialConfiguration*>(config)->portName();
 #ifdef Q_OS_WIN32
@@ -148,6 +147,7 @@ void QGCLinkConfiguration::_fixUnnamed(LinkConfiguration* config)
                 config->setName(QString("Serial Device on %1").arg(tname));
                 break;
                 }
+#endif
             case LinkConfiguration::TypeUdp:
                 config->setName(
                     QString("UDP Link on Port %1").arg(dynamic_cast<UDPConfiguration*>(config)->localPort()));
@@ -160,7 +160,14 @@ void QGCLinkConfiguration::_fixUnnamed(LinkConfiguration* config)
                     }
                 }
                 break;
-#ifdef UNITTEST_BUILD
+            case LinkConfiguration::TypeLogReplay: {
+                LogReplayLinkConfiguration* tconfig = dynamic_cast<LogReplayLinkConfiguration*>(config);
+                if(tconfig) {
+                    config->setName(QString("Log Replay %1").arg(tconfig->logFilenameShort()));
+                }
+            }
+                break;
+#ifdef QT_DEBUG
             case LinkConfiguration::TypeMock:
                 config->setName(
                     QString("Mock Link"));
@@ -225,9 +232,14 @@ void QGCLinkConfiguration::_updateButtons()
     LinkConfiguration* config = NULL;
     QModelIndex index = _ui->linkView->currentIndex();
     bool enabled = (index.row() >= 0);
+    bool deleteEnabled = true;
     if(enabled) {
         config = _viewModel->getConfiguration(index.row());
         if(config) {
+            // Can't delete a dynamic link
+            if(config->isDynamic()) {
+                deleteEnabled = false;
+            }
             LinkInterface* link = config->getLink();
             if(link) {
                 _ui->connectLinkButton->setText("Disconnect");
@@ -237,7 +249,7 @@ void QGCLinkConfiguration::_updateButtons()
         }
     }
     _ui->connectLinkButton->setEnabled(enabled);
-    _ui->delLinkButton->setEnabled(config != NULL);
+    _ui->delLinkButton->setEnabled(config != NULL && deleteEnabled);
     _ui->editLinkButton->setEnabled(config != NULL);
 }
 

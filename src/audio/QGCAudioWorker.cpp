@@ -45,7 +45,7 @@ QGCAudioWorker::QGCAudioWorker(QObject *parent) :
 void QGCAudioWorker::init()
 {
 #ifdef QGC_NOTIFY_TUNES_ENABLED
-    sound = new QSound(":/files/audio/alert.wav");
+    sound = new QSound(":/res/Alert");
 #endif
 
 #if defined Q_OS_LINUX && defined QGC_SPEECH_ENABLED
@@ -100,7 +100,7 @@ void QGCAudioWorker::say(QString inText, int severity)
 
     if (!muted)
     {
-        QString text = _fixMillisecondString(inText);
+        QString text = _fixTextMessageForAudio(inText);
         // Prepend high priority text with alert beep
         if (severity < GAudioOutput::AUDIO_SEVERITY_CRITICAL) {
             beep();
@@ -163,7 +163,7 @@ void QGCAudioWorker::beep()
     if (!muted)
     {
 #ifdef QGC_NOTIFY_TUNES_ENABLED
-        sound->play(":/files/audio/alert.wav");
+        sound->play(":/res/Alert");
 #endif
     }
 }
@@ -187,10 +187,44 @@ bool QGCAudioWorker::_getMillisecondString(const QString& string, QString& match
     return false;
 }
 
-QString QGCAudioWorker::_fixMillisecondString(const QString& string) {
+QString QGCAudioWorker::_fixTextMessageForAudio(const QString& string) {
     QString match;
     QString newNumber;
     QString result = string;
+    //-- Look for codified terms
+    if(result.contains("ERR ", Qt::CaseInsensitive)) {
+        result.replace("ERR ", "error ", Qt::CaseInsensitive);
+    }
+    if(result.contains("ERR:", Qt::CaseInsensitive)) {
+        result.replace("ERR:", "error.", Qt::CaseInsensitive);
+    }
+    if(result.contains("POSCTL", Qt::CaseInsensitive)) {
+        result.replace("POSCTL", "Position Control", Qt::CaseInsensitive);
+    }
+    if(result.contains("ALTCTL", Qt::CaseInsensitive)) {
+        result.replace("ALTCTL", "Altitude Control", Qt::CaseInsensitive);
+    }
+    if(result.contains("RTL", Qt::CaseInsensitive)) {
+        result.replace("RTL", "Return To Land", Qt::CaseInsensitive);
+    }
+    if(result.contains("ACCEL ", Qt::CaseInsensitive)) {
+        result.replace("ACCEL ", "accelerometer ", Qt::CaseInsensitive);
+    }
+    if(result.contains("RC_MAP_MODE_SW", Qt::CaseInsensitive)) {
+        result.replace("RC_MAP_MODE_SW", "RC mode switch", Qt::CaseInsensitive);
+    }
+    if(result.contains("REJ.", Qt::CaseInsensitive)) {
+        result.replace("REJ.", "Rejected", Qt::CaseInsensitive);
+    }
+    if(result.contains("WP", Qt::CaseInsensitive)) {
+        result.replace("WP", "way point", Qt::CaseInsensitive);
+    }
+    if(result.contains("CMD", Qt::CaseInsensitive)) {
+        result.replace("CMD", "command", Qt::CaseInsensitive);
+    }
+    if(result.contains(" id ", Qt::CaseInsensitive)) {
+        result.replace(" id ", " eye dee ", Qt::CaseInsensitive);
+    }
     int number;
     if(_getMillisecondString(string, match, number) && number > 1000) {
         if(number < 60000) {
@@ -207,5 +241,6 @@ QString QGCAudioWorker::_fixMillisecondString(const QString& string) {
         }
         result.replace(match, newNumber);
     }
+    // qDebug() << "Speech: " << result;
     return result;
 }

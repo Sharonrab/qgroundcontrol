@@ -27,54 +27,41 @@
 
 import QtQuick 2.2
 import QtQuick.Controls 1.2
-import QtQuick.Controls.Styles 1.2
 
 import QGroundControl.FactSystem 1.0
 import QGroundControl.FactControls 1.0
 import QGroundControl.Controls 1.0
+import QGroundControl.Palette 1.0
 
-Column {
-    anchors.fill: parent
-    anchors.margins: 8
+FactPanel {
+    id:             panel
+    anchors.fill:   parent
+    color:          qgcPal.windowShadeDark
 
-    Row {
-        width: parent.width
-        QGCLabel { id: battFull; text: "Battery Full:" }
-        FactLabel {
-            fact: Fact { name: "BAT_V_CHARGED" }
-            horizontalAlignment: Text.AlignRight;
-            width: parent.width - battFull.contentWidth;
+    QGCPalette { id: qgcPal; colorGroupEnabled: enabled }
+    FactPanelController { id: controller; factPanel: panel }
+
+    property Fact batVChargedFact:  controller.getParameterFact(-1, "BAT_V_CHARGED")
+    property Fact batVEmptyFact:    controller.getParameterFact(-1, "BAT_V_EMPTY")
+    property Fact batCellsFact:     controller.getParameterFact(-1, "BAT_N_CELLS")
+
+    Column {
+        anchors.fill:       parent
+        anchors.margins:    8
+
+        VehicleSummaryRow {
+            labelText: "Battery Full:"
+            valueText: batVChargedFact.valueString
+        }
+
+        VehicleSummaryRow {
+            labelText: "Battery Empty:"
+            valueText: batVEmptyFact.valueString
+        }
+
+        VehicleSummaryRow {
+            labelText: "Number of Cells:"
+            valueText: batCellsFact.valueString
         }
     }
-
-    Row {
-        width: parent.width
-        QGCLabel { id: battEmpty; text: "Battery Empty:" }
-        FactLabel {
-            fact: Fact { name: "BAT_V_EMPTY" }
-            horizontalAlignment: Text.AlignRight;
-            width: parent.width - battEmpty.contentWidth;
-        }
-    }
-
-    Row {
-        width: parent.width
-        QGCLabel { id: battCells; text: "Number of Cells:" }
-        FactLabel {
-            fact: Fact { name: "BAT_N_CELLS" }
-            horizontalAlignment: Text.AlignRight;
-            width: parent.width - battCells.contentWidth;
-        }
-    }
-
-    Row {
-        width: parent.width
-        QGCLabel { id: battDrop; text: "Voltage Drop:" }
-        FactLabel {
-            fact: Fact { name: "BAT_V_LOAD_DROP" }
-            horizontalAlignment: Text.AlignRight;
-            width: parent.width - battDrop.contentWidth;
-        }
-    }
-
 }

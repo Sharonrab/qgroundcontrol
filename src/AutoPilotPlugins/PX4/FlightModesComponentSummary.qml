@@ -1,59 +1,46 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.2
-import QtQuick.Controls.Styles 1.2
 
 import QGroundControl.FactSystem 1.0
+import QGroundControl.FactControls 1.0
 import QGroundControl.Controls 1.0
+import QGroundControl.Palette 1.0
 
-Column {
-    anchors.fill: parent
-    anchors.margins: 8
+FactPanel {
+    id:             panel
+    anchors.fill:   parent
+    color:          qgcPal.windowShadeDark
 
-    Component {
-        id: component
+    QGCPalette { id: qgcPal; colorGroupEnabled: enabled }
+    FactPanelController { id: controller; factPanel: panel }
 
-        Row {
-            width: parent.width
+    property Fact modeSwFact:   controller.getParameterFact(-1, "RC_MAP_MODE_SW")
+    property Fact posCtlSwFact: controller.getParameterFact(-1, "RC_MAP_POSCTL_SW")
+    property Fact loiterSwFact: controller.getParameterFact(-1, "RC_MAP_LOITER_SW")
+    property Fact returnSwFact: controller.getParameterFact(-1, "RC_MAP_RETURN_SW")
 
-            QGCLabel { id: label; text: labelText }
-            QGCLabel {
-                property Fact fact: Fact { name: factName }
-                horizontalAlignment: Text.AlignRight
-                width: parent.width - label.contentWidth
-                text: fact.value == 0 ? zeroText : fact.value
-            }
+    Column {
+        anchors.fill:       parent
+        anchors.margins:    8
+
+        VehicleSummaryRow {
+            labelText: "Mode switch:"
+            valueText: modeSwFact.value == 0 ? "Setup required" : modeSwFact.valueString
         }
-    }
 
-    Loader {
-        property string labelText: "Mode switch:"
-        property string zeroText: "Setup required"
-        property string factName: "RC_MAP_MODE_SW"
-        width: parent.width
-        sourceComponent: component
-    }
+        VehicleSummaryRow {
+            labelText: "Position Ctl switch:"
+            valueText: posCtlSwFact.value == 0 ? "Disabled" : posCtlSwFact.valueString
+        }
 
-    Loader {
-        property string labelText: "Position Ctl switch:"
-        property string zeroText: "Disabled"
-        property string factName: "RC_MAP_POSCTL_SW"
-        width: parent.width
-        sourceComponent: component
-    }
+        VehicleSummaryRow {
+            labelText: "Loiter switch:"
+            valueText: loiterSwFact.value == 0 ? "Disabled" : loiterSwFact.valueString
+        }
 
-    Loader {
-        property string labelText: "Position Ctl switch:"
-        property string zeroText: "Disabled"
-        property string factName: "RC_MAP_LOITER_SW"
-        width: parent.width
-        sourceComponent: component
-    }
-
-    Loader {
-        property string labelText: "Return switch:"
-        property string zeroText: "Disabled"
-        property string factName: "RC_MAP_RETURN_SW"
-        width: parent.width
-        sourceComponent: component
+        VehicleSummaryRow {
+            labelText: "Return switch:"
+            valueText: returnSwFact.value == 0 ? "Disabled" : returnSwFact.valueString
+        }
     }
 }

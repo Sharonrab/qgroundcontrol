@@ -45,13 +45,15 @@ This file is part of the PIXHAWK project
 WaypointList::WaypointList(QWidget *parent, UASWaypointManager* wpm) :
     QWidget(parent),
     uas(NULL),
+//    follower_uas(NULL),
     WPM(wpm),
     mavX(0.0),
     mavY(0.0),
     mavZ(0.0),
     mavYaw(0.0),
     showOfflineWarning(false),
-    m_ui(new Ui::WaypointList)
+    m_ui(new Ui::WaypointList),
+	_refreshTimer(new QTimer(this))
 {
 
     m_ui->setupUi(this);
@@ -74,6 +76,9 @@ WaypointList::WaypointList(QWidget *parent, UASWaypointManager* wpm) :
 
     // SEND WAYPOINTS
     connect(m_ui->transmitButton, SIGNAL(clicked()), this, SLOT(transmit()));
+
+    // SEND Current Leader WAYPOINT Position
+    connect(m_ui->transmitLeaderTrajButton, SIGNAL(clicked()), this, SLOT(EnablePeriodicChase()));
 
     // DELETE ALL WAYPOINTS
     connect(m_ui->clearWPListButton, SIGNAL(clicked()), this, SLOT(clearWPWidget()));
@@ -106,6 +111,8 @@ WaypointList::WaypointList(QWidget *parent, UASWaypointManager* wpm) :
             // Disable buttons which don't make sense without valid UAS.
             m_ui->positionAddButton->setEnabled(false);
             m_ui->transmitButton->setEnabled(false);
+            m_ui->transmitLeaderTrajButton->setEnabled(false);
+
             m_ui->readButton->setEnabled(false);
             m_ui->refreshButton->setEnabled(false);
 
@@ -194,6 +201,9 @@ void WaypointList::setUAS(UASInterface* uas)
     // Now that there's a valid UAS, enable the UI.
     m_ui->positionAddButton->setEnabled(true);
     m_ui->transmitButton->setEnabled(true);
+//TOD0:delete next row when we have couple of airplane connected
+    m_ui->transmitLeaderTrajButton->setEnabled(true);
+
     m_ui->readButton->setEnabled(true);
     m_ui->refreshButton->setEnabled(true);
 
@@ -213,6 +223,12 @@ void WaypointList::setUAS(UASInterface* uas)
 
     // Update list
     read();
+}
+
+void WaypointList::set_followerUAS(UASInterface* follower_uas)
+{
+
+
 }
 
 void WaypointList::saveWaypoints()
@@ -235,6 +251,86 @@ void WaypointList::transmit()
     {
         WPM->writeWaypoints();
     }
+}
+
+void WaypointList::EnablePeriodicChase()
+{
+	if (_refreshTimer->isActive())
+	{
+		disconnect(_refreshTimer, SIGNAL(timeout()), this, SLOT(transmitLeaderTraj()));
+		_refreshTimer->stop();
+		m_ui->transmitLeaderTrajButton->setText("Send Chase WP");
+	}
+	else
+	{
+	connect(_refreshTimer, SIGNAL(timeout()), this, SLOT(transmitLeaderTraj()));
+	_refreshTimer->setInterval(2000);
+	_refreshTimer->start(2000);
+	}
+
+}
+void WaypointList::transmitLeaderTraj()
+{
+#define FOLLOWER_MAX_WP 5
+	
+    int number_of_UAS = UASManager::instance()->getUASList().count();
+
+	
+	if (_refreshTimer->isActive() && (this->uas != UASManager::instance()->getActiveUAS()))
+	{
+		disconnect(_refreshTimer, SIGNAL(timeout()), this, SLOT(transmitLeaderTraj()));
+		_refreshTimer->stop();
+		m_ui->transmitLeaderTrajButton->setText("Send Chase WP");
+		return;
+	}
+
+    foreach (UASInterface* follower_uas, UASManager::instance()->getUASList())
+    {
+		//test with one 
+		static int cnt = 0;
+		int numOfWp = WPM->getGlobalFrameAndNavTypeCount();
+		Waypoint*  wp = new Waypoint(NULL, 0, cnt++, 5, 555, 0, 55, 0, 0, true, true, MAV_FRAME_GLOBAL, MAV_CMD_NAV_WAYPOINT);
+		
+		WPM->removeWaypoint(1);
+		WPM->addWaypointEditable(wp,false);
+		WPM->sendWaypoint(numOfWp);
+
+		if (follower_uas != NULL)
+		{
+			follower_uas->set_chase_mode(false);
+
+			if (follower_uas!=this->uas)
+			{
+					m_ui->transmitLeaderTrajButton->setText("Sending Chase WP...");
+					follower_uas->set_chase_mode(true);
+					UASWaypointManager* followerWPM = follower_uas->getWaypointManager();
+					const QList<Waypoint *> &waypoints = followerWPM->getWaypointEditableList();
+					numOfWp = followerWPM->getGlobalFrameAndNavTypeCount();
+		//            int pos_index = numOfWp;
+					//for (int i = 0; i < numOfWp;i++) {
+		//                followerWPM->removeWaypoint(i);
+		//                //pos_index = 0;
+		//            }
+					/*double lat = this->uas->getLatitude();
+					double lon = this->uas->getLongitude();
+					double alt = this->uas->getAltitudeAMSL();
+					*/
+						Waypoint*  wp = new Waypoint(NULL, 0, this->uas->getLatitude(), this->uas->getLongitude(), this->uas->getAltitudeAMSL(), 0, followerWPM->getAcceptanceRadiusRecommendation(), 0, 0, true, true, MAV_FRAME_GLOBAL, MAV_CMD_NAV_WAYPOINT);
+						followerWPM->addWaypointEditable(wp,false);	//add new waypoint but dont enforce as active							
+						//followerWPM->writeNewWaypoint(numOfWp);
+						followerWPM->sendWaypoint(numOfWp);
+						
+
+					
+				}
+
+        }
+		 
+    }
+
+	
+
+
 }
 
 void WaypointList::read()

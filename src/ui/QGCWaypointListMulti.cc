@@ -43,6 +43,14 @@ void QGCWaypointListMulti::_systemDeleted(QObject* uas)
         }
     }
 }
+//WaypointList* QGCWaypointListMulti::getWaypointList(QObject* uas)
+//{
+//    WaypointList* wplist = NULL;
+//if (uas) {
+//    wplist = _lists.value(uas, NULL);
+//}
+//    rerurn wplist;
+//}
 
 void QGCWaypointListMulti::_systemCreated(UASInterface* uas)
 {

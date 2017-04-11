@@ -4,13 +4,14 @@ import QtQuick.Controls.Styles 1.2
 import QtQuick.Controls.Private 1.0
 
 import QGroundControl.Palette 1.0
+import QGroundControl.ScreenTools 1.0
 
 ComboBox {
     property var __qgcPal: QGCPalette { colorGroupEnabled: enabled }
-
     property bool __showHighlight: pressed | hovered
 
     style: ComboBoxStyle {
+        font.pixelSize: ScreenTools.defaultFontPixelSize
         textColor: __showHighlight ?
                     control.__qgcPal.buttonHighlightText :
                     control.__qgcPal.buttonText
@@ -29,7 +30,7 @@ ComboBox {
             Image {
                 id: imageItem
                 visible: control.menu !== null
-                source: "arrow-down.png"
+                source: "/qmlimages/arrow-down.png"
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: parent.right
                 anchors.rightMargin: dropDownButtonWidth / 2

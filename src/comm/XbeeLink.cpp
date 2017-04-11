@@ -8,7 +8,6 @@
 
 XbeeLink::XbeeLink(QString portName, int baudRate) : 
 	m_xbeeCon(NULL),
-    m_id(-1),
     m_portName(NULL),
     m_portNameLength(0),
     m_baudRate(baudRate),
@@ -19,13 +18,6 @@ XbeeLink::XbeeLink(QString portName, int baudRate) :
 
 	/* setup the xbee */
 	this->setPortName(portName);
-	
-	//this->connect();
-	// Set unique ID and add link to the list of links
-	this->m_id = getNextLinkId();
-	// set the Name
-	this->m_name = tr("xbee link") + QString::number(this->m_id);
-	emit nameChanged(this->m_name);
 }
 
 XbeeLink::~XbeeLink()
@@ -110,11 +102,6 @@ bool XbeeLink::setBaudRate(int rate)
 	return retVal;
 }
 
-int XbeeLink::getId() const
-{
-	return this->m_id;
-}
-
 QString XbeeLink::getName() const
 {
 	return this->m_name;
@@ -197,9 +184,7 @@ void XbeeLink::writeBytes(const char *bytes, qint64 length)  // TO DO: delete th
 	}
 	if(!xbee_nsenddata(this->m_xbeeCon,data,length)) // return value of 0 is successful written
 	{
-        // Log the amount and time written out for future data rate calculations.
-        QMutexLocker dataRateLocker(&dataRateMutex);
-        logDataRateToBuffer(outDataWriteAmounts, outDataWriteTimes, &outDataIndex, length, QDateTime::currentMSecsSinceEpoch());
+		_logOutputDataRate(length, QDateTime::currentMSecsSinceEpoch());
 	}
 	else
 	{
@@ -220,11 +205,8 @@ void XbeeLink::readBytes()
 			data.push_back(xbeePkt->data[i]);
         }
 
-        emit bytesReceived(this, data);
-
-        // Log the amount and time received for future data rate calculations.
-        QMutexLocker dataRateLocker(&dataRateMutex);
-        logDataRateToBuffer(inDataWriteAmounts, inDataWriteTimes, &inDataIndex, data.length(), QDateTime::currentMSecsSinceEpoch());
+		_logInputDataRate(data.length(), QDateTime::currentMSecsSinceEpoch());
+		emit bytesReceived(this, data);
 	}
 }
 

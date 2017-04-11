@@ -29,17 +29,19 @@ import QGroundControl.Palette 1.0
 import QGroundControl.ScreenTools 1.0
 
 Rectangle {
-    property var __qgcPal: QGCPalette { colorGroupEnabled: enabled }
-    property ScreenTools screenTools: ScreenTools { }
-
     // Indicates whether calibration is valid for this control
     property bool calValid: false
 
     // Indicates whether the control is currently being calibrated
     property bool calInProgress: false
 
+    // Text to show while calibration is in progress
+    property string calInProgressText: "Hold Still"
+
     // Image source
     property var imageSource: ""
+
+    property var __qgcPal: QGCPalette { colorGroupEnabled: enabled }
 
     width:  200
     height: 200
@@ -47,7 +49,7 @@ Rectangle {
 
     Rectangle {
         readonly property int inset: 5
-        property string calText: calInProgress ? "Hold Still" : (calValid ? "Completed" : "Incomplete")
+        property string calText: calInProgress ? calInProgressText : (calValid ? "Completed" : "Incomplete")
 
         x:      inset
         y:      inset
@@ -63,25 +65,23 @@ Rectangle {
             smooth: true
         }
 
-        Label {
+        QGCLabel {
             width:                  parent.width
             height:                 parent.height
             horizontalAlignment:    Text.AlignHCenter
             verticalAlignment:      Text.AlignBottom
-            font.pointSize:         screenTools.dpiAdjustedPointSize(25);
+            font.pixelSize:         ScreenTools.mediumFontPixelSize
             font.bold:              true
             color:                  "black"
-
             text: parent.calText
         }
-        Label {
+        QGCLabel {
             width:                  parent.width
             height:                 parent.height
             horizontalAlignment:    Text.AlignHCenter
             verticalAlignment:      Text.AlignBottom
-            font.pointSize:         screenTools.dpiAdjustedPointSize(25);
+            font.pixelSize:         ScreenTools.mediumFontPixelSize
             color:                  calInProgress ? "yellow" : "white"
-
             text: parent.calText
         }
     }

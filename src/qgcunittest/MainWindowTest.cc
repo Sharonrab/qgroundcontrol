@@ -27,7 +27,6 @@
 ///     @author Don Gagne <don@thegagnes.com>
 
 #include "MainWindowTest.h"
-#include "QGCToolBar.h"
 #include "MockLink.h"
 #include "QGCMessageBox.h"
 
@@ -67,20 +66,33 @@ void MainWindowTest::_connectWindowClose_test(MAV_AUTOPILOT autopilot)
     MockLink* link = new MockLink();
     Q_CHECK_PTR(link);
     link->setAutopilotType(autopilot);
-    LinkManager::instance()->addLink(link);
+    LinkManager::instance()->_addLink(link);
+    
+    if (autopilot == MAV_AUTOPILOT_ARDUPILOTMEGA) {
+        // Connect will pop a warning dialog
+        setExpectedMessageBox(QGCMessageBox::Ok);
+    }
     linkMgr->connectLink(link);
-    QTest::qWait(5000); // Give enough time for UI to settle and heartbeats to go through
+    
+    // Wait for the uas to work it's way through the various threads
+    
+    QSignalSpy spyUas(UASManager::instance(), SIGNAL(activeUASSet(UASInterface*)));
+    QCOMPARE(spyUas.wait(5000), true);
+    
+    if (autopilot == MAV_AUTOPILOT_ARDUPILOTMEGA) {
+        checkExpectedMessageBox();
+    }
     
     // Cycle through all the top level views
     
     _mainToolBar->onSetupView();
-    QTest::qWait(1000);
+    QTest::qWait(200);
     _mainToolBar->onPlanView();
-    QTest::qWait(1000);
+    QTest::qWait(200);
     _mainToolBar->onFlyView();
-    QTest::qWait(1000);
+    QTest::qWait(200);
     _mainToolBar->onAnalyzeView();
-    QTest::qWait(1000);
+    QTest::qWait(200);
     
     // On MainWindow close we should get a message box telling the user to disconnect first. Cancel should do nothing.
     setExpectedMessageBox(QGCMessageBox::Cancel);
@@ -88,11 +100,8 @@ void MainWindowTest::_connectWindowClose_test(MAV_AUTOPILOT autopilot)
     QTest::qWait(1000); // Need to allow signals to move between threads    
     checkExpectedMessageBox();
 
-    // We are going to disconnect the link which is going to pop a save file dialog
-    setExpectedFileDialog(getSaveFileName, QStringList());
     linkMgr->disconnectLink(link);
     QTest::qWait(1000); // Need to allow signals to move between threads
-    checkExpectedFileDialog();
 }
 
 void MainWindowTest::_connectWindowClosePX4_test(void) {

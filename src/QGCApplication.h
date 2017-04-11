@@ -33,6 +33,9 @@
 #define QGCAPPLICATION_H
 
 #include <QApplication>
+#include <QTimer>
+
+#include "LinkConfiguration.h"
 
 #ifdef QGC_RTLAB_ENABLED
 #include "OpalLink.h"
@@ -41,6 +44,7 @@
 // Work around circular header includes
 class QGCSingleton;
 class MainWindow;
+class MavManager;
 
 /**
  * @brief The main application and management class.
@@ -93,6 +97,22 @@ public:
     /// Set the current UI style
     void setStyle(bool styleIsDark);
     
+    /// Used to report a missing Parameter. Warning will be displayed to user. Method may be called
+    /// multiple times.
+    void reportMissingParameter(int componentId, const QString& name);
+
+    /// When the singleton is created, it sets a pointer for subsequent use
+    void setMavManager(MavManager* pMgr);
+
+    /// MavManager accessor
+    MavManager* getMavManager();
+    
+    /// Show a non-modal message to the user
+    void showToolBarMessage(const QString& message);
+
+	/// @return true: Fake ui into showing mobile interface
+	bool fakeMobile(void) { return _fakeMobile; }
+    
 public slots:
     /// You can connect to this slot to show an information message box from a different thread.
     void informationMessageBoxOnMainThread(const QString& title, const QString& msg);
@@ -132,6 +152,9 @@ public:
     
     static QGCApplication*  _app;   ///< Our own singleton. Should be reference directly by qgcApp
     
+private slots:
+    void _missingParamsDisplay(void);
+    
 private:
     void _createSingletons(void);
     void _destroySingletons(void);
@@ -153,6 +176,13 @@ private:
     static const char*  _lightStyleFile;
     bool                _styleIsDark;      ///< true: dark style, false: light style
     
+    static const int    _missingParamsDelayedDisplayTimerTimeout = 1000;  ///< Timeout to wait for next missing fact to come in before display
+    QTimer              _missingParamsDelayedDisplayTimer;                ///< Timer use to delay missing fact display
+    QStringList         _missingParams;                                  ///< List of missing facts to be displayed
+    MavManager*         _pMavManager;
+
+	bool				_fakeMobile;	///< true: Fake ui into displaying mobile interface
+
     /// Unit Test have access to creating and destroying singletons
     friend class UnitTest;
 };

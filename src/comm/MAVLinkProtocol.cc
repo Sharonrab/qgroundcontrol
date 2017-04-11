@@ -56,6 +56,7 @@ MAVLinkProtocol::MAVLinkProtocol(QObject* parent) :
     systemId(QGC::defaultSystemId),
     _logSuspendError(false),
     _logSuspendReplay(false),
+    _logWasArmed(false),
     _tempLogFile(QString("%2.%3").arg(_tempLogFileTemplate).arg(_logFileExtension)),
     _linkMgr(LinkManager::instance()),
     _heartbeatRate(MAVLINK_HEARTBEAT_DEFAULT_RATE),
@@ -145,12 +146,12 @@ void MAVLinkProtocol::storeSettings()
 
 void MAVLinkProtocol::resetMetadataForLink(const LinkInterface *link)
 {
-    int linkId = link->getId();
-    totalReceiveCounter[linkId] = 0;
-    totalLossCounter[linkId] = 0;
-    totalErrorCounter[linkId] = 0;
-    currReceiveCounter[linkId] = 0;
-    currLossCounter[linkId] = 0;
+    int channel = link->getMavlinkChannel();
+    totalReceiveCounter[channel] = 0;
+    totalLossCounter[channel] = 0;
+    totalErrorCounter[channel] = 0;
+    currReceiveCounter[channel] = 0;
+    currLossCounter[channel] = 0;
 }
 
 void MAVLinkProtocol::linkConnected(void)
@@ -175,8 +176,12 @@ void MAVLinkProtocol::_linkStatusChanged(LinkInterface* link, bool connected)
     Q_ASSERT(link);
     
     if (connected) {
-        Q_ASSERT(!_connectedLinks.contains(link));
-        _connectedLinks.append(link);
+        foreach (SharedLinkInterface sharedLink, _connectedLinks) {
+            Q_ASSERT(sharedLink.data() != link);
+        }
+        
+        // Use the same shared pointer as LinkManager
+        _connectedLinks.append(LinkManager::instance()->sharedPointerForLink(link));
         
         if (_connectedLinks.count() == 1) {
             // This is the first link, we need to start logging
@@ -192,8 +197,16 @@ void MAVLinkProtocol::_linkStatusChanged(LinkInterface* link, bool connected)
         link->writeBytes(cmd, strlen(cmd));
         link->writeBytes(init, 4);
     } else {
-        Q_ASSERT(_connectedLinks.contains(link));
-        _connectedLinks.removeOne(link);
+        bool found = false;
+        for (int i=0; i<_connectedLinks.count(); i++) {
+            if (_connectedLinks[i].data() == link) {
+                found = true;
+                _connectedLinks.removeAt(i);
+                break;
+            }
+        }
+        Q_UNUSED(found);
+        Q_ASSERT(found);
         
         if (_connectedLinks.count() == 0) {
             // Last link is gone, close out logging
@@ -211,12 +224,18 @@ void MAVLinkProtocol::_linkStatusChanged(LinkInterface* link, bool connected)
  **/
 void MAVLinkProtocol::receiveBytes(LinkInterface* link, QByteArray b)
 {
+    // Since receiveBytes signals cross threads we can end up with signals in the queue
+    // that come through after the link is disconnected. For these we just drop the data
+    // since the link is closed.
+    if (!LinkManager::instance()->containsLink(link)) {
+        return;
+    }
+    
 //    receiveMutex.lock();
     mavlink_message_t message;
     mavlink_status_t status;
 
-    // Cache the link ID for common use.
-    int linkId = link->getId();
+    int mavlinkChannel = link->getMavlinkChannel();
 
     static int mavlink09Count = 0;
     static int nonmavlinkCount = 0;
@@ -225,9 +244,8 @@ void MAVLinkProtocol::receiveBytes(LinkInterface* link, QByteArray b)
     static bool checkedUserNonMavlink = false;
     static bool warnedUserNonMavlink = false;
 
-    // FIXME: Add check for if link->getId() >= MAVLINK_COMM_NUM_BUFFERS
     for (int position = 0; position < b.size(); position++) {
-        unsigned int decodeState = mavlink_parse_char(linkId, (uint8_t)(b[position]), &message, &status);
+        unsigned int decodeState = mavlink_parse_char(mavlinkChannel, (uint8_t)(b[position]), &message, &status);
 
         if ((uint8_t)b[position] == 0x55) mavlink09Count++;
         if ((mavlink09Count > 100) && !decodedFirstPacket && !warnedUser)
@@ -313,6 +331,15 @@ void MAVLinkProtocol::receiveBytes(LinkInterface* link, QByteArray b)
                     _stopLogging();
                     _logSuspendError = true;
                 }
+                
+                // Check for the vehicle arming going by. This is used to trigger log save.
+                if (!_logWasArmed && message.msgid == MAVLINK_MSG_ID_HEARTBEAT) {
+                    mavlink_heartbeat_t state;
+                    mavlink_msg_heartbeat_decode(&message, &state);
+                    if (state.base_mode & MAV_MODE_FLAG_DECODE_POSITION_SAFETY) {
+                        _logWasArmed = true;
+                    }
+                }
             }
 
             // ORDER MATTERS HERE!
@@ -364,13 +391,13 @@ void MAVLinkProtocol::receiveBytes(LinkInterface* link, QByteArray b)
                 }
 
                 // Create a new UAS object
-                uas = QGCMAVLinkUASFactory::createUAS(this, link, message.sysid, &heartbeat);
+                uas = QGCMAVLinkUASFactory::createUAS(this, link, message.sysid, (MAV_AUTOPILOT)heartbeat.autopilot);
 
             }
 
             // Increase receive counter
-            totalReceiveCounter[linkId]++;
-            currReceiveCounter[linkId]++;
+            totalReceiveCounter[mavlinkChannel]++;
+            currReceiveCounter[mavlinkChannel]++;
 
             // Determine what the next expected sequence number is, accounting for
             // never having seen a message for this system/component pair.
@@ -391,22 +418,22 @@ void MAVLinkProtocol::receiveBytes(LinkInterface* link, QByteArray b)
                 }
 
                 // And log how many were lost for all time and just this timestep
-                totalLossCounter[linkId] += lostMessages;
-                currLossCounter[linkId] += lostMessages;
+                totalLossCounter[mavlinkChannel] += lostMessages;
+                currLossCounter[mavlinkChannel] += lostMessages;
             }
 
             // And update the last sequence number for this system/component pair
             lastIndex[message.sysid][message.compid] = expectedSeq;
 
             // Update on every 32th packet
-            if ((totalReceiveCounter[linkId] & 0x1F) == 0)
+            if ((totalReceiveCounter[mavlinkChannel] & 0x1F) == 0)
             {
                 // Calculate new loss ratio
                 // Receive loss
-                float receiveLoss = (double)currLossCounter[linkId]/(double)(currReceiveCounter[linkId]+currLossCounter[linkId]);
+                float receiveLoss = (double)currLossCounter[mavlinkChannel]/(double)(currReceiveCounter[mavlinkChannel]+currLossCounter[mavlinkChannel]);
                 receiveLoss *= 100.0f;
-                currLossCounter[linkId] = 0;
-                currReceiveCounter[linkId] = 0;
+                currLossCounter[mavlinkChannel] = 0;
+                currReceiveCounter[mavlinkChannel] = 0;
                 emit receiveLossChanged(message.sysid, receiveLoss);
             }
 
@@ -485,7 +512,7 @@ void MAVLinkProtocol::sendMessage(LinkInterface* link, mavlink_message_t message
     static uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
     // Rewriting header to ensure correct link ID is set
     static uint8_t messageKeys[256] = MAVLINK_MESSAGE_CRCS;
-    if (link->getId() != 0) mavlink_finalize_message_chan(&message, this->getSystemId(), this->getComponentId(), link->getId(), message.len, messageKeys[message.msgid]);
+    mavlink_finalize_message_chan(&message, this->getSystemId(), this->getComponentId(), link->getMavlinkChannel(), message.len, messageKeys[message.msgid]);
     // Write message into buffer, prepending start sign
     int len = mavlink_msg_to_send_buffer(buffer, &message);
     // If link is connected
@@ -508,7 +535,7 @@ void MAVLinkProtocol::sendMessage(LinkInterface* link, mavlink_message_t message
     static uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
     // Rewriting header to ensure correct link ID is set
     static uint8_t messageKeys[256] = MAVLINK_MESSAGE_CRCS;
-    if (link->getId() != 0) mavlink_finalize_message_chan(&message, systemid, componentid, link->getId(), message.len, messageKeys[message.msgid]);
+    mavlink_finalize_message_chan(&message, systemid, componentid, link->getMavlinkChannel(), message.len, messageKeys[message.msgid]);
     // Write message into buffer, prepending start sign
     int len = mavlink_msg_to_send_buffer(buffer, &message);
     // If link is connected
@@ -673,12 +700,13 @@ void MAVLinkProtocol::_stopLogging(void)
 {
     if (_closeLogFile()) {
         // If the signals are not connected it means we are running a unit test. In that case just delete log files
-        if (qgcApp()->promptFlightDataSave()) {
+        if (_logWasArmed && qgcApp()->promptFlightDataSave()) {
             emit saveTempFlightDataLog(_tempLogFile.fileName());
         } else {
             QFile::remove(_tempLogFile.fileName());
         }
     }
+    _logWasArmed = false;
 }
 
 /// @brief Checks the temp directory for log files which may have been left there.

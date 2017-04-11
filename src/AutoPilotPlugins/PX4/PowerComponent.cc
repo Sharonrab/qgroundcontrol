@@ -25,7 +25,6 @@
 ///     @author Gus Grubba <mavlink@grubba.com>
 
 #include "PowerComponent.h"
-#include "PX4RCCalibration.h"
 #include "QGCQmlWidgetHolder.h"
 #include "PX4AutoPilotPlugin.h"
 
@@ -47,7 +46,7 @@ QString PowerComponent::description(void) const
 
 QString PowerComponent::iconResource(void) const
 {
-    return "PowerComponentIcon.png";
+    return "/qmlimages/PowerComponentIcon.png";
 }
 
 bool PowerComponent::requiresSetup(void) const
@@ -58,15 +57,9 @@ bool PowerComponent::requiresSetup(void) const
 bool PowerComponent::setupComplete(void) const
 {
     QVariant cvalue, evalue, nvalue;
-    if (_paramMgr->getParameterValue(_paramMgr->getDefaultComponentId(), "BAT_V_CHARGED", cvalue)) {
-        if (_paramMgr->getParameterValue(_paramMgr->getDefaultComponentId(), "BAT_V_EMPTY", evalue)) {
-            if (_paramMgr->getParameterValue(_paramMgr->getDefaultComponentId(), "BAT_N_CELLS", nvalue)) {
-                return (cvalue.toFloat() > 0.1f) && (evalue.toFloat() > 0.1f) && (nvalue.toInt() > 0);
-            }
-        }
-    }
-    Q_ASSERT(false);
-    return false;
+    return _autopilot->getParameterFact(FactSystem::defaultComponentId, "BAT_V_CHARGED")->value().toFloat() != 0.0f &&
+        _autopilot->getParameterFact(FactSystem::defaultComponentId, "BAT_V_EMPTY")->value().toFloat() != 0.0f &&
+        _autopilot->getParameterFact(FactSystem::defaultComponentId, "BAT_N_CELLS")->value().toInt() != 0;
 }
 
 QString PowerComponent::setupStateDescription(void) const
@@ -93,13 +86,9 @@ QStringList PowerComponent::paramFilterList(void) const
     return list;
 }
 
-QWidget* PowerComponent::setupWidget(void) const
+QUrl PowerComponent::setupSource(void) const
 {
-    QGCQmlWidgetHolder* holder = new QGCQmlWidgetHolder();
-    Q_CHECK_PTR(holder);
-    holder->setAutoPilot(_autopilot);
-    holder->setSource(QUrl::fromUserInput("qrc:/qml/PowerComponent.qml"));
-    return holder;
+    return QUrl::fromUserInput("qrc:/qml/PowerComponent.qml");
 }
 
 QUrl PowerComponent::summaryQmlSource(void) const

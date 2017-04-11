@@ -35,7 +35,6 @@ Rectangle {
     height: 400
 
     property var qgcPal: QGCPalette { id: palette; colorGroupEnabled: true }
-    property ScreenTools screenTools: ScreenTools { }
 
     id: topLevel
     objectName: "topLevel"
@@ -46,8 +45,26 @@ Rectangle {
         anchors.fill: parent
 
         QGCLabel {
-            text: "VEHICLE SUMMARY"
-            font.pointSize: screenTools.dpiAdjustedPointSize(20);
+            text:           "VEHICLE SUMMARY"
+            font.pixelSize: ScreenTools.largeFontPixelSize
+        }
+
+        Item {
+            // Just used as a spacer
+            height: 15
+            width: 10
+        }
+
+        QGCLabel {
+            width:			parent.width
+			wrapMode:		Text.WordWrap
+			color:			setupComplete ? qgcPal.text : qgcPal.warningText
+            font.pixelSize: setupComplete ? ScreenTools.defaultFontPixelSize : ScreenTools.mediumFontPixelSize
+			text:           setupComplete ?
+                                "Below you will find a summary of the settings for your vehicle. To the left are the setup menus for each component." :
+                                "WARNING: Your vehicle requires setup prior to flight. Please resolve the items marked in red using the menu on the left."
+
+            property bool setupComplete: autopilot && autopilot.setupComplete
         }
 
         Item {
@@ -61,7 +78,7 @@ Rectangle {
             spacing: 10
 
             Repeater {
-                model: autopilot.components
+                model: autopilot ? autopilot.vehicleComponents : 0
 
                 // Outer summary item rectangle
                 Rectangle {
@@ -79,11 +96,10 @@ Rectangle {
                         color: qgcPal.windowShadeDark
 
                         // Title text
-                        Text {
+                        QGCLabel {
                             anchors.fill:   parent
 
                             color:          qgcPal.buttonText
-                            font.pixelSize: 12
                             text:           modelData.name.toUpperCase()
 
                             verticalAlignment:      TextEdit.AlignVCenter

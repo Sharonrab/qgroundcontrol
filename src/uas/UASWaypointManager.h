@@ -86,6 +86,8 @@ public:
 
     void readWaypoints(bool read_to_edit=false);    ///< Requests the MAV's current waypoint list.
     void writeWaypoints();                          ///< Sends the waypoint list to the MAV
+	void writeNewWaypoint(quint16 seq);             ///< Sends the new waypoint in the list to the MAV for chase mode
+	
     int setCurrentWaypoint(quint16 seq);            ///< Sends the sequence number of the waypoint that should get the new target waypoint to the UAS
     int setCurrentEditable(quint16 seq);          ///< Changes the current waypoint in edit tab
     /*@}*/
@@ -118,7 +120,8 @@ public:
     int getFrameRecommendation();
     float getAcceptanceRadiusRecommendation();
     float getHomeAltitudeOffsetDefault();
-
+	//sr
+	void sendWaypoint(quint16 seq);                 ///< Sends a waypoint with sequence number seq
 private:
     /** @name Message send functions */
     /*@{*/
@@ -127,7 +130,7 @@ private:
     void sendWaypointCount();
     void sendWaypointRequestList();
     void sendWaypointRequest(quint16 seq);          ///< Requests a waypoint with sequence number seq
-    void sendWaypoint(quint16 seq);                 ///< Sends a waypoint with sequence number seq
+    //void sendWaypoint(quint16 seq);                 ///< Sends a waypoint with sequence number seq
     void sendWaypointAck(quint8 type);              ///< Sends a waypoint ack
     /*@}*/
 
@@ -168,6 +171,7 @@ signals:
 private slots:
     void _startProtocolTimerOnThisThread(void);                 ///< Starts the protocol timer
     void _stopProtocolTimerOnThisThread(void);                 ///< Starts the protocol timer
+    void _updateWPonTimer(void);                               ///< Starts requesting WP on timer timeout
 
 private:
     UAS* uas;                                       ///< Reference to the corresponding UAS
@@ -184,6 +188,7 @@ private:
     QPointer<Waypoint> currentWaypointEditable;                      ///< The currently used waypoint
     QList<mavlink_mission_item_t *> waypoint_buffer;  ///< buffer for waypoints during communication
     QTimer protocol_timer;                          ///< Timer to catch timeouts
+    QTimer _updateWPlist_timer;                     ///< update WP list if modified by another instance onboard
     bool standalone;                                ///< If standalone is set, do not write to UAS
     int uasid;                                   ///< The ID of the current UAS. Retrieved via `uas->getUASID();`, stored as an `int` to match its return type.
 

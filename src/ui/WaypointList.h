@@ -61,7 +61,8 @@ public slots:
     void updateAttitude(UASInterface*, double roll, double pitch, double yaw, quint64 usec);
 
     void setUAS(UASInterface* uas);
-
+    void set_followerUAS(UASInterface* follower_uas);
+	void EnablePeriodicChase();
     //Waypoint list operations
     /** @brief Save the local waypoint list to a file */
     void saveWaypoints();
@@ -69,6 +70,9 @@ public slots:
     void loadWaypoints();
     /** @brief Transmit the local waypoint list to the UAS */
     void transmit();
+    /** @brief Transmit the local waypoint position list of the UAS leader to the UAS follower */
+    void transmitLeaderTraj();
+
     /** @brief Read the remote waypoint list to both tabs */
     void read();
     /** @brief Read the remote waypoint list to "view"-tab only*/
@@ -130,6 +134,7 @@ protected:
     QVBoxLayout* viewOnlyListLayout;
     QVBoxLayout* editableListLayout;
     UASInterface* uas;
+    //UASInterface* follower_uas;
     UASWaypointManager* WPM;
     double mavX;
     double mavY;
@@ -139,6 +144,7 @@ protected:
     bool loadFileGlobalWP;
     bool readGlobalWP;
     bool showOfflineWarning;
+	QTimer*  _refreshTimer;
 
 private:
     Ui::WaypointList *m_ui;

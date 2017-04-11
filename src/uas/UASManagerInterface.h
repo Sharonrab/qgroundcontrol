@@ -98,6 +98,8 @@ signals:
     void UASCreated(UASInterface* UAS);
     /** A system was deleted */
     void UASDeleted(UASInterface* UAS);
+    /** A system was deleted */
+    void UASDeleted(int systemId);
     /** @brief The UAS currently under main operator control changed */
     void activeUASSet(UASInterface* UAS);
     /** @brief The UAS currently under main operator control changed */
@@ -110,7 +112,6 @@ signals:
     void homePositionChanged(double lat, double lon, double alt);
     
 protected:
-    // FIXME: Do we need this here?
     UASManagerInterface(QObject* parent = NULL) :
         QGCSingleton(parent) { }
 };

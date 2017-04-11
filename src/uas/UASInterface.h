@@ -40,11 +40,9 @@ This file is part of the QGROUNDCONTROL project
 
 #include "LinkInterface.h"
 #include "ProtocolInterface.h"
-#include "UASParameterDataModel.h"
 #include "UASWaypointManager.h"
-#include "QGCUASParamManagerInterface.h"
 
-class QGCUASFileManager;
+class FileManager;
 
 enum BatteryType
 {
@@ -102,14 +100,10 @@ public:
     virtual const QString& getShortState() const = 0;
     /** @brief Get short mode */
     virtual const QString& getShortMode() const = 0;
-    /** @brief Translate mode id into text */
-    virtual QString getShortModeTextFor(uint8_t base_mode, uint32_t custom_mode) const = 0;
     //virtual QColor getColor() = 0;
     virtual int getUASID() const = 0; ///< Get the ID of the connected UAS
     /** @brief The time interval the robot is switched on **/
     virtual quint64 getUptime() const = 0;
-    /** @brief Get the status flag for the communication **/
-    virtual int getCommunicationStatus() const = 0;
 
     virtual double getLocalX() const = 0;
     virtual double getLocalY() const = 0;
@@ -136,30 +130,12 @@ public:
     /** @brief Get reference to the waypoint manager **/
     virtual UASWaypointManager* getWaypointManager(void) = 0;
 
-    /** @brief Get reference to the param manager **/
-    virtual QGCUASParamManagerInterface* getParamManager() = 0;
-
-    virtual QGCUASFileManager* getFileManager() = 0;
+    virtual FileManager* getFileManager() = 0;
 
     /** @brief Send a message over this link (to this or to all UAS on this link) */
     virtual void sendMessage(LinkInterface* link, mavlink_message_t message) = 0;
     /** @brief Send a message over all links this UAS can be reached with (!= all links) */
     virtual void sendMessage(mavlink_message_t message) = 0;
-
-    /* COMMUNICATION FLAGS */
-
-    enum CommStatus {
-        /** Unit is disconnected, no failure state reached so far **/
-        COMM_DISCONNECTED = 0,
-        /** The communication is established **/
-        COMM_CONNECTING = 1,
-        /** The communication link is up **/
-        COMM_CONNECTED = 2,
-        /** The connection is closed **/
-        COMM_DISCONNECTING = 3,
-        COMM_FAIL = 4,
-        COMM_TIMEDOUT = 5///< Communication link failed
-    };
 
     enum Airframe {
         QGC_AIRFRAME_GENERIC = 0,
@@ -188,6 +164,9 @@ public:
          *         interface. The LinkInterface can support multiple protocols.
          **/
     virtual QList<LinkInterface*> getLinks() = 0;
+    
+    /// @returns true: UAS is connected to log replay link
+    virtual bool isLogReplay(void) = 0;
 
     /**
      * @brief Get the color for this UAS
@@ -230,6 +209,8 @@ public:
 
     /** @brief Get the type of the system (airplane, quadrotor, helicopter,..)*/
     virtual int getSystemType() = 0;
+    /** @brief Is it an airplane (or like one)?,..)*/
+    virtual bool isAirplane() = 0;
     /** @brief Indicates whether this system is capable of controlling a reverse velocity.
      * Used for, among other things, altering joystick input to either -1:1 or 0:1 range.
      */
@@ -247,7 +228,7 @@ public:
     {
         return color;
     }
-
+	virtual void set_chase_mode(bool chase_mode) = 0;
     /** @brief Returns a list of actions/commands that this vehicle can perform.
      * Used for creating UI elements for built-in functionality for this vehicle.
      * Actions should be mappings to `void f(void);` functions that simply issue
@@ -257,6 +238,34 @@ public:
 
     static const unsigned int WAYPOINT_RADIUS_DEFAULT_FIXED_WING = 25;
     static const unsigned int WAYPOINT_RADIUS_DEFAULT_ROTARY_WING = 5;
+    
+    enum StartCalibrationType {
+        StartCalibrationRadio,
+        StartCalibrationGyro,
+        StartCalibrationMag,
+        StartCalibrationAirspeed,
+        StartCalibrationAccel,
+        StartCalibrationLevel,
+        StartCalibrationEsc,
+        StartCalibrationCopyTrims,
+        StartCalibrationUavcanEsc
+    };
+
+    enum StartBusConfigType {
+        StartBusConfigActuators
+    };
+    
+    /// Starts the specified calibration
+    virtual void startCalibration(StartCalibrationType calType) = 0;
+    
+    /// Ends any current calibration
+    virtual void stopCalibration(void) = 0;
+
+    /// Starts the specified bus configuration
+    virtual void startBusConfig(StartBusConfigType calType) = 0;
+
+    /// Ends any current bus configuration
+    virtual void stopBusConfig(void) = 0;
 
 public slots:
 
@@ -315,19 +324,6 @@ public slots:
     virtual void setLocalOriginAtCurrentGPSPosition() = 0;
     /** @brief Set world frame origin / home position at this GPS position */
     virtual void setHomePosition(double lat, double lon, double alt) = 0;
-    /** @brief Request one specific onboard parameter */
-    virtual void requestParameter(int component, const QString& parameter) = 0;
-    /** @brief Write parameter to permanent storage */
-    virtual void writeParametersToStorage() = 0;
-    /** @brief Read parameter from permanent storage */
-    virtual void readParametersFromStorage() = 0;
-    /** @brief Set a system parameter
-     * @param component ID of the system component to write the parameter to
-     * @param id String identifying the parameter
-     * @warning The length of the ID string is limited by the MAVLink format! Take care to not exceed it
-     * @param value Value of the parameter, IEEE 754 single precision floating point
-     */
-    virtual void setParameter(const int component, const QString& id, const QVariant& value) = 0;
 
     /**
      * @brief Add a link to the list of current links
@@ -359,12 +355,6 @@ public slots:
     virtual void setLocalPositionSetpoint(float x, float y, float z, float yaw) = 0;
     virtual void setLocalPositionOffset(float x, float y, float z, float yaw) = 0;
 
-    virtual void startRadioControlCalibration(int param=1) = 0;
-    virtual void endRadioControlCalibration() = 0;
-    virtual void startMagnetometerCalibration() = 0;
-    virtual void startGyroscopeCalibration() = 0;
-    virtual void startPressureCalibration() = 0;
-
     /** @brief Return if this a rotary wing */
     virtual bool isRotaryWing() = 0;
     /** @brief Return if this is a fixed wing */
@@ -376,6 +366,7 @@ public slots:
     virtual QString getBatterySpecs() = 0;
 
     /** @brief Send the full HIL state to the MAV */
+#ifndef __mobile__
     virtual void sendHilState(quint64 time_us, float roll, float pitch, float yaw, float rollspeed,
                         float pitchspeed, float yawspeed, double lat, double lon, double alt,
                         float vx, float vy, float vz, float ind_airspeed, float true_airspeed, float xacc, float yacc, float zacc) = 0;
@@ -390,6 +381,7 @@ public slots:
     /** @brief Send Optical Flow sensor message for HIL, (arguments and units accoding to mavlink documentation*/
     virtual void sendHilOpticalFlow(quint64 time_us, qint16 flow_x, qint16 flow_y, float flow_comp_m_x,
                             float flow_comp_m_y, quint8 quality, float ground_distance) = 0;
+#endif
 
     /** @brief Send command to map a RC channel to a parameter */
     virtual void sendMapRCToParam(QString param_id, float scale, float value0, quint8 param_rc_channel_index, float valueMin, float valueMax) = 0;
@@ -467,12 +459,8 @@ signals:
     void dropRateChanged(int systemId,  float receiveDrop);
     /** @brief Robot mode has changed */
     void modeChanged(int sysId, QString status, QString description);
-    /** @brief Robot armed state has changed */
-    void armingChanged(int sysId, QString armingState);
     /** @brief A command has been issued **/
     void commandSent(int command);
-    /** @brief The connection status has changed **/
-    void connectionChanged(CommStatus connectionFlag);
     /** @brief The robot is connecting **/
     void connecting();
     /** @brief The robot is connected **/
@@ -505,11 +493,7 @@ signals:
     void waypointSelected(int uasId, int id);
     void waypointReached(UASInterface* uas, int id);
     void autoModeChanged(bool autoMode);
-    void parameterChanged(int uas, int component, QString parameterName, QVariant value);
-    void parameterChanged(int uas, int component, int parameterCount, int parameterId, QString parameterName, QVariant value);
-    void parameterUpdate(int uas, int component, QString parameterName, int type, QVariant value);
-    void patternDetected(int uasId, QString patternPath, float confidence, bool detected);
-    void letterDetected(int uasId, QString letter, float confidence, bool detected);
+    void parameterUpdate(int uas, int component, QString parameterName, int parameterCount, int parameterId, int type, QVariant value);
     /**
      * @brief The battery status has been updated
      *
@@ -519,6 +503,7 @@ signals:
      * @param seconds estimated remaining flight time in seconds
      */
     void batteryChanged(UASInterface* uas, double voltage, double current, double percent, int seconds);
+    void batteryConsumedChanged(UASInterface* uas, double current_consumed);
     void statusChanged(UASInterface* uas, QString status);
     void actuatorChanged(UASInterface*, int actId, double value);
     void thrustChanged(UASInterface*, double thrust);
@@ -587,8 +572,8 @@ signals:
     void remoteControlChannelRawChanged(int channelId, float raw);
     /** @brief Value of a remote control channel (scaled)*/
     void remoteControlChannelScaledChanged(int channelId, float normalized);
-    /** @brief Remote control RSSI changed */
-    void remoteControlRSSIChanged(float rssi);
+    /** @brief Remote control RSSI changed  (0% - 100%)*/
+    void remoteControlRSSIChanged(uint8_t rssi);
 
     /**
      * @brief Localization quality changed

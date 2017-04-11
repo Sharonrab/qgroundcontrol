@@ -3,50 +3,43 @@ import QtQuick.Controls 1.2
 import QtQuick.Controls.Styles 1.2
 
 import QGroundControl.FactSystem 1.0
+import QGroundControl.FactControls 1.0
 import QGroundControl.Controls 1.0
+import QGroundControl.Palette 1.0
 
 /*
-    IMPORTANT NOTE: Any changes made here must also be made to SensorsComponentSummaryFixedWing.qml
+    IMPORTANT NOTE: Any changes made here must also be made to SensorsComponentSummary.qml
 */
 
-Column {
-    anchors.fill: parent
-    anchors.margins: 8
+FactPanel {
+    id:             panel
+    anchors.fill:   parent
+    color:          qgcPal.windowShadeDark
 
-    Component {
-        id: component
+    QGCPalette { id: qgcPal; colorGroupEnabled: enabled }
+    FactPanelController { id: controller; factPanel: panel }
 
-        Row {
-            width: parent.width
+    property Fact mag0IdFact:   controller.getParameterFact(-1, "CAL_MAG0_ID")
+    property Fact gyro0IdFact:  controller.getParameterFact(-1, "CAL_GYRO0_ID")
+    property Fact accel0IdFact: controller.getParameterFact(-1, "CAL_ACC0_ID")
 
-            QGCLabel { id: label; text: labelText }
-            QGCLabel {
-                property Fact fact:     Fact { name: factName }
-                horizontalAlignment:    Text.AlignRight;
-                width:                  parent.width - label.contentWidth;
-                text:                   fact.value  == 0 ? "Setup required" : "Ready"
-            }
+    Column {
+        anchors.fill:       parent
+        anchors.margins:    8
+
+        VehicleSummaryRow {
+            labelText: "Compass:"
+            valueText: mag0IdFact.value  == 0 ? "Setup required" : "Ready"
         }
-    }
 
-    Loader {
-        property string labelText: "Compass:"
-        property string factName: "CAL_MAG0_ID"
-        width: parent.width
-        sourceComponent: component
-    }
+        VehicleSummaryRow {
+            labelText: "Gyro:"
+            valueText: gyro0IdFact.value  == 0 ? "Setup required" : "Ready"
+        }
 
-    Loader {
-        property string labelText: "Gyro:"
-        property string factName: "CAL_GYRO0_ID"
-        width: parent.width
-        sourceComponent: component
-    }
-
-    Loader {
-        property string labelText: "Accelerometer:"
-        property string factName: "CAL_ACC0_ID"
-        width: parent.width
-        sourceComponent: component
+        VehicleSummaryRow {
+            labelText: "Accelerometer:"
+            valueText: accel0IdFact.value  == 0 ? "Setup required" : "Ready"
+        }
     }
 }

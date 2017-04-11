@@ -35,64 +35,57 @@
 #include <QDebug>
 
 /// @brief A Fact is used to hold a single value within the system.
-///
-/// Along with the value property is a set of meta data which further describes the Fact. This information is
-/// exposed through QObject Properties such that you can bind to it from QML as well as use it within C++ code.
-/// Since the meta data is common to all instances of the same Fact, it is acually stored once in a seperate object.
 class Fact : public QObject
 {
     Q_OBJECT
     
+public:
+    Fact(void);
+    Fact(int componentId, QString name, FactMetaData::ValueType_t type, QObject* parent = NULL);
+    
+    Q_PROPERTY(int componentId READ componentId CONSTANT)
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(QVariant value READ value WRITE setValue NOTIFY valueChanged USER true)
     Q_PROPERTY(QVariant valueString READ valueString NOTIFY valueChanged)
+    Q_PROPERTY(QString units READ units CONSTANT)
     Q_PROPERTY(QVariant defaultValue READ defaultValue CONSTANT)
+    Q_PROPERTY(bool defaultValueAvailable READ defaultValueAvailable CONSTANT)
+    Q_PROPERTY(bool valueEqualsDefault READ valueEqualsDefault NOTIFY valueChanged)
     Q_PROPERTY(FactMetaData::ValueType_t type READ type CONSTANT)
     Q_PROPERTY(QString shortDescription READ shortDescription CONSTANT)
     Q_PROPERTY(QString longDescription READ longDescription CONSTANT)
-    Q_PROPERTY(QString units READ units CONSTANT)
     Q_PROPERTY(QVariant min READ min CONSTANT)
+    Q_PROPERTY(bool minIsDefaultForType READ minIsDefaultForType CONSTANT)
     Q_PROPERTY(QVariant max READ max CONSTANT)
+    Q_PROPERTY(bool maxIsDefaultForType READ maxIsDefaultForType CONSTANT)
+    Q_PROPERTY(QString group READ group CONSTANT)
     
-    Q_ENUMS(FactMetaData::ValueType_t)
-    
-public:
-    Fact(QString name = "", FactMetaData::ValueType_t type = FactMetaData::valueTypeInt32, QObject* parent = NULL);
+    /// Convert and validate value
+    ///     @param convertOnly true: validate type conversion only, false: validate against meta data as well
+    Q_INVOKABLE QString validate(const QString& value, bool convertOnly);
     
     // Property system methods
     
-    /// Read accessor or name property
     QString name(void) const;
-    
-    /// Read accessor for value property
+    int componentId(void) const;
     QVariant value(void) const;
-    
-    /// Read accessor for valueString property
     QString valueString(void) const;
-    
-    /// Write accessor for value property
     void setValue(const QVariant& value);
-    
-    /// Read accesor for defaultValue property
     QVariant defaultValue(void);
-    
-    /// Read accesor for type property
+	bool defaultValueAvailable(void);
+    bool valueEqualsDefault(void);
     FactMetaData::ValueType_t type(void);
-    
-    /// Read accesor for shortDescription property
     QString shortDescription(void);
-    
-    /// Read accesor for longDescription property
     QString longDescription(void);
-    
-    /// Read accesor for units property
     QString units(void);
-    
-    /// Read accesor for min property
     QVariant min(void);
-
-    /// Read accesor for max property
-    QVariant max(void);
+    bool minIsDefaultForType(void);
+    QVariant max(void);    
+    bool maxIsDefaultForType(void);
+    QString group(void);
+    
+    /// Sets and sends new value to vehicle even if value is the same
+    void forceSetValue(const QVariant& value);
     
     /// Sets the meta data associated with the Fact.
     void setMetaData(FactMetaData* metaData);
@@ -105,6 +98,9 @@ signals:
     /// This signal is only meant for use by the QT property system. It should not be connected to by client code.
     void valueChanged(QVariant value);
     
+    /// Signalled when the param write ack comes back from the vehicle
+    void vehicleUpdated(QVariant value);
+    
     /// Signalled when property has been changed by a call to the property write accessor
     ///
     /// This signal is meant for use by Fact container implementations.
@@ -112,6 +108,7 @@ signals:
     
 private:
     QString                     _name;
+    int                         _componentId;
     QVariant                    _value;
     FactMetaData::ValueType_t   _type;
     FactMetaData*               _metaData;

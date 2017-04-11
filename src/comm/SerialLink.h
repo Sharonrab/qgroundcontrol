@@ -40,7 +40,12 @@ class SerialLink;
 #include <QThread>
 #include <QMutex>
 #include <QString>
+
+#ifdef __android__
+#include "qserialport.h"
+#else
 #include <QSerialPort>
+#endif
 #include <QMetaType>
 #include <QLoggingCategory>
 
@@ -102,31 +107,23 @@ private:
 class SerialLink : public LinkInterface
 {
     Q_OBJECT
+    
     friend class SerialConfiguration;
+    friend class LinkManager;
+    
 public:
-
-    SerialLink(SerialConfiguration* config);
-    ~SerialLink();
-
     // LinkInterface
 
     LinkConfiguration* getLinkConfiguration();
-    int     getId() const;
     QString getName() const;
     void    requestReset();
     bool    isConnected() const;
     qint64  getConnectionSpeed() const;
+    
     // These are left unimplemented in order to cause linker errors which indicate incorrect usage of
     // connect/disconnect on link directly. All connect/disconnect calls should be made through LinkManager.
     bool    connect(void);
     bool    disconnect(void);
-
-    void run();
-
-    static const int poll_interval = SERIAL_POLL_INTERVAL; ///< Polling interval, defined in QGCConfig.h
-
-signals: //[TODO] Refactor to Linkinterface
-    void updateLink(LinkInterface*);
 
 public slots:
 
@@ -145,18 +142,22 @@ protected:
     QSerialPort* _port;
     quint64 _bytesRead;
     int     _timeout;
-    int     _id;
     QMutex  _dataMutex;       // Mutex for reading data from _port
     QMutex  _writeMutex;      // Mutex for accessing the _transmitBuffer.
     QString _type;
 
 private slots:
     void _rerouteDisconnected(void);
+    void _readBytes(void);
 
 private:
+    // Links are only created/destroyed by LinkManager so constructor/destructor is not public
+    SerialLink(SerialConfiguration* config);
+    ~SerialLink();
+    
     // From LinkInterface
-    bool _connect(void);
-    bool _disconnect(void);
+    virtual bool _connect(void);
+    virtual bool _disconnect(void);
 
     // Internal methods
     void _emitLinkError(const QString& errorMsg);

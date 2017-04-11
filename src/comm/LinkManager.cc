@@ -32,15 +32,23 @@ This file is part of the QGROUNDCONTROL project
 #include <QList>
 #include <QApplication>
 #include <QDebug>
+
+#ifndef __ios__
+#ifdef __android__
+#include "qserialportinfo.h"
+#else
 #include <QSerialPortInfo>
+#endif
+#endif
 
 #include "LinkManager.h"
 #include "MainWindow.h"
 #include "QGCMessageBox.h"
 #include "QGCApplication.h"
+#include "SerialPortIds.h"
 
 IMPLEMENT_QGC_SINGLETON(LinkManager, LinkManager)
-
+QGC_LOGGING_CATEGORY(LinkManagerLog, "LinkManagerLog")
 
 /**
  * @brief Private singleton constructor
@@ -52,9 +60,13 @@ LinkManager::LinkManager(QObject* parent)
     , _configUpdateSuspended(false)
     , _configurationsLoaded(false)
     , _connectionsSuspended(false)
+    , _mavlinkChannelsUsedBitMask(0)
+    , _nullSharedLink(NULL)
 {
+#ifndef __ios__
     connect(&_portListTimer, &QTimer::timeout, this, &LinkManager::_updateConfigurationList);
     _portListTimer.start(1000);
+#endif
 }
 
 LinkManager::~LinkManager()
@@ -68,54 +80,67 @@ LinkManager::~LinkManager()
     Q_ASSERT_X(_links.count() == 0, "LinkManager", "LinkManager::_shutdown should have been called previously");
 }
 
-LinkInterface* LinkManager::createLink(LinkConfiguration* config)
+LinkInterface* LinkManager::createConnectedLink(LinkConfiguration* config)
 {
     Q_ASSERT(config);
     LinkInterface* pLink = NULL;
     switch(config->type()) {
+#ifndef __ios__
         case LinkConfiguration::TypeSerial:
             pLink = new SerialLink(dynamic_cast<SerialConfiguration*>(config));
             break;
+#endif
         case LinkConfiguration::TypeUdp:
             pLink = new UDPLink(dynamic_cast<UDPConfiguration*>(config));
             break;
         case LinkConfiguration::TypeTcp:
             pLink = new TCPLink(dynamic_cast<TCPConfiguration*>(config));
             break;
-#ifdef UNITTEST_BUILD
+        case LinkConfiguration::TypeLogReplay:
+            pLink = new LogReplayLink(dynamic_cast<LogReplayLinkConfiguration*>(config));
+            break;
+#ifdef QT_DEBUG
         case LinkConfiguration::TypeMock:
             pLink = new MockLink(dynamic_cast<MockConfiguration*>(config));
             break;
 #endif
     }
     if(pLink) {
-        addLink(pLink);
+        _addLink(pLink);
+        connectLink(pLink);
     }
     return pLink;
 }
 
-LinkInterface* LinkManager::createLink(const QString& name)
+LinkInterface* LinkManager::createConnectedLink(const QString& name)
 {
     Q_ASSERT(name.isEmpty() == false);
     for(int i = 0; i < _linkConfigurations.count(); i++) {
         LinkConfiguration* conf = _linkConfigurations.at(i);
         if(conf && conf->name() == name)
-            return createLink(conf);
+            return createConnectedLink(conf);
     }
     return NULL;
 }
 
-void LinkManager::addLink(LinkInterface* link)
+void LinkManager::_addLink(LinkInterface* link)
 {
     Q_ASSERT(link);
 
-    // Take ownership for delete
-    link->_ownedByLinkManager = true;
-
     _linkListMutex.lock();
 
-    if (!_links.contains(link)) {
-        _links.append(link);
+    if (!containsLink(link)) {
+        // Find a mavlink channel to use for this link
+        for (int i=0; i<32; i++) {
+            if (!(_mavlinkChannelsUsedBitMask && 1 << i)) {
+                mavlink_reset_channel_status(i);
+                link->_setMavlinkChannel(i);
+                _mavlinkChannelsUsedBitMask |= i << i;
+                break;
+            }
+        }
+        
+        _links.append(QSharedPointer<LinkInterface>(link));
         _linkListMutex.unlock();
         emit newLink(link);
     } else {
@@ -145,14 +170,12 @@ bool LinkManager::connectAll()
 
     bool allConnected = true;
 
-    _linkListMutex.lock();
-    foreach (LinkInterface* link, _links) {
-        Q_ASSERT(link);
-        if (!link->_connect()) {
+    foreach (SharedLinkInterface sharedLink, _links) {
+        Q_ASSERT(sharedLink.data());
+        if (!sharedLink.data()->_connect()) {
             allConnected = false;
         }
     }
-    _linkListMutex.unlock();
 
     return allConnected;
 }
@@ -161,15 +184,15 @@ bool LinkManager::disconnectAll()
 {
     bool allDisconnected = true;
 
-    _linkListMutex.lock();
-    foreach (LinkInterface* link, _links)
-    {
-        Q_ASSERT(link);
-        if (!link->_disconnect()) {
+    // Make a copy so the list is modified out from under us
+    QList<SharedLinkInterface> links = _links;
+
+    foreach (SharedLinkInterface sharedLink, links) {
+        Q_ASSERT(sharedLink.data());
+        if (!disconnectLink(sharedLink.data())) {
             allDisconnected = false;
         }
     }
-    _linkListMutex.unlock();
 
     return allDisconnected;
 }
@@ -197,51 +220,37 @@ bool LinkManager::disconnectLink(LinkInterface* link)
         if(config) {
             config->setLink(NULL);
         }
-        // Link is now done and over with. We can't yet delete it because it
-        // takes a while for the MAVLink protocol to take notice of it. We
-        // flag it for delayed deletion for final clean up.
-        link->_flaggedForDeletion = true;
-        QTimer::singleShot(1000, this, &LinkManager::_delayedDeleteLink);
+        _deleteLink(link);
         return true;
     } else {
         return false;
     }
 }
 
-void LinkManager::_delayedDeleteLink()
-{
-    _linkListMutex.lock();
-    foreach (LinkInterface* link, _links)
-    {
-        Q_ASSERT(link);
-        if (link->_flaggedForDeletion) {
-            qDebug() << "Link deleted: " << link->getName();
-            _linkListMutex.unlock();
-            deleteLink(link);
-            return;
-        }
-    }
-    _linkListMutex.unlock();
-}
-
-void LinkManager::deleteLink(LinkInterface* link)
+void LinkManager::_deleteLink(LinkInterface* link)
 {
     Q_ASSERT(link);
 
     _linkListMutex.lock();
+    
+    // Free up the mavlink channel associated with this link
+    _mavlinkChannelsUsedBitMask &= ~(1 << link->getMavlinkChannel());
 
-    Q_ASSERT(_links.contains(link));
-    _links.removeOne(link);
-    Q_ASSERT(!_links.contains(link));
+    bool found = false;
+    for (int i=0; i<_links.count(); i++) {
+        if (_links[i].data() == link) {
+            _links.removeAt(i);
+            found = true;
+            break;
+        }
+    }
+    Q_UNUSED(found);
+    Q_ASSERT(found);
 
     _linkListMutex.unlock();
 
     // Emit removal of link
     emit linkDeleted(link);
-
-    Q_ASSERT(link->_ownedByLinkManager);
-    link->_deletedByLinkManager = true;   // Signal that this is a valid delete
-    delete link;
 }
 
 /**
@@ -249,29 +258,13 @@ void LinkManager::deleteLink(LinkInterface* link)
  */
 const QList<LinkInterface*> LinkManager::getLinks()
 {
-    _linkListMutex.lock();
-    QList<LinkInterface*> ret(_links);
-    _linkListMutex.unlock();
-    return ret;
-}
-
-const QList<SerialLink *> LinkManager::getSerialLinks()
-{
-    _linkListMutex.lock();
-    QList<SerialLink*> s;
-
-    foreach (LinkInterface* link, _links)
-    {
-        Q_ASSERT(link);
-
-        SerialLink* serialLink = qobject_cast<SerialLink*>(link);
-
-        if (serialLink)
-            s.append(serialLink);
+    QList<LinkInterface*> list;
+    
+    foreach (SharedLinkInterface sharedLink, _links) {
+        list << sharedLink.data();
     }
-    _linkListMutex.unlock();
-
-    return s;
+    
+    return list;
 }
 
 /// @brief If all new connections should be suspended a message is displayed to the user and true
@@ -296,10 +289,8 @@ void LinkManager::setConnectionsSuspended(QString reason)
 
 void LinkManager::_shutdown(void)
 {
-    QList<LinkInterface*> links = _links;
-    foreach(LinkInterface* link, links) {
-        disconnectLink(link);
-        deleteLink(link);
+    while (_links.count() != 0) {
+        disconnectLink(_links[0].data());
     }
 }
 
@@ -349,24 +340,29 @@ void LinkManager::saveLinkConfigurationList()
 {
     QSettings settings;
     settings.remove(LinkConfiguration::settingsRoot());
-    QString root(LinkConfiguration::settingsRoot());
-    settings.setValue(root + "/count", _linkConfigurations.count());
     int index = 0;
     foreach (LinkConfiguration* pLink, _linkConfigurations) {
         Q_ASSERT(pLink != NULL);
-        root = LinkConfiguration::settingsRoot();
-        root += QString("/Link%1").arg(index++);
-        settings.setValue(root + "/name", pLink->name());
-        settings.setValue(root + "/type", pLink->type());
-        settings.setValue(root + "/preferred", pLink->isPreferred());
-        // Have the instance save its own values
-        pLink->saveSettings(settings, root);
+        if(!pLink->isDynamic())
+        {
+            QString root = LinkConfiguration::settingsRoot();
+            root += QString("/Link%1").arg(index++);
+            settings.setValue(root + "/name", pLink->name());
+            settings.setValue(root + "/type", pLink->type());
+            settings.setValue(root + "/preferred", pLink->isPreferred());
+            // Have the instance save its own values
+            pLink->saveSettings(settings, root);
+        }
     }
+    QString root(LinkConfiguration::settingsRoot());
+    settings.setValue(root + "/count", index);
     emit linkConfigurationChanged();
 }
 
 void LinkManager::loadLinkConfigurationList()
 {
+    bool udpExists = false;
+    bool linksChanged = false;
     QSettings settings;
     // Is the group even there?
     if(settings.contains(LinkConfiguration::settingsRoot() + "/count")) {
@@ -387,10 +383,12 @@ void LinkManager::loadLinkConfigurationList()
                             }
                             LinkConfiguration* pLink = NULL;
                             switch(type) {
+#ifndef __ios__
                                 case LinkConfiguration::TypeSerial:
                                     pLink = (LinkConfiguration*)new SerialConfiguration(name);
                                     pLink->setPreferred(preferred);
                                     break;
+#endif
                                 case LinkConfiguration::TypeUdp:
                                     pLink = (LinkConfiguration*)new UDPConfiguration(name);
                                     pLink->setPreferred(preferred);
@@ -399,7 +397,11 @@ void LinkManager::loadLinkConfigurationList()
                                     pLink = (LinkConfiguration*)new TCPConfiguration(name);
                                     pLink->setPreferred(preferred);
                                     break;
-#ifdef UNITTEST_BUILD
+                                case LinkConfiguration::TypeLogReplay:
+                                    pLink = (LinkConfiguration*)new LogReplayLinkConfiguration(name);
+                                    pLink->setPreferred(preferred);
+                                    break;
+#ifdef QT_DEBUG
                                 case LinkConfiguration::TypeMock:
                                     pLink = (LinkConfiguration*)new MockConfiguration(name);
                                     pLink->setPreferred(false);
@@ -410,6 +412,14 @@ void LinkManager::loadLinkConfigurationList()
                                 // Have the instance load its own values
                                 pLink->loadSettings(settings, root);
                                 addLinkConfiguration(pLink);
+                                linksChanged = true;
+                                // Check for UDP links
+                                if(pLink->type() == LinkConfiguration::TypeUdp) {
+                                    UDPConfiguration* uLink = dynamic_cast<UDPConfiguration*>(pLink);
+                                    if(uLink && uLink->localPort() == QGC_UDP_LOCAL_PORT) {
+                                        udpExists = true;
+                                    }
+                                }
                             }
                         } else {
                             qWarning() << "Link Configuration " << root << " has an empty name." ;
@@ -424,12 +434,33 @@ void LinkManager::loadLinkConfigurationList()
                 qWarning() << "Link Configuration " << root << " has no type." ;
             }
         }
+    }
+    
+    // Debug buids always add MockLink automatically
+#ifdef QT_DEBUG
+    MockConfiguration* pMock = new MockConfiguration("Mock Link");
+    pMock->setDynamic(true);
+    addLinkConfiguration(pMock);
+    linksChanged = true;
+#endif
+
+    //-- If we don't have a configured UDP link, create a default one
+    if(!udpExists) {
+        UDPConfiguration* uLink = new UDPConfiguration("Default UDP Link");
+        uLink->setLocalPort(QGC_UDP_LOCAL_PORT);
+        uLink->setDynamic();
+        addLinkConfiguration(uLink);
+        linksChanged = true;
+    }
+    
+    if(linksChanged) {
         emit linkConfigurationChanged();
     }
-    // Enable automatic PX4 hunting
+    // Enable automatic Serial PX4/3DR Radio hunting
     _configurationsLoaded = true;
 }
 
+#ifndef __ios__
 SerialConfiguration* LinkManager::_findSerialConfiguration(const QString& portName)
 {
     QString searchPort = portName.trimmed();
@@ -444,27 +475,33 @@ SerialConfiguration* LinkManager::_findSerialConfiguration(const QString& portNa
     }
     return NULL;
 }
+#endif
 
+#ifndef __ios__
 void LinkManager::_updateConfigurationList(void)
 {
     if (_configUpdateSuspended || !_configurationsLoaded) {
         return;
     }
     bool saveList = false;
+    QStringList currentPorts;
     QList<QSerialPortInfo> portList = QSerialPortInfo::availablePorts();
     // Iterate Comm Ports
     foreach (QSerialPortInfo portInfo, portList) {
 #if 0
-        qDebug() << "-----------------------------------------------------";
-        qDebug() << "portName:         " << portInfo.portName();
-        qDebug() << "systemLocation:   " << portInfo.systemLocation();
-        qDebug() << "description:      " << portInfo.description();
-        qDebug() << "manufacturer:     " << portInfo.manufacturer();
-        qDebug() << "serialNumber:     " << portInfo.serialNumber();
-        qDebug() << "vendorIdentifier: " << portInfo.vendorIdentifier();
+        // Too noisy for most logging, so turn on as needed
+        qCDebug(LinkManagerLog) << "-----------------------------------------------------";
+        qCDebug(LinkManagerLog) << "portName:         " << portInfo.portName();
+        qCDebug(LinkManagerLog) << "systemLocation:   " << portInfo.systemLocation();
+        qCDebug(LinkManagerLog) << "description:      " << portInfo.description();
+        qCDebug(LinkManagerLog) << "manufacturer:     " << portInfo.manufacturer();
+        qCDebug(LinkManagerLog) << "serialNumber:     " << portInfo.serialNumber();
+        qCDebug(LinkManagerLog) << "vendorIdentifier: " << portInfo.vendorIdentifier();
 #endif
-        // Is this a PX4?
-        if (portInfo.vendorIdentifier() == 9900) {
+        // Save port name
+        currentPorts << portInfo.systemLocation();
+        // Is this a PX4 and NOT in bootloader mode?
+        if (portInfo.vendorIdentifier() == SerialPortIds::px4VendorId && !portInfo.description().contains("BL")) {
             SerialConfiguration* pSerial = _findSerialConfiguration(portInfo.systemLocation());
             if (pSerial) {
                 //-- If this port is configured make sure it has the preferred flag set
@@ -474,7 +511,16 @@ void LinkManager::_updateConfigurationList(void)
                 }
             } else {
                 // Lets create a new Serial configuration automatically
-                pSerial = new SerialConfiguration(QString("Pixhawk on %1").arg(portInfo.portName().trimmed()));
+                if (portInfo.description() == "AeroCore") {
+                    pSerial = new SerialConfiguration(QString("AeroCore on %1").arg(portInfo.portName().trimmed()));
+                } else if (portInfo.description().contains("PX4Flow")) {
+                    pSerial = new SerialConfiguration(QString("PX4Flow on %1").arg(portInfo.portName().trimmed()));
+                } else if (portInfo.description().contains("PX4")) {
+                    pSerial = new SerialConfiguration(QString("Pixhawk on %1").arg(portInfo.portName().trimmed()));
+                } else {
+                    continue;
+                }
+                pSerial->setDynamic(true);
                 pSerial->setPreferred(true);
                 pSerial->setBaud(115200);
                 pSerial->setPortName(portInfo.systemLocation());
@@ -482,10 +528,88 @@ void LinkManager::_updateConfigurationList(void)
                 saveList = true;
             }
         }
+        // Is this an FTDI Chip? It could be a 3DR Modem
+        if (portInfo.vendorIdentifier() == SerialPortIds::threeDRRadioVendorId && portInfo.productIdentifier() == SerialPortIds::threeDRRadioProductId) {
+            SerialConfiguration* pSerial = _findSerialConfiguration(portInfo.systemLocation());
+            if (pSerial) {
+                //-- If this port is configured make sure it has the preferred flag set, unless someone else already has it set.
+                if(!pSerial->isPreferred() && !saveList) {
+                    pSerial->setPreferred(true);
+                    saveList = true;
+                }
+            } else {
+                // Lets create a new Serial configuration automatically (an assumption at best)
+                pSerial = new SerialConfiguration(QString("3DR Radio on %1").arg(portInfo.portName().trimmed()));
+                pSerial->setDynamic(true);
+                pSerial->setPreferred(true);
+                pSerial->setBaud(57600);
+                pSerial->setPortName(portInfo.systemLocation());
+                addLinkConfiguration(pSerial);
+                saveList = true;
+            }
+        }
+    }
+    // Now we go through the current configuration list and make sure any dynamic config has gone away
+    QList<LinkConfiguration*>  _confToDelete;
+    foreach (LinkConfiguration* pLink, _linkConfigurations) {
+        Q_ASSERT(pLink != NULL);
+        // We only care about dynamic links
+        if(pLink->isDynamic()) {
+            if(pLink->type() == LinkConfiguration::TypeSerial) {
+                // Don't mess with connected link. Let it deal with the disapearing device.
+                if(pLink->getLink() == NULL) {
+                    SerialConfiguration* pSerial = dynamic_cast<SerialConfiguration*>(pLink);
+                    if(!currentPorts.contains(pSerial->portName())) {
+                        _confToDelete.append(pSerial);
+                    }
+                }
+            }
+        }
+    }
+    // Now remove all links that are gone
+    foreach (LinkConfiguration* pDelete, _confToDelete) {
+        removeLinkConfiguration(pDelete);
+        saveList = true;
     }
     // Save configuration list, which will also trigger a signal for the UI
     if(saveList) {
         saveLinkConfigurationList();
     }
 }
+#endif
 
+bool LinkManager::containsLink(LinkInterface* link)
+{
+    bool found = false;
+    foreach (SharedLinkInterface sharedLink, _links) {
+        if (sharedLink.data() == link) {
+            found = true;
+            break;
+        }
+    }
+    return found;
+}
+
+bool LinkManager::anyConnectedLinks(void)
+{
+    bool found = false;
+    foreach (SharedLinkInterface sharedLink, _links) {
+        if (sharedLink.data()->isConnected()) {
+            found = true;
+            break;
+        }
+    }
+    return found;
+}
+
+SharedLinkInterface& LinkManager::sharedPointerForLink(LinkInterface* link)
+{
+    for (int i=0; i<_links.count(); i++) {
+        if (_links[i].data() == link) {
+            return _links[i];
+        }
+    }
+    // This should never happen
+    Q_ASSERT(false);
+    return _nullSharedLink;
+}

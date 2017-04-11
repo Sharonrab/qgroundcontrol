@@ -61,6 +61,13 @@ public:
      * @return NULL pointer if no UAS exists, active UAS else
      **/
     UASInterface* getActiveUAS();
+
+    /**
+     * @brief Get the currently follower UAS
+     *
+     * @return NULL pointer if no UAS exists, active UAS else
+     **/
+    //UASInterface* getFollowerUAS();
     /**
      * @brief getActiveUASWaypointManager
      * @return uas->getUASWaypointManager(), or if not connected, a singleton instance of a UASWaypointManager.
@@ -165,6 +172,13 @@ public slots:
       **/
     void setActiveUAS(UASInterface* UAS);
 
+    /**
+      * @brief Set a UAS as follower UAS. NULL is a valid value for when no other valid UAS's are available.
+      *
+      * @param UAS Unmanned Air System to set
+      **/
+    //void setFollowerUAS(UASInterface* UAS);
+
 
     /**
      * @brief Launch the active UAS
@@ -250,6 +264,7 @@ public slots:
 protected:
     QList<UASInterface*> systems;
     UASInterface* activeUAS;
+    UASInterface* followerUAS;
     UASWaypointManager *offlineUASWaypointManager;
     QMutex activeUASMutex;
     double homeLat;

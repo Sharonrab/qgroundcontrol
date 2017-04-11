@@ -31,56 +31,11 @@ GenericAutoPilotPlugin::GenericAutoPilotPlugin(UASInterface* uas, QObject* paren
 {
     Q_ASSERT(uas);
     
-    _parameterFacts = new GenericParameterFacts(uas, this);
+    _parameterFacts = new GenericParameterFacts(this, uas, this);
     Q_CHECK_PTR(_parameterFacts);
     
-    connect(_parameterFacts, &GenericParameterFacts::factsReady, this, &GenericAutoPilotPlugin::pluginReady);
-
-}
-
-QList<AutoPilotPluginManager::FullMode_t> GenericAutoPilotPlugin::getModes(void)
-{
-    AutoPilotPluginManager::FullMode_t fullMode;
-    QList<AutoPilotPluginManager::FullMode_t> modeList;
-
-    fullMode.customMode = 0;
-    
-    fullMode.baseMode = MAV_MODE_FLAG_MANUAL_INPUT_ENABLED;
-    modeList << fullMode;
-    
-    fullMode.baseMode = MAV_MODE_FLAG_MANUAL_INPUT_ENABLED | MAV_MODE_FLAG_STABILIZE_ENABLED;
-    modeList << fullMode;
-    
-    fullMode.baseMode = MAV_MODE_FLAG_MANUAL_INPUT_ENABLED | MAV_MODE_FLAG_STABILIZE_ENABLED | MAV_MODE_FLAG_GUIDED_ENABLED;
-    modeList << fullMode;
-
-    fullMode.baseMode = MAV_MODE_FLAG_AUTO_ENABLED | MAV_MODE_FLAG_STABILIZE_ENABLED | MAV_MODE_FLAG_GUIDED_ENABLED;
-    modeList << fullMode;
-    
-    return modeList;
-}
-
-QString GenericAutoPilotPlugin::getShortModeText(uint8_t baseMode, uint32_t customMode)
-{
-    Q_UNUSED(customMode);
-    
-    QString mode;
-    
-    // use base_mode - not autopilot-specific
-    if (baseMode == 0) {
-        mode = "|PREFLIGHT";
-    } else if (baseMode & MAV_MODE_FLAG_DECODE_POSITION_AUTO) {
-        mode = "|AUTO";
-    } else if (baseMode & MAV_MODE_FLAG_DECODE_POSITION_MANUAL) {
-        mode = "|MANUAL";
-        if (baseMode & MAV_MODE_FLAG_DECODE_POSITION_GUIDED) {
-            mode += "|GUIDED";
-        } else if (baseMode & MAV_MODE_FLAG_DECODE_POSITION_STABILIZE) {
-            mode += "|STABILIZED";
-        }
-    }
-    
-    return mode;
+    connect(_parameterFacts, &GenericParameterFacts::parametersReady, this, &GenericAutoPilotPlugin::_parametersReady);
+    connect(_parameterFacts, &GenericParameterFacts::parameterListProgress, this, &GenericAutoPilotPlugin::parameterListProgress);
 }
 
 void GenericAutoPilotPlugin::clearStaticData(void)
@@ -88,19 +43,15 @@ void GenericAutoPilotPlugin::clearStaticData(void)
     // No Static data yet
 }
 
-const QVariantList& GenericAutoPilotPlugin::components(void)
+const QVariantList& GenericAutoPilotPlugin::vehicleComponents(void)
 {
     static QVariantList emptyList;
     
     return emptyList;
 }
 
-const QVariantMap& GenericAutoPilotPlugin::parameters(void)
+void GenericAutoPilotPlugin::_parametersReady(void)
 {
-    return _parameterFacts->factMap();
-}
-
-QUrl GenericAutoPilotPlugin::setupBackgroundImage(void)
-{
-    return QUrl::fromUserInput("qrc:/qml/px4fmu_2.x.png");
+    _pluginReady = true;
+    emit pluginReadyChanged(_pluginReady);
 }

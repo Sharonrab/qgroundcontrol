@@ -46,7 +46,6 @@ TCPLink::TCPLink(TCPConfiguration *config)
     // We're doing it wrong - because the Qt folks got the API wrong:
     // http://blog.qt.digia.com/blog/2010/06/17/youre-doing-it-wrong/
     moveToThread(this);
-    _linkId = getNextLinkId();
     qDebug() << "TCP Created " << _config->name();
 }
 
@@ -95,9 +94,7 @@ void TCPLink::writeBytes(const char* data, qint64 size)
     _writeDebugBytes(data, size);
 #endif
     _socket->write(data, size);
-    // Log the amount and time written out for future data rate calculations.
-    QMutexLocker dataRateLocker(&dataRateMutex);
-    logDataRateToBuffer(outDataWriteAmounts, outDataWriteTimes, &outDataIndex, size, QDateTime::currentMSecsSinceEpoch());
+    _logOutputDataRate(size, QDateTime::currentMSecsSinceEpoch());
 }
 
 /**
@@ -115,9 +112,7 @@ void TCPLink::readBytes()
         buffer.resize(byteCount);
         _socket->read(buffer.data(), buffer.size());
         emit bytesReceived(this, buffer);
-        // Log the amount and time received for future data rate calculations.
-        QMutexLocker dataRateLocker(&dataRateMutex);
-        logDataRateToBuffer(inDataWriteAmounts, inDataWriteTimes, &inDataIndex, byteCount, QDateTime::currentMSecsSinceEpoch());
+        _logInputDataRate(byteCount, QDateTime::currentMSecsSinceEpoch());
 #ifdef TCPLINK_READWRITE_DEBUG
         writeDebugBytes(buffer.data(), buffer.size());
 #endif
@@ -198,11 +193,6 @@ void TCPLink::_socketError(QAbstractSocket::SocketError socketError)
 bool TCPLink::isConnected() const
 {
     return _socketIsConnected;
-}
-
-int TCPLink::getId() const
-{
-    return _linkId;
 }
 
 QString TCPLink::getName() const

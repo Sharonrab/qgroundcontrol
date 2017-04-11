@@ -36,6 +36,13 @@ This file is part of the QGROUNDCONTROL project
 #include <QMap>
 #include <QMutex>
 #include <QUdpSocket>
+#include <QMutexLocker>
+#include <QQueue>
+#include <QByteArray>
+
+#if defined(QGC_ZEROCONF_ENABLED)
+#include <dns_sd.h>
+#endif
 
 #include "QGCConfig.h"
 #include "LinkManager.h"
@@ -143,11 +150,11 @@ private:
 class UDPLink : public LinkInterface
 {
     Q_OBJECT
+    
     friend class UDPConfiguration;
+    friend class LinkManager;
+    
 public:
-    UDPLink(UDPConfiguration* config);
-    ~UDPLink();
-
     void requestReset() { }
     bool isConnected() const;
     QString getName() const;
@@ -158,7 +165,6 @@ public:
     qint64 getCurrentOutDataRate() const;
 
     void run();
-    int getId() const;
 
     // These are left unimplemented in order to cause linker errors which indicate incorrect usage of
     // connect/disconnect on link directly. All connect/disconnect calls should be made through LinkManager.
@@ -189,9 +195,12 @@ protected:
     QUdpSocket*         _socket;
     UDPConfiguration*   _config;
     bool                _connectState;
-    int                 _id;
 
 private:
+    // Links are only created/destroyed by LinkManager so constructor/destructor is not public
+    UDPLink(UDPConfiguration* config);
+    ~UDPLink();
+    
     // From LinkInterface
     virtual bool _connect(void);
     virtual bool _disconnect(void);
@@ -199,8 +208,19 @@ private:
     bool _hardwareConnect();
     void _restartConnection();
 
-signals:
-    //Signals are defined by LinkInterface
+    void _registerZeroconf(uint16_t port, const std::string& regType);
+    void _deregisterZeroconf();
+
+#if defined(QGC_ZEROCONF_ENABLED)
+    DNSServiceRef  _dnssServiceRef;
+#endif
+
+    bool                _running;
+    QMutex              _mutex;
+    QQueue<QByteArray*> _outQueue;
+
+    bool _dequeBytes    ();
+    void _sendBytes     (const char* data, qint64 size);
 
 };
 

@@ -25,7 +25,7 @@
 ///     @author Don Gagne <don@thegagnes.com>
 
 #include "AirframeComponent.h"
-#include "QGCPX4AirframeConfig.h"
+#include "QGCQmlWidgetHolder.h"
 
 #if 0
 // Broken by latest mavlink module changes. Not used yet. Comment out for now.
@@ -132,7 +132,7 @@ QString AirframeComponent::description(void) const
 
 QString AirframeComponent::iconResource(void) const
 {
-    return "AirframeComponentIcon.png";
+    return "/qmlimages/AirframeComponentIcon.png";
 }
 
 bool AirframeComponent::requiresSetup(void) const
@@ -142,13 +142,7 @@ bool AirframeComponent::requiresSetup(void) const
 
 bool AirframeComponent::setupComplete(void) const
 {
-    QVariant value;
-    if (_paramMgr->getParameterValue(_paramMgr->getDefaultComponentId(), "SYS_AUTOSTART", value)) {
-        return value.toInt() != 0;
-    } else {
-        Q_ASSERT(false);
-        return false;
-    }
+    return _autopilot->getParameterFact(FactSystem::defaultComponentId, "SYS_AUTOSTART")->value().toInt() != 0;
 }
 
 QString AirframeComponent::setupStateDescription(void) const
@@ -177,9 +171,9 @@ QStringList AirframeComponent::paramFilterList(void) const
     return list;
 }
 
-QWidget* AirframeComponent::setupWidget(void) const
+QUrl AirframeComponent::setupSource(void) const
 {
-    return new QGCPX4AirframeConfig;
+    return QUrl::fromUserInput("qrc:/qml/AirframeComponent.qml");
 }
 
 QUrl AirframeComponent::summaryQmlSource(void) const

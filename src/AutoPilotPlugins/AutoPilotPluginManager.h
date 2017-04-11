@@ -47,20 +47,10 @@ class AutoPilotPluginManager : public QGCSingleton
     DECLARE_QGC_SINGLETON(AutoPilotPluginManager, AutoPilotPluginManager)
 
 public:
-    /// Returns the singleton AutoPilotPlugin instance for the specified uas.
+    /// Returns the singleton AutoPilotPlugin instance for the specified uas. Returned as QSharedPointer
+    /// to prevent shutdown ordering problems with Qml destruction happening after Facts are destroyed.
     ///     @param uas Uas to get plugin for
-    AutoPilotPlugin* getInstanceForAutoPilotPlugin(UASInterface* uas);
-    
-    typedef struct {
-        uint8_t baseMode;
-        uint32_t customMode;
-    } FullMode_t;
-
-    /// Returns the list of modes which are available for the specified autopilot type.
-    QList<FullMode_t> getModes(int autopilotType) const;
-    
-    /// @brief Returns a human readable short description for the specified mode.
-    QString getShortModeText(uint8_t baseMode, uint32_t customMode, int autopilotType) const;
+    QSharedPointer<AutoPilotPlugin> getInstanceForAutoPilotPlugin(UASInterface* uas);
 
 private slots:
     void _uasCreated(UASInterface* uas);
@@ -73,7 +63,7 @@ private:
     
     MAV_AUTOPILOT _installedAutopilotType(MAV_AUTOPILOT autopilot);
     
-    QMap<MAV_AUTOPILOT, QMap<int, AutoPilotPlugin*> > _pluginMap; ///< Map of AutoPilot plugins _pluginMap[MAV_TYPE][UASid]
+    QMap<MAV_AUTOPILOT, QMap<int, QSharedPointer<AutoPilotPlugin> > > _pluginMap; ///< Map of AutoPilot plugins _pluginMap[MAV_TYPE][UASid]
 };
 
 #endif

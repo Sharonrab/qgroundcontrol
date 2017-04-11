@@ -27,7 +27,8 @@
 #include "AutoPilotPlugin.h"
 #include "AutoPilotPluginManager.h"
 #include "UASInterface.h"
-#include "PX4ParameterFacts.h"
+#include "PX4ParameterLoader.h"
+#include "PX4AirframeLoader.h"
 #include "AirframeComponent.h"
 #include "RadioComponent.h"
 #include "FlightModesComponent.h"
@@ -50,28 +51,27 @@ public:
     ~PX4AutoPilotPlugin();
 
     // Overrides from AutoPilotPlugin
-    virtual bool pluginIsReady(void) const;
-    virtual const QVariantList& components(void);
-    virtual const QVariantMap& parameters(void);
-    virtual QUrl setupBackgroundImage(void);
+    virtual const QVariantList& vehicleComponents(void);
 
-    static QList<AutoPilotPluginManager::FullMode_t> getModes(void);
-    static QString getShortModeText(uint8_t baseMode, uint32_t customMode);
     static void clearStaticData(void);
     
     // These methods should only be used by objects within the plugin
-    AirframeComponent* airframeComponent(void) { return _airframeComponent; }
-    RadioComponent* radioComponent(void) { return _radioComponent; }
-    FlightModesComponent* flightModesComponent(void) { return _flightModesComponent; }
-    SensorsComponent* sensorsComponent(void) { return _sensorsComponent; }
-    SafetyComponent* safetyComponent(void) { return _safetyComponent; }
-    PowerComponent* powerComponent(void) { return _powerComponent; }
+    AirframeComponent*      airframeComponent(void)     { return _airframeComponent; }
+    RadioComponent*         radioComponent(void)        { return _radioComponent; }
+    FlightModesComponent*   flightModesComponent(void)  { return _flightModesComponent; }
+    SensorsComponent*       sensorsComponent(void)      { return _sensorsComponent; }
+    SafetyComponent*        safetyComponent(void)       { return _safetyComponent; }
+    PowerComponent*         powerComponent(void)        { return _powerComponent; }
 
 private slots:
     void _pluginReadyPreChecks(void);
     
 private:
-    PX4ParameterFacts*      _parameterFacts;
+	// Overrides from AutoPilotPlugin
+	virtual ParameterLoader* _getParameterLoader(void) { return _parameterFacts; }
+	
+    PX4ParameterLoader*     _parameterFacts;
+    PX4AirframeLoader*      _airframeFacts;
     QVariantList            _components;
     AirframeComponent*      _airframeComponent;
     RadioComponent*         _radioComponent;

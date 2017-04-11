@@ -25,7 +25,7 @@
 ///     @author Don Gagne <don@thegagnes.com>
 
 #include "RadioComponent.h"
-#include "PX4RCCalibration.h"
+#include "QGCQmlWidgetHolder.h"
 #include "PX4AutoPilotPlugin.h"
 
 RadioComponent::RadioComponent(UASInterface* uas, AutoPilotPlugin* autopilot, QObject* parent) :
@@ -48,7 +48,7 @@ QString RadioComponent::description(void) const
 
 QString RadioComponent::iconResource(void) const
 {
-    return "RadioComponentIcon.png";
+    return "/qmlimages/RadioComponentIcon.png";
 }
 
 bool RadioComponent::requiresSetup(void) const
@@ -58,58 +58,12 @@ bool RadioComponent::requiresSetup(void) const
 
 bool RadioComponent::setupComplete(void) const
 {
-    // Check for mapped attitude controls
+    // The best we can do to detect the need for a radio calibration is look for attitude
+    // controls to be mapped.
     QStringList attitudeMappings;
     attitudeMappings << "RC_MAP_ROLL" << "RC_MAP_PITCH" << "RC_MAP_YAW" << "RC_MAP_THROTTLE";
     foreach(QString mapParam, attitudeMappings) {
-        QVariant value;
-        if (_paramMgr->getParameterValue(_paramMgr->getDefaultComponentId(), mapParam, value)) {
-            if (value.toInt() == 0) {
-                return false;
-            }
-        } else {
-            Q_ASSERT(false);
-            return false;
-        }
-    }
-    
-    // Check for min/max/trim defaults for channel 1-4
-    
-    static const int rcMinDefault = 1000;
-    static const int rcMaxDefault = 2000;
-    static const int rcTrimDefault = 1500;
-
-    for (int i=1; i<5; i++) {
-        QVariant value;
-        int rcMin, rcMax, rcTrim;
-
-        QString param;
-        
-        param = QString("RC%1_MIN").arg(i);
-        if (_paramMgr->getParameterValue(_paramMgr->getDefaultComponentId(), param, value)) {
-            rcMin = value.toInt();
-        } else {
-            Q_ASSERT(false);
-            return false;
-        }
-        
-        param = QString("RC%1_MAX").arg(i);
-        if (_paramMgr->getParameterValue(_paramMgr->getDefaultComponentId(), param, value)) {
-            rcMax = value.toInt();
-        } else {
-            Q_ASSERT(false);
-            return false;
-        }
-        
-        param = QString("RC%1_TRIM").arg(i);
-        if (_paramMgr->getParameterValue(_paramMgr->getDefaultComponentId(), param, value)) {
-            rcTrim = value.toInt();
-        } else {
-            Q_ASSERT(false);
-            return false;
-        }
-        
-        if (rcMin == rcMinDefault && rcMax == rcMaxDefault && rcTrim == rcTrimDefault) {
+        if (_autopilot->getParameterFact(FactSystem::defaultComponentId, mapParam)->value().toInt() == 0) {
             return false;
         }
     }
@@ -133,19 +87,7 @@ QStringList RadioComponent::setupCompleteChangedTriggerList(void) const
 {
     QStringList triggers;
     
-    // The best we can do to detect the need for a radio calibration is look for trim/min/max still being
-    // at defaults. We also look for attitude controls to be mapped. But since they default to channels
-    // they are not a very reliable source.
-    
-    // Attitude control mapping is always a trigger
     triggers << "RC_MAP_ROLL" << "RC_MAP_PITCH" << "RC_MAP_YAW" << "RC_MAP_THROTTLE";
-    
-    // We also trigger on min/max/trim for channels 1-4 which would normally be the attitude
-    // control channels. This may not always be the case, but it's the best we can
-    triggers << "RC1_MIN" << "RC1_MAX" << "RC1_TRIM";
-    triggers << "RC2_MIN" << "RC2_MAX" << "RC2_TRIM";
-    triggers << "RC3_MIN" << "RC3_MAX" << "RC3_TRIM";
-    triggers << "RC4_MIN" << "RC4_MAX" << "RC4_TRIM";
     
     return triggers;
 }
@@ -159,9 +101,9 @@ QStringList RadioComponent::paramFilterList(void) const
     return list;
 }
 
-QWidget* RadioComponent::setupWidget(void) const
+QUrl RadioComponent::setupSource(void) const
 {
-    return new PX4RCCalibration;
+    return QUrl::fromUserInput("qrc:/qml/RadioComponent.qml");
 }
 
 QUrl RadioComponent::summaryQmlSource(void) const
