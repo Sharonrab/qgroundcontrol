@@ -1,0 +1,424 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="slugs2Debug|Win32">
+      <Configuration>slugs2Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{65727243-8001-3477-A476-B39B2F4CAFE5}</ProjectGuid>
+    <RootNamespace>QGeoServiceProviderFactoryQGC</RootNamespace>
+    <Keyword>Qt4VSv1.0</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <PlatformToolSet>v120</PlatformToolSet>
+    <OutputDirectory>build-release\obj\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <IntermediateDirectory>build-release\obj\</IntermediateDirectory>
+    <PrimaryOutput>QGeoServiceProviderFactoryQGC</PrimaryOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <PlatformToolSet>v120</PlatformToolSet>
+    <OutputDirectory>build-debug\obj\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <IntermediateDirectory>build-debug\obj\</IntermediateDirectory>
+    <PrimaryOutput>QGeoServiceProviderFactoryQGC</PrimaryOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'" Label="Configuration">
+    <PlatformToolSet>v120</PlatformToolSet>
+    <OutputDirectory>build-debug\obj\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <IntermediateDirectory>build-debug\obj\</IntermediateDirectory>
+    <PrimaryOutput>QGeoServiceProviderFactoryQGC</PrimaryOutput>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">build-release\obj\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">build-release\obj\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">QGeoServiceProviderFactoryQGC</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</IgnoreImportLibrary>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">build-debug\obj\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">build-debug\obj\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">build-debug\obj\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">build-debug\obj\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">QGeoServiceProviderFactoryQGC</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">QGeoServiceProviderFactoryQGC</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</IgnoreImportLibrary>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtLocation";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtLocation\5.4.0";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtLocation\5.4.0\QtLocation";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtQuick";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtGui";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtPositioning\5.4.0";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtPositioning\5.4.0\QtPositioning";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtPositioning";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtQml";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtNetwork";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtCore";"build-release\moc";C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\mkspecs\win32-msvc2013;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zm200 -Zc:strictStrings -w34100 -w34189 /Zc:strictStrings- %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>build-release\obj\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4996;4005;4290;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ObjectFileName>build-release\obj\</ObjectFileName>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;_TTY_NOWARN_;__STDC_LIMIT_MACROS;QT_NO_DEBUG;UNITTEST_BUILD;QT_NO_DEBUG;QT_STATICPLUGIN;QT_PLUGIN;QT_LOCATION_LIB;QT_QUICK_LIB;QT_GUI_LIB;QT_POSITIONING_LIB;QT_QML_LIB;QT_NETWORK_LIB;QT_CORE_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)\QGeoServiceProviderFactoryQGC.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;_TTY_NOWARN_;__STDC_LIMIT_MACROS;QT_NO_DEBUG;UNITTEST_BUILD;QT_NO_DEBUG;QT_STATICPLUGIN;QT_PLUGIN;QT_LOCATION_LIB;QT_QUICK_LIB;QT_GUI_LIB;QT_POSITIONING_LIB;QT_QML_LIB;QT_NETWORK_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ResourceOutputFileName>$(OutDir)\$(InputName).res</ResourceOutputFileName>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtLocation";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtLocation\5.4.0";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtLocation\5.4.0\QtLocation";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtQuick";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtGui";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtPositioning\5.4.0";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtPositioning\5.4.0\QtPositioning";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtPositioning";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtQml";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtNetwork";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtCore";"build-debug\moc";C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\mkspecs\win32-msvc2013;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zm200 -w34100 -w34189 /Zc:strictStrings- %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>build-debug\obj\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4996;4005;4290;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ObjectFileName>build-debug\obj\</ObjectFileName>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;_TTY_NOWARN_;__STDC_LIMIT_MACROS;UNITTEST_BUILD;QT_STATICPLUGIN;QT_PLUGIN;QT_LOCATION_LIB;QT_QUICK_LIB;QT_GUI_LIB;QT_POSITIONING_LIB;QT_QML_LIB;QT_NETWORK_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)\QGeoServiceProviderFactoryQGC.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;_TTY_NOWARN_;__STDC_LIMIT_MACROS;UNITTEST_BUILD;QT_STATICPLUGIN;QT_PLUGIN;QT_LOCATION_LIB;QT_QUICK_LIB;QT_GUI_LIB;QT_POSITIONING_LIB;QT_QML_LIB;QT_NETWORK_LIB;QT_CORE_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ResourceOutputFileName>$(OutDir)\$(InputName).res</ResourceOutputFileName>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtLocation";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtLocation\5.4.0";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtLocation\5.4.0\QtLocation";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtQuick";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtGui";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtPositioning\5.4.0";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtPositioning\5.4.0\QtPositioning";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtPositioning";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtQml";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtNetwork";"C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\include\QtCore";"build-debug\moc";C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\mkspecs\win32-msvc2013;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zm200 -w34100 -w34189 /Zc:strictStrings- %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>build-debug\obj\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4996;4005;4290;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ObjectFileName>build-debug\obj\</ObjectFileName>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>SLUGS2;_WINDOWS;UNICODE;WIN32;_TTY_NOWARN_;__STDC_LIMIT_MACROS;UNITTEST_BUILD;QT_STATICPLUGIN;QT_PLUGIN;QT_LOCATION_LIB;QT_QUICK_LIB;QT_GUI_LIB;QT_POSITIONING_LIB;QT_QML_LIB;QT_NETWORK_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)\QGeoServiceProviderFactoryQGC.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;_TTY_NOWARN_;__STDC_LIMIT_MACROS;UNITTEST_BUILD;QT_STATICPLUGIN;QT_PLUGIN;QT_LOCATION_LIB;QT_QUICK_LIB;QT_GUI_LIB;QT_POSITIONING_LIB;QT_QML_LIB;QT_NETWORK_LIB;QT_CORE_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ResourceOutputFileName>$(OutDir)\$(InputName).res</ResourceOutputFileName>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\QtLocationPlugin\OpenPilotMaps.cc" />
+    <ClCompile Include="src\QtLocationPlugin\qgeocodereplyqgc.cpp" />
+    <ClCompile Include="src\QtLocationPlugin\qgeocodingmanagerengineqgc.cpp" />
+    <ClCompile Include="src\QtLocationPlugin\qgeomapreplyqgc.cpp" />
+    <ClCompile Include="src\QtLocationPlugin\qgeoserviceproviderpluginqgc.cpp" />
+    <ClCompile Include="src\QtLocationPlugin\qgeotiledmappingmanagerengineqgc.cpp" />
+    <ClCompile Include="src\QtLocationPlugin\qgeotilefetcherqgc.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="src\QtLocationPlugin\OpenPilotMaps.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">src\QtLocationPlugin\OpenPilotMaps.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\bin\moc.exe  -DUNICODE -DWIN32 -D_TTY_NOWARN_ -D__STDC_LIMIT_MACROS -DQT_NO_DEBUG -DUNITTEST_BUILD -DQT_NO_DEBUG -DQT_STATICPLUGIN -DQT_PLUGIN -DQT_LOCATION_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_POSITIONING_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -D_MSC_VER=1800 -D_WIN32 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/mkspecs/win32-msvc2013 -IC:/Users/sharon/Documents/GitHub/qgroundcontrol -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQuick -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtGui -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQml -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtNetwork -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtCore src\QtLocationPlugin\OpenPilotMaps.h -o C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-release\moc\moc_OpenPilotMaps.cpp
+if errorlevel 1 goto VCEnd
+endlocal</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MOC src\QtLocationPlugin\OpenPilotMaps.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-release\moc\moc_OpenPilotMaps.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">src\QtLocationPlugin\OpenPilotMaps.h;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">src\QtLocationPlugin\OpenPilotMaps.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\bin\moc.exe  -DUNICODE -DWIN32 -D_TTY_NOWARN_ -D__STDC_LIMIT_MACROS -DUNITTEST_BUILD -DQT_STATICPLUGIN -DQT_PLUGIN -DQT_LOCATION_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_POSITIONING_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -D_MSC_VER=1800 -D_WIN32 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/mkspecs/win32-msvc2013 -IC:/Users/sharon/Documents/GitHub/qgroundcontrol -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQuick -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtGui -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQml -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtNetwork -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtCore src\QtLocationPlugin\OpenPilotMaps.h -o C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_OpenPilotMaps.cpp
+if errorlevel 1 goto VCEnd
+endlocal</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\bin\moc.exe  -DUNICODE -DWIN32 -D_TTY_NOWARN_ -D__STDC_LIMIT_MACROS -DUNITTEST_BUILD -DQT_STATICPLUGIN -DQT_PLUGIN -DQT_LOCATION_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_POSITIONING_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -D_MSC_VER=1800 -D_WIN32 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/mkspecs/win32-msvc2013 -IC:/Users/sharon/Documents/GitHub/qgroundcontrol -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQuick -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtGui -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQml -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtNetwork -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtCore src\QtLocationPlugin\OpenPilotMaps.h -o C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_OpenPilotMaps.cpp
+if errorlevel 1 goto VCEnd
+endlocal</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MOC src\QtLocationPlugin\OpenPilotMaps.h</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">MOC src\QtLocationPlugin\OpenPilotMaps.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_OpenPilotMaps.cpp;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_OpenPilotMaps.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="src\QtLocationPlugin\qgeocodereplyqgc.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">src\QtLocationPlugin\qgeocodereplyqgc.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\bin\moc.exe  -DUNICODE -DWIN32 -D_TTY_NOWARN_ -D__STDC_LIMIT_MACROS -DQT_NO_DEBUG -DUNITTEST_BUILD -DQT_NO_DEBUG -DQT_STATICPLUGIN -DQT_PLUGIN -DQT_LOCATION_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_POSITIONING_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -D_MSC_VER=1800 -D_WIN32 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/mkspecs/win32-msvc2013 -IC:/Users/sharon/Documents/GitHub/qgroundcontrol -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQuick -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtGui -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQml -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtNetwork -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtCore src\QtLocationPlugin\qgeocodereplyqgc.h -o C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-release\moc\moc_qgeocodereplyqgc.cpp
+if errorlevel 1 goto VCEnd
+endlocal</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MOC src\QtLocationPlugin\qgeocodereplyqgc.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-release\moc\moc_qgeocodereplyqgc.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">src\QtLocationPlugin\qgeocodereplyqgc.h;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">src\QtLocationPlugin\qgeocodereplyqgc.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\bin\moc.exe  -DUNICODE -DWIN32 -D_TTY_NOWARN_ -D__STDC_LIMIT_MACROS -DUNITTEST_BUILD -DQT_STATICPLUGIN -DQT_PLUGIN -DQT_LOCATION_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_POSITIONING_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -D_MSC_VER=1800 -D_WIN32 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/mkspecs/win32-msvc2013 -IC:/Users/sharon/Documents/GitHub/qgroundcontrol -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQuick -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtGui -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQml -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtNetwork -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtCore src\QtLocationPlugin\qgeocodereplyqgc.h -o C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeocodereplyqgc.cpp
+if errorlevel 1 goto VCEnd
+endlocal</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\bin\moc.exe  -DUNICODE -DWIN32 -D_TTY_NOWARN_ -D__STDC_LIMIT_MACROS -DUNITTEST_BUILD -DQT_STATICPLUGIN -DQT_PLUGIN -DQT_LOCATION_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_POSITIONING_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -D_MSC_VER=1800 -D_WIN32 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/mkspecs/win32-msvc2013 -IC:/Users/sharon/Documents/GitHub/qgroundcontrol -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQuick -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtGui -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQml -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtNetwork -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtCore src\QtLocationPlugin\qgeocodereplyqgc.h -o C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeocodereplyqgc.cpp
+if errorlevel 1 goto VCEnd
+endlocal</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MOC src\QtLocationPlugin\qgeocodereplyqgc.h</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">MOC src\QtLocationPlugin\qgeocodereplyqgc.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeocodereplyqgc.cpp;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeocodereplyqgc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="src\QtLocationPlugin\qgeocodingmanagerengineqgc.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">src\QtLocationPlugin\qgeocodingmanagerengineqgc.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\bin\moc.exe  -DUNICODE -DWIN32 -D_TTY_NOWARN_ -D__STDC_LIMIT_MACROS -DQT_NO_DEBUG -DUNITTEST_BUILD -DQT_NO_DEBUG -DQT_STATICPLUGIN -DQT_PLUGIN -DQT_LOCATION_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_POSITIONING_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -D_MSC_VER=1800 -D_WIN32 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/mkspecs/win32-msvc2013 -IC:/Users/sharon/Documents/GitHub/qgroundcontrol -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQuick -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtGui -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQml -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtNetwork -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtCore src\QtLocationPlugin\qgeocodingmanagerengineqgc.h -o C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-release\moc\moc_qgeocodingmanagerengineqgc.cpp
+if errorlevel 1 goto VCEnd
+endlocal</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MOC src\QtLocationPlugin\qgeocodingmanagerengineqgc.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-release\moc\moc_qgeocodingmanagerengineqgc.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">src\QtLocationPlugin\qgeocodingmanagerengineqgc.h;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">src\QtLocationPlugin\qgeocodingmanagerengineqgc.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\bin\moc.exe  -DUNICODE -DWIN32 -D_TTY_NOWARN_ -D__STDC_LIMIT_MACROS -DUNITTEST_BUILD -DQT_STATICPLUGIN -DQT_PLUGIN -DQT_LOCATION_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_POSITIONING_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -D_MSC_VER=1800 -D_WIN32 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/mkspecs/win32-msvc2013 -IC:/Users/sharon/Documents/GitHub/qgroundcontrol -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQuick -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtGui -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQml -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtNetwork -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtCore src\QtLocationPlugin\qgeocodingmanagerengineqgc.h -o C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeocodingmanagerengineqgc.cpp
+if errorlevel 1 goto VCEnd
+endlocal</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\bin\moc.exe  -DUNICODE -DWIN32 -D_TTY_NOWARN_ -D__STDC_LIMIT_MACROS -DUNITTEST_BUILD -DQT_STATICPLUGIN -DQT_PLUGIN -DQT_LOCATION_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_POSITIONING_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -D_MSC_VER=1800 -D_WIN32 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/mkspecs/win32-msvc2013 -IC:/Users/sharon/Documents/GitHub/qgroundcontrol -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQuick -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtGui -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQml -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtNetwork -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtCore src\QtLocationPlugin\qgeocodingmanagerengineqgc.h -o C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeocodingmanagerengineqgc.cpp
+if errorlevel 1 goto VCEnd
+endlocal</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MOC src\QtLocationPlugin\qgeocodingmanagerengineqgc.h</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">MOC src\QtLocationPlugin\qgeocodingmanagerengineqgc.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeocodingmanagerengineqgc.cpp;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeocodingmanagerengineqgc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="src\QtLocationPlugin\qgeomapreplyqgc.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">src\QtLocationPlugin\qgeomapreplyqgc.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\bin\moc.exe  -DUNICODE -DWIN32 -D_TTY_NOWARN_ -D__STDC_LIMIT_MACROS -DQT_NO_DEBUG -DUNITTEST_BUILD -DQT_NO_DEBUG -DQT_STATICPLUGIN -DQT_PLUGIN -DQT_LOCATION_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_POSITIONING_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -D_MSC_VER=1800 -D_WIN32 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/mkspecs/win32-msvc2013 -IC:/Users/sharon/Documents/GitHub/qgroundcontrol -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQuick -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtGui -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQml -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtNetwork -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtCore src\QtLocationPlugin\qgeomapreplyqgc.h -o C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-release\moc\moc_qgeomapreplyqgc.cpp
+if errorlevel 1 goto VCEnd
+endlocal</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MOC src\QtLocationPlugin\qgeomapreplyqgc.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-release\moc\moc_qgeomapreplyqgc.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">src\QtLocationPlugin\qgeomapreplyqgc.h;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">src\QtLocationPlugin\qgeomapreplyqgc.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\bin\moc.exe  -DUNICODE -DWIN32 -D_TTY_NOWARN_ -D__STDC_LIMIT_MACROS -DUNITTEST_BUILD -DQT_STATICPLUGIN -DQT_PLUGIN -DQT_LOCATION_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_POSITIONING_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -D_MSC_VER=1800 -D_WIN32 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/mkspecs/win32-msvc2013 -IC:/Users/sharon/Documents/GitHub/qgroundcontrol -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQuick -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtGui -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQml -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtNetwork -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtCore src\QtLocationPlugin\qgeomapreplyqgc.h -o C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeomapreplyqgc.cpp
+if errorlevel 1 goto VCEnd
+endlocal</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\bin\moc.exe  -DUNICODE -DWIN32 -D_TTY_NOWARN_ -D__STDC_LIMIT_MACROS -DUNITTEST_BUILD -DQT_STATICPLUGIN -DQT_PLUGIN -DQT_LOCATION_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_POSITIONING_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -D_MSC_VER=1800 -D_WIN32 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/mkspecs/win32-msvc2013 -IC:/Users/sharon/Documents/GitHub/qgroundcontrol -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQuick -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtGui -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQml -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtNetwork -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtCore src\QtLocationPlugin\qgeomapreplyqgc.h -o C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeomapreplyqgc.cpp
+if errorlevel 1 goto VCEnd
+endlocal</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MOC src\QtLocationPlugin\qgeomapreplyqgc.h</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">MOC src\QtLocationPlugin\qgeomapreplyqgc.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeomapreplyqgc.cpp;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeomapreplyqgc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="src\QtLocationPlugin\qgeoserviceproviderpluginqgc.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">src\QtLocationPlugin\qgeoserviceproviderpluginqgc.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\bin\moc.exe  -DUNICODE -DWIN32 -D_TTY_NOWARN_ -D__STDC_LIMIT_MACROS -DQT_NO_DEBUG -DUNITTEST_BUILD -DQT_NO_DEBUG -DQT_STATICPLUGIN -DQT_PLUGIN -DQT_LOCATION_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_POSITIONING_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -D_MSC_VER=1800 -D_WIN32 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/mkspecs/win32-msvc2013 -IC:/Users/sharon/Documents/GitHub/qgroundcontrol -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQuick -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtGui -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQml -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtNetwork -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtCore src\QtLocationPlugin\qgeoserviceproviderpluginqgc.h -o C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-release\moc\moc_qgeoserviceproviderpluginqgc.cpp
+if errorlevel 1 goto VCEnd
+endlocal</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MOC src\QtLocationPlugin\qgeoserviceproviderpluginqgc.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-release\moc\moc_qgeoserviceproviderpluginqgc.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">src\QtLocationPlugin\qgeoserviceproviderpluginqgc.h;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">src\QtLocationPlugin\qgeoserviceproviderpluginqgc.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\bin\moc.exe  -DUNICODE -DWIN32 -D_TTY_NOWARN_ -D__STDC_LIMIT_MACROS -DUNITTEST_BUILD -DQT_STATICPLUGIN -DQT_PLUGIN -DQT_LOCATION_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_POSITIONING_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -D_MSC_VER=1800 -D_WIN32 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/mkspecs/win32-msvc2013 -IC:/Users/sharon/Documents/GitHub/qgroundcontrol -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQuick -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtGui -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQml -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtNetwork -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtCore src\QtLocationPlugin\qgeoserviceproviderpluginqgc.h -o C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeoserviceproviderpluginqgc.cpp
+if errorlevel 1 goto VCEnd
+endlocal</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\bin\moc.exe  -DUNICODE -DWIN32 -D_TTY_NOWARN_ -D__STDC_LIMIT_MACROS -DUNITTEST_BUILD -DQT_STATICPLUGIN -DQT_PLUGIN -DQT_LOCATION_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_POSITIONING_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -D_MSC_VER=1800 -D_WIN32 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/mkspecs/win32-msvc2013 -IC:/Users/sharon/Documents/GitHub/qgroundcontrol -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQuick -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtGui -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQml -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtNetwork -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtCore src\QtLocationPlugin\qgeoserviceproviderpluginqgc.h -o C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeoserviceproviderpluginqgc.cpp
+if errorlevel 1 goto VCEnd
+endlocal</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MOC src\QtLocationPlugin\qgeoserviceproviderpluginqgc.h</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">MOC src\QtLocationPlugin\qgeoserviceproviderpluginqgc.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeoserviceproviderpluginqgc.cpp;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeoserviceproviderpluginqgc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="src\QtLocationPlugin\qgeotiledmappingmanagerengineqgc.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">src\QtLocationPlugin\qgeotiledmappingmanagerengineqgc.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\bin\moc.exe  -DUNICODE -DWIN32 -D_TTY_NOWARN_ -D__STDC_LIMIT_MACROS -DQT_NO_DEBUG -DUNITTEST_BUILD -DQT_NO_DEBUG -DQT_STATICPLUGIN -DQT_PLUGIN -DQT_LOCATION_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_POSITIONING_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -D_MSC_VER=1800 -D_WIN32 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/mkspecs/win32-msvc2013 -IC:/Users/sharon/Documents/GitHub/qgroundcontrol -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQuick -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtGui -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQml -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtNetwork -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtCore src\QtLocationPlugin\qgeotiledmappingmanagerengineqgc.h -o C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-release\moc\moc_qgeotiledmappingmanagerengineqgc.cpp
+if errorlevel 1 goto VCEnd
+endlocal</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MOC src\QtLocationPlugin\qgeotiledmappingmanagerengineqgc.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-release\moc\moc_qgeotiledmappingmanagerengineqgc.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">src\QtLocationPlugin\qgeotiledmappingmanagerengineqgc.h;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">src\QtLocationPlugin\qgeotiledmappingmanagerengineqgc.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\bin\moc.exe  -DUNICODE -DWIN32 -D_TTY_NOWARN_ -D__STDC_LIMIT_MACROS -DUNITTEST_BUILD -DQT_STATICPLUGIN -DQT_PLUGIN -DQT_LOCATION_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_POSITIONING_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -D_MSC_VER=1800 -D_WIN32 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/mkspecs/win32-msvc2013 -IC:/Users/sharon/Documents/GitHub/qgroundcontrol -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQuick -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtGui -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQml -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtNetwork -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtCore src\QtLocationPlugin\qgeotiledmappingmanagerengineqgc.h -o C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeotiledmappingmanagerengineqgc.cpp
+if errorlevel 1 goto VCEnd
+endlocal</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\bin\moc.exe  -DUNICODE -DWIN32 -D_TTY_NOWARN_ -D__STDC_LIMIT_MACROS -DUNITTEST_BUILD -DQT_STATICPLUGIN -DQT_PLUGIN -DQT_LOCATION_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_POSITIONING_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -D_MSC_VER=1800 -D_WIN32 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/mkspecs/win32-msvc2013 -IC:/Users/sharon/Documents/GitHub/qgroundcontrol -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQuick -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtGui -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQml -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtNetwork -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtCore src\QtLocationPlugin\qgeotiledmappingmanagerengineqgc.h -o C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeotiledmappingmanagerengineqgc.cpp
+if errorlevel 1 goto VCEnd
+endlocal</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MOC src\QtLocationPlugin\qgeotiledmappingmanagerengineqgc.h</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">MOC src\QtLocationPlugin\qgeotiledmappingmanagerengineqgc.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeotiledmappingmanagerengineqgc.cpp;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeotiledmappingmanagerengineqgc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="src\QtLocationPlugin\qgeotilefetcherqgc.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">src\QtLocationPlugin\qgeotilefetcherqgc.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\bin\moc.exe  -DUNICODE -DWIN32 -D_TTY_NOWARN_ -D__STDC_LIMIT_MACROS -DQT_NO_DEBUG -DUNITTEST_BUILD -DQT_NO_DEBUG -DQT_STATICPLUGIN -DQT_PLUGIN -DQT_LOCATION_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_POSITIONING_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -D_MSC_VER=1800 -D_WIN32 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/mkspecs/win32-msvc2013 -IC:/Users/sharon/Documents/GitHub/qgroundcontrol -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQuick -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtGui -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQml -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtNetwork -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtCore src\QtLocationPlugin\qgeotilefetcherqgc.h -o C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-release\moc\moc_qgeotilefetcherqgc.cpp
+if errorlevel 1 goto VCEnd
+endlocal</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MOC src\QtLocationPlugin\qgeotilefetcherqgc.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-release\moc\moc_qgeotilefetcherqgc.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">src\QtLocationPlugin\qgeotilefetcherqgc.h;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">src\QtLocationPlugin\qgeotilefetcherqgc.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\bin\moc.exe  -DUNICODE -DWIN32 -D_TTY_NOWARN_ -D__STDC_LIMIT_MACROS -DUNITTEST_BUILD -DQT_STATICPLUGIN -DQT_PLUGIN -DQT_LOCATION_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_POSITIONING_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -D_MSC_VER=1800 -D_WIN32 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/mkspecs/win32-msvc2013 -IC:/Users/sharon/Documents/GitHub/qgroundcontrol -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQuick -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtGui -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQml -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtNetwork -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtCore src\QtLocationPlugin\qgeotilefetcherqgc.h -o C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeotilefetcherqgc.cpp
+if errorlevel 1 goto VCEnd
+endlocal</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+C:\Qt\Qt5.4.0\5.4\msvc2013_opengl\bin\moc.exe  -DUNICODE -DWIN32 -D_TTY_NOWARN_ -D__STDC_LIMIT_MACROS -DUNITTEST_BUILD -DQT_STATICPLUGIN -DQT_PLUGIN -DQT_LOCATION_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_POSITIONING_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -D_MSC_VER=1800 -D_WIN32 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/mkspecs/win32-msvc2013 -IC:/Users/sharon/Documents/GitHub/qgroundcontrol -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtLocation/5.4.0/QtLocation -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQuick -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtGui -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0 -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning/5.4.0/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtPositioning -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtQml -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtNetwork -IC:/Qt/Qt5.4.0/5.4/msvc2013_opengl/include/QtCore src\QtLocationPlugin\qgeotilefetcherqgc.h -o C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeotilefetcherqgc.cpp
+if errorlevel 1 goto VCEnd
+endlocal</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MOC src\QtLocationPlugin\qgeotilefetcherqgc.h</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">MOC src\QtLocationPlugin\qgeotilefetcherqgc.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeotilefetcherqgc.cpp;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">C:\Users\sharon\Documents\GitHub\qgroundcontrol\build-debug\moc\moc_qgeotilefetcherqgc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="build-debug\moc\moc_OpenPilotMaps.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_OpenPilotMaps.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qgeocodereplyqgc.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qgeocodereplyqgc.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qgeocodingmanagerengineqgc.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qgeocodingmanagerengineqgc.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qgeomapreplyqgc.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qgeomapreplyqgc.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qgeoserviceproviderpluginqgc.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qgeoserviceproviderpluginqgc.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qgeotiledmappingmanagerengineqgc.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qgeotiledmappingmanagerengineqgc.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qgeotilefetcherqgc.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qgeotilefetcherqgc.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='slugs2Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

@@ -1,0 +1,2 @@
+MAVLINK_CONF="slugs"
+DEFINES += SLUGS2

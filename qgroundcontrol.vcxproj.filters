@@ -1,0 +1,4400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\AutoPilotPlugins\PX4\AirframeComponent.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AutoPilotPlugins\PX4\AirframeComponentAirframes.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AutoPilotPlugins\PX4\AirframeComponentController.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AutoPilotPlugins\AutoPilotPlugin.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AutoPilotPlugins\AutoPilotPluginManager.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VehicleSetup\Bootloader.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\CameraView.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\linechart\ChartPlot.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CmdLineOptParser.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ViewWidgets\CustomCommandWidget.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ViewWidgets\CustomCommandWidgetController.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FactSystem\Fact.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FactSystem\FactMetaData.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FactSystem\FactControls\FactPanelController.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FactSystem\FactSystem.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FactSystem\FactSystemTestBase.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FactSystem\FactSystemTestGeneric.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FactSystem\FactSystemTestPX4.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FactSystem\FactValidator.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qgcunittest\FileDialogTest.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\uas\FileManager.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qgcunittest\FileManagerTest.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VehicleSetup\FirmwareImage.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VehicleSetup\FirmwareUpgradeController.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\flightdisplay\FlightDisplay.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qgcunittest\FlightGearTest.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AutoPilotPlugins\PX4\FlightModesComponent.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AutoPilotPlugins\PX4\FlightModesComponentController.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GAudioOutput.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AutoPilotPlugins\Generic\GenericAutoPilotPlugin.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AutoPilotPlugins\Generic\GenericParameterFacts.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\HDDisplay.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\HSIDisplay.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\HUD.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\comm\HexSpinBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\linechart\IncrementalPlot.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\JoystickAxis.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\JoystickButton.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\input\JoystickInput.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\JoystickWidget.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\linechart\LinechartPlot.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\linechart\LinechartWidget.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\linechart\Linecharts.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\comm\LinkConfiguration.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\comm\LinkManager.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qgcunittest\LinkManagerTest.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LogCompressor.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\map\MAV2DIcon.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\MAVLinkDecoder.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\comm\MAVLinkProtocol.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\MAVLinkSettingsWidget.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\toolbar\MainToolBar.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\MainWindow.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qgcunittest\MainWindowTest.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QmlControls\MavManager.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qgcunittest\MavlinkLogTest.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qgcunittest\MessageBoxTest.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\comm\MockLink.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\comm\MockLinkFileServer.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\comm\MockLinkMissionItemHandler.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\thirdParty\3DMouse\win\Mouse3DInput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\input\Mouse6dofInput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\thirdParty\3DMouse\win\MouseParameters.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\internals\MouseWheelZoomType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qgcunittest\MultiSignalSpy.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AutoPilotPlugins\PX4\PX4AutoPilotPlugin.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AutoPilotPlugins\PX4\PX4Component.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VehicleSetup\PX4FirmwareUpgradeThread.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AutoPilotPlugins\PX4\PX4ParameterLoader.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qgcunittest\PX4RCCalibrationTest.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QmlControls\ParameterEditorController.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ViewWidgets\ParameterEditorWidget.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FactSystem\ParameterLoader.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AutoPilotPlugins\PX4\PowerComponent.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AutoPilotPlugins\PX4\PowerComponentController.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QGC.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QGCApplication.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\audio\QGCAudioWorker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QGCComboBox.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\QGCCommConfiguration.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\QGCDataPlot2D.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QGCDockWidget.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QGCFileDialog.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\comm\QGCFlightGearLink.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\QGCHilConfiguration.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\QGCHilFlightGearConfiguration.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\QGCHilJSBSimConfiguration.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\QGCHilXPlaneConfiguration.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\comm\QGCJSBSimLink.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\QGCLinkConfiguration.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QGCLoggingCategory.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\QGCMAVLinkInspector.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\QGCMAVLinkLogPlayer.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\mavlink\QGCMAVLinkMessageSender.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\uas\QGCMAVLinkUASFactory.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\QGCMainWindowAPConfigurator.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\mapdisplay\QGCMapDisplay.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\QGCMapRCToParamDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\map\QGCMapTool.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\map\QGCMapToolBar.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\map\QGCMapWidget.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\mission\QGCMissionConditionDelay.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\mission\QGCMissionDoFinishSearch.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\mission\QGCMissionDoJump.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\mission\QGCMissionDoStartSearch.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\mission\QGCMissionNavLand.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\mission\QGCMissionNavLoiterTime.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\mission\QGCMissionNavLoiterTurns.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\mission\QGCMissionNavLoiterUnlim.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\mission\QGCMissionNavReturnToLaunch.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\mission\QGCMissionNavSweep.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\mission\QGCMissionNavTakeoff.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\mission\QGCMissionNavWaypoint.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\mission\QGCMissionOther.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QGCPalette.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\QGCPluginHost.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QGCQmlWidgetHolder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QGCQuickWidget.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\QGCRGBDView.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QGCSingleton.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\QGCTCPLinkConfiguration.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\QGCTabbedInfoView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QGCTemporaryFile.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\QGCUASFileView.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\QGCUASFileViewMulti.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\QGCUDPLinkConfiguration.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\uas\QGCUnconnectedInfoWidget.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\QGCWaypointListMulti.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\comm\QGCXPlaneLink.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QmlControls\QmlTestWidget.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AutoPilotPlugins\PX4\RadioComponent.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AutoPilotPlugins\PX4\RadioComponentController.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AutoPilotPlugins\PX4\SafetyComponent.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QmlControls\ScreenToolsController.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\linechart\ScrollZoomer.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\linechart\Scrollbar.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AutoPilotPlugins\PX4\SensorsComponent.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AutoPilotPlugins\PX4\SensorsComponentController.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\SerialConfigurationWindow.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\comm\SerialLink.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\SettingsDialog.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VehicleSetup\SetupView.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VehicleSetup\SetupViewTest.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\comm\TCPLink.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qgcunittest\TCPLinkTest.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qgcunittest\TCPLoopBackServer.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\uas\UAS.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\uas\UASControlWidget.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\uas\UASInfoWidget.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\uas\UASListWidget.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\uas\UASManager.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\uas\UASMessageHandler.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\uas\UASMessageView.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\uas\UASQuickView.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\uas\UASQuickViewGaugeItem.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\uas\UASQuickViewItem.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\uas\UASQuickViewItemSelect.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\uas\UASQuickViewTextItem.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\UASRawStatusView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\uas\UASView.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\uas\UASWaypointManager.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\comm\UDPLink.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qgcunittest\UnitTest.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VehicleSetup\VehicleComponent.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VideoStreaming\VideoItem.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VideoStreaming\VideoReceiver.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VideoStreaming\VideoSurface.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ViewWidgets\ViewWidgetController.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Waypoint.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\map\Waypoint2DIcon.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\WaypointEditableView.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\WaypointList.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\WaypointViewOnlyView.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\XbeeConfigurationWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\comm\XbeeLink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\core\alllayersoftype.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\core\cache.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\core\cacheitemqueue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\mapwidget\configuration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\internals\core.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\core\diagnostics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\mapwidget\gpsitem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\mapwidget\homeitem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\core\kibertilecache.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\core\languagetype.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\internals\projections\lks94projection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\internals\loadtask.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\mapwidget\mapgraphicitem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\mapwidget\mapripform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\mapwidget\mapripper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\core\memorycache.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\internals\projections\mercatorprojection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\internals\projections\mercatorprojectionyandex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\core\opmaps.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\mapwidget\opmapwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\core\placemark.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\internals\projections\platecarreeprojection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\internals\projections\platecarreeprojectionpergo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\core\point.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\internals\pointlatlng.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\core\providerstrings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\core\pureimage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\core\pureimagecache.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\internals\pureprojection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qextserialport\src\qextserialenumerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qextserialport\src\qextserialenumerator_win.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qextserialport\src\qextserialport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qextserialport\src\qextserialport_win.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_abstract_legend.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_abstract_scale.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_abstract_scale_draw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_abstract_slider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_analog_clock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_arrow_button.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_clipper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_color_map.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_compass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_compass_rose.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_counter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_curve_fitter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_dial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_dial_needle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_dyngrid_layout.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_event_pattern.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_graphic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_interval.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_knob.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_legend.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_legend_data.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_legend_label.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_magnifier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_math.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_null_paintdevice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_painter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_painter_command.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_panner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_picker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_picker_machine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_pixel_matrix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_plot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_plot_axis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_plot_canvas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_plot_curve.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_plot_dict.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_plot_grid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_plot_item.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_plot_layout.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_plot_magnifier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_plot_marker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_plot_panner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_plot_picker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_plot_rasteritem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_plot_scaleitem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_plot_seriesitem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_plot_spectrogram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_plot_svgitem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_plot_xml.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_plot_zoomer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_point_data.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_point_mapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_raster_data.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_round_scale_draw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_scale_div.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_scale_draw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_scale_engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_scale_map.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_scale_widget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_series_data.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_slider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_spline.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_symbol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_text.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_text_engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_text_label.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_thermo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_transform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_wheel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\qwt\qwt_widget_overlay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\core\rawtile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\internals\rectangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\internals\rectlatlng.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\core\size.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\internals\sizelatlng.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\internals\tile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\core\tilecachequeue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\internals\tilematrix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\mapwidget\trailitem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\mapwidget\traillineitem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\mapwidget\uavitem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\core\urlfactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\mapwidget\waypointitem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\opmapcontrol\src\mapwidget\waypointlineitem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="src\AutoPilotPlugins\PX4\AirframeComponent.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="src\AutoPilotPlugins\PX4\AirframeComponentAirframes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="src\AutoPilotPlugins\PX4\AirframeComponentController.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\AutoPilotPlugins\AutoPilotPlugin.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\AutoPilotPlugins\AutoPilotPluginManager.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\VehicleSetup\Bootloader.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="src\comm\CallConv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="src\ui\CameraView.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\linechart\ChartPlot.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="src\CmdLineOptParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="src\ViewWidgets\CustomCommandWidget.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ViewWidgets\CustomCommandWidgetController.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\FactSystem\Fact.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\FactSystem\FactMetaData.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\FactSystem\FactControls\FactPanelController.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\FactSystem\FactSystem.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\FactSystem\FactSystemTestBase.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\FactSystem\FactSystemTestGeneric.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\FactSystem\FactSystemTestPX4.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\FactSystem\FactValidator.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\qgcunittest\FileDialogTest.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\uas\FileManager.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\qgcunittest\FileManagerTest.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\VehicleSetup\FirmwareImage.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\VehicleSetup\FirmwareUpgradeController.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\flightdisplay\FlightDisplay.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\qgcunittest\FlightGearTest.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\AutoPilotPlugins\PX4\FlightModesComponent.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\AutoPilotPlugins\PX4\FlightModesComponentController.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\GAudioOutput.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\AutoPilotPlugins\Generic\GenericAutoPilotPlugin.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\AutoPilotPlugins\Generic\GenericParameterFacts.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\HDDisplay.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\HSIDisplay.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\HUD.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\comm\HexSpinBox.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\thirdParty\3DMouse\win\I3dMouseParams.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="src\ui\linechart\IncrementalPlot.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\JoystickAxis.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\JoystickButton.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\input\JoystickInput.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\JoystickWidget.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\linechart\LinechartPlot.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\linechart\LinechartWidget.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\linechart\Linecharts.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="src\comm\LinkConfiguration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="src\comm\LinkInterface.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\comm\LinkManager.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\qgcunittest\LinkManagerTest.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\LogCompressor.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="src\ui\map\MAV2DIcon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="src\ui\MAVLinkDecoder.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\comm\MAVLinkProtocol.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\MAVLinkSettingsWidget.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="src\MG.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="src\ui\toolbar\MainToolBar.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\MainWindow.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\qgcunittest\MainWindowTest.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\QmlControls\MavManager.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\qgcunittest\MavlinkLogTest.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\qgcunittest\MessageBoxTest.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\comm\MockLink.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\comm\MockLinkFileServer.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\comm\MockLinkMissionItemHandler.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libs\thirdParty\3DMouse\win\Mouse3DInput.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\input\Mouse6dofInput.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\thirdParty\3DMouse\win\MouseParameters.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="src\qgcunittest\MultiSignalSpy.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\AutoPilotPlugins\PX4\PX4AutoPilotPlugin.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\AutoPilotPlugins\PX4\PX4Component.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\VehicleSetup\PX4FirmwareUpgradeThread.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\AutoPilotPlugins\PX4\PX4ParameterLoader.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\qgcunittest\PX4RCCalibrationTest.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\QmlControls\ParameterEditorController.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ViewWidgets\ParameterEditorWidget.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\FactSystem\ParameterLoader.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\AutoPilotPlugins\PX4\PowerComponent.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\AutoPilotPlugins\PX4\PowerComponentController.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\comm\ProtocolInterface.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="src\QGC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="src\QGCApplication.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\audio\QGCAudioWorker.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\QGCComboBox.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCCommConfiguration.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="src\QGCConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="src\ui\QGCDataPlot2D.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\QGCDockWidget.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="src\QGCFileDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="src\comm\QGCFlightGearLink.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="src\QGCGeo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="src\ui\QGCHilConfiguration.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCHilFlightGearConfiguration.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCHilJSBSimConfiguration.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\comm\QGCHilLink.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCHilXPlaneConfiguration.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\comm\QGCJSBSimLink.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCLinkConfiguration.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="src\QGCLoggingCategory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\comm\QGCMAVLink.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="src\ui\QGCMAVLinkInspector.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCMAVLinkLogPlayer.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mavlink\QGCMAVLinkMessageSender.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\uas\QGCMAVLinkUASFactory.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCMainWindowAPConfigurator.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mapdisplay\QGCMapDisplay.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCMapRCToParamDialog.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\map\QGCMapTool.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\map\QGCMapToolBar.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\map\QGCMapWidget.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="src\QGCMessageBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="src\ui\mission\QGCMissionConditionDelay.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionDoFinishSearch.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionDoJump.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionDoStartSearch.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionNavLand.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionNavLoiterTime.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionNavLoiterTurns.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionNavLoiterUnlim.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionNavReturnToLaunch.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionNavSweep.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionNavTakeoff.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionNavWaypoint.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionOther.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\QGCPalette.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCPluginHost.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\QGCQmlWidgetHolder.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\QGCQuickWidget.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCRGBDView.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\QGCSingleton.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCTCPLinkConfiguration.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCTabbedInfoView.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\QGCTemporaryFile.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCUASFileView.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCUASFileViewMulti.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCUDPLinkConfiguration.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\uas\QGCUnconnectedInfoWidget.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCWaypointListMulti.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\comm\QGCXPlaneLink.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\QmlControls\QmlTestWidget.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\AutoPilotPlugins\PX4\RadioComponent.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\AutoPilotPlugins\PX4\RadioComponentController.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\AutoPilotPlugins\PX4\SafetyComponent.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\QmlControls\ScreenToolsController.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\linechart\ScrollZoomer.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\linechart\Scrollbar.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\AutoPilotPlugins\PX4\SensorsComponent.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\AutoPilotPlugins\PX4\SensorsComponentController.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\SerialConfigurationWindow.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\comm\SerialLink.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="src\SerialPortIds.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="src\ui\SettingsDialog.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\VehicleSetup\SetupView.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\VehicleSetup\SetupViewTest.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\comm\TCPLink.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\qgcunittest\TCPLinkTest.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\qgcunittest\TCPLoopBackServer.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\uas\UAS.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\uas\UASControlWidget.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\uas\UASInfoWidget.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\uas\UASInterface.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\uas\UASListWidget.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\uas\UASManager.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\uas\UASManagerInterface.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\uas\UASMessageHandler.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\uas\UASMessageView.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\uas\UASQuickView.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="src\ui\uas\UASQuickViewGaugeItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="src\ui\uas\UASQuickViewItem.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\uas\UASQuickViewItemSelect.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="src\ui\uas\UASQuickViewTextItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="src\ui\UASRawStatusView.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\uas\UASView.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\uas\UASWaypointManager.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\comm\UDPLink.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\qgcunittest\UnitTest.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\VehicleSetup\VehicleComponent.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\VideoStreaming\VideoItem.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\VideoStreaming\VideoReceiver.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\VideoStreaming\VideoSurface.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="src\VideoStreaming\VideoSurface_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="src\ViewWidgets\ViewWidgetController.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\Waypoint.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="src\ui\map\Waypoint2DIcon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="src\ui\WaypointEditableView.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\WaypointList.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\WaypointViewOnlyView.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\XbeeConfigurationWindow.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\comm\XbeeLink.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\comm\XbeeLinkInterface.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libs\opmapcontrol\src\core\accessmode.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\opmapcontrol\src\core\alllayersoftype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\core\cache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\core\cacheitemqueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\mapwidget\configuration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\internals\copyrightstrings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\opmapcontrol\src\internals\core.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\opmapcontrol\src\core\debugheader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\internals\debugheader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\core\diagnostics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\opmapcontrol\src\core\geodecoderstatus.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libs\opmapcontrol\src\mapwidget\gpsitem.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libs\opmapcontrol\src\mapwidget\homeitem.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\opmapcontrol\src\core\kibertilecache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\opmapcontrol\src\core\languagetype.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\opmapcontrol\src\internals\projections\lks94projection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\internals\loadtask.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\opmapcontrol\src\mapwidget\mapgraphicitem.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libs\opmapcontrol\src\mapwidget\mapripform.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libs\opmapcontrol\src\mapwidget\mapripper.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libs\opmapcontrol\src\core\maptype.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\opmapcontrol\src\core\memorycache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\internals\projections\mercatorprojection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\internals\projections\mercatorprojectionyandex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\opmapcontrol\src\internals\mousewheelzoomtype.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\opmapcontrol\opmapcontrol.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\core\opmaps.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\opmapcontrol\src\mapwidget\opmapwidget.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\opmapcontrol\src\core\placemark.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\internals\projections\platecarreeprojection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\internals\projections\platecarreeprojectionpergo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\core\point.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\internals\pointlatlng.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\core\providerstrings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\core\pureimage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\core\pureimagecache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\internals\pureprojection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\qextserialport\src\qextserialenumerator.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\qextserialport\src\qextserialenumerator_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\qextserialport\src\qextserialport.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\qextserialport\src\qextserialport_global.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qextserialport\src\qextserialport_p.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\qwt\qwt_abstract_legend.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libs\qwt\qwt_abstract_scale.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\qwt\qwt_abstract_scale_draw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\qwt\qwt_abstract_slider.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libs\qwt\qwt_analog_clock.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\qwt\qwt_arrow_button.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_clipper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_color_map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\qwt\qwt_compass.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\qwt\qwt_compass_rose.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\qwt\qwt_counter.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\qwt\qwt_curve_fitter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\qwt\qwt_dial.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\qwt\qwt_dial_needle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\qwt\qwt_dyngrid_layout.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\qwt\qwt_event_pattern.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_global.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_graphic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_interval.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\qwt\qwt_knob.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libs\qwt\qwt_legend.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\qwt\qwt_legend_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\qwt\qwt_legend_label.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libs\qwt\qwt_magnifier.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\qwt\qwt_math.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_null_paintdevice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_painter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_painter_command.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\qwt\qwt_panner.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libs\qwt\qwt_picker.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\qwt\qwt_picker_machine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_pixel_matrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\qwt\qwt_plot.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libs\qwt\qwt_plot_canvas.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\qwt\qwt_plot_curve.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_plot_dict.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_plot_grid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_plot_item.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_plot_layout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\qwt\qwt_plot_magnifier.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\qwt\qwt_plot_marker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\qwt\qwt_plot_panner.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libs\qwt\qwt_plot_picker.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\qwt\qwt_plot_rasteritem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_plot_scaleitem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_plot_seriesitem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_plot_spectrogram.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_plot_svgitem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\qwt\qwt_plot_zoomer.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\qwt\qwt_point_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_point_mapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_raster_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_round_scale_draw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_scale_div.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_scale_draw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_scale_engine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_scale_map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\qwt\qwt_scale_widget.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\qwt\qwt_series_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\qwt\qwt_slider.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\qwt\qwt_spline.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_symbol.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_text.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\qwt\qwt_text_engine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\qwt\qwt_text_label.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libs\qwt\qwt_thermo.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\qwt\qwt_transform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\qwt\qwt_wheel.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\qwt\qwt_widget_overlay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\core\rawtile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\internals\rectangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\internals\rectlatlng.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\core\size.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\internals\sizelatlng.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\opmapcontrol\src\internals\tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\opmapcontrol\src\core\tilecachequeue.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="libs\opmapcontrol\src\internals\tilematrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <CustomBuild Include="libs\opmapcontrol\src\mapwidget\trailitem.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libs\opmapcontrol\src\mapwidget\traillineitem.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libs\opmapcontrol\src\mapwidget\uavitem.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libs\opmapcontrol\src\mapwidget\uavmapfollowtype.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libs\opmapcontrol\src\mapwidget\uavtrailtype.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libs\opmapcontrol\src\core\urlfactory.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libs\opmapcontrol\src\mapwidget\waypointitem.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libs\opmapcontrol\src\mapwidget\waypointlineitem.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="build-debug\moc\moc_AirframeComponent.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_AirframeComponent.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_AirframeComponentController.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_AirframeComponentController.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_AutoPilotPlugin.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_AutoPilotPlugin.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_AutoPilotPluginManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_AutoPilotPluginManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_Bootloader.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_Bootloader.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_CameraView.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_CameraView.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_ChartPlot.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_ChartPlot.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_CustomCommandWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_CustomCommandWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_CustomCommandWidgetController.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_CustomCommandWidgetController.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_Fact.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_Fact.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_FactMetaData.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_FactMetaData.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_FactPanelController.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_FactPanelController.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_FactSystem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_FactSystem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_FactSystemTestBase.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_FactSystemTestBase.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_FactSystemTestGeneric.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_FactSystemTestGeneric.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_FactSystemTestPX4.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_FactSystemTestPX4.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_FactValidator.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_FactValidator.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_FileDialogTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_FileDialogTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_FileManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_FileManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_FileManagerTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_FileManagerTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_FirmwareImage.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_FirmwareImage.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_FirmwareUpgradeController.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_FirmwareUpgradeController.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_FlightDisplay.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_FlightDisplay.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_FlightGearTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_FlightGearTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_FlightModesComponent.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_FlightModesComponent.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_FlightModesComponentController.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_FlightModesComponentController.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_GAudioOutput.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_GAudioOutput.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_GenericAutoPilotPlugin.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_GenericAutoPilotPlugin.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_GenericParameterFacts.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_GenericParameterFacts.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_HDDisplay.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_HDDisplay.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_HSIDisplay.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_HSIDisplay.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_HUD.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_HUD.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_HexSpinBox.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_HexSpinBox.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_IncrementalPlot.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_IncrementalPlot.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_JoystickAxis.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_JoystickAxis.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_JoystickButton.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_JoystickButton.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_JoystickInput.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_JoystickInput.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_JoystickWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_JoystickWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_LinechartPlot.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_LinechartPlot.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_LinechartWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_LinechartWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_Linecharts.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_Linecharts.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_LinkInterface.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_LinkInterface.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_LinkManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_LinkManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_LinkManagerTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_LinkManagerTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_LogCompressor.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_LogCompressor.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_MAVLinkDecoder.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_MAVLinkDecoder.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_MAVLinkProtocol.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_MAVLinkProtocol.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_MAVLinkSettingsWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_MAVLinkSettingsWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_MainToolBar.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_MainToolBar.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_MainWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_MainWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_MainWindowTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_MainWindowTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_MavManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_MavManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_MavlinkLogTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_MavlinkLogTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_MessageBoxTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_MessageBoxTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_MockLink.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_MockLink.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_MockLinkFileServer.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_MockLinkFileServer.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_MockLinkMissionItemHandler.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_MockLinkMissionItemHandler.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_Mouse3DInput.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_Mouse3DInput.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_Mouse6dofInput.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_Mouse6dofInput.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_MultiSignalSpy.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_MultiSignalSpy.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_PX4AutoPilotPlugin.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_PX4AutoPilotPlugin.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_PX4Component.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_PX4Component.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_PX4FirmwareUpgradeThread.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_PX4FirmwareUpgradeThread.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_PX4ParameterLoader.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_PX4ParameterLoader.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_PX4RCCalibrationTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_PX4RCCalibrationTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_ParameterEditorController.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_ParameterEditorController.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_ParameterEditorWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_ParameterEditorWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_ParameterLoader.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_ParameterLoader.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_PowerComponent.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_PowerComponent.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_PowerComponentController.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_PowerComponentController.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_ProtocolInterface.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_ProtocolInterface.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCApplication.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCApplication.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCAudioWorker.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCAudioWorker.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCComboBox.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCComboBox.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCCommConfiguration.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCCommConfiguration.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCDataPlot2D.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCDataPlot2D.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCDockWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCDockWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCFlightGearLink.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCFlightGearLink.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCHilConfiguration.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCHilConfiguration.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCHilFlightGearConfiguration.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCHilFlightGearConfiguration.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCHilJSBSimConfiguration.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCHilJSBSimConfiguration.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCHilLink.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCHilLink.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCHilXPlaneConfiguration.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCHilXPlaneConfiguration.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCJSBSimLink.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCJSBSimLink.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCLinkConfiguration.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCLinkConfiguration.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCMAVLinkInspector.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCMAVLinkInspector.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCMAVLinkLogPlayer.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCMAVLinkLogPlayer.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCMAVLinkMessageSender.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCMAVLinkMessageSender.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCMAVLinkUASFactory.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCMAVLinkUASFactory.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCMainWindowAPConfigurator.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCMainWindowAPConfigurator.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCMapDisplay.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCMapDisplay.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCMapRCToParamDialog.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCMapRCToParamDialog.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCMapTool.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCMapTool.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCMapToolBar.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCMapToolBar.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCMapWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCMapWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCMissionConditionDelay.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCMissionConditionDelay.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCMissionDoFinishSearch.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCMissionDoFinishSearch.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCMissionDoJump.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCMissionDoJump.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCMissionDoStartSearch.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCMissionDoStartSearch.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCMissionNavLand.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCMissionNavLand.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCMissionNavLoiterTime.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCMissionNavLoiterTime.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCMissionNavLoiterTurns.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCMissionNavLoiterTurns.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCMissionNavLoiterUnlim.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCMissionNavLoiterUnlim.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCMissionNavReturnToLaunch.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCMissionNavReturnToLaunch.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCMissionNavSweep.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCMissionNavSweep.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCMissionNavTakeoff.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCMissionNavTakeoff.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCMissionNavWaypoint.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCMissionNavWaypoint.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCMissionOther.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCMissionOther.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCPalette.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCPalette.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCPluginHost.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCPluginHost.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCQmlWidgetHolder.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCQmlWidgetHolder.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCQuickWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCQuickWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCRGBDView.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCRGBDView.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCSingleton.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCSingleton.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCTCPLinkConfiguration.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCTCPLinkConfiguration.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCTabbedInfoView.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCTabbedInfoView.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCTemporaryFile.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCTemporaryFile.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCUASFileView.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCUASFileView.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCUASFileViewMulti.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCUASFileViewMulti.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCUDPLinkConfiguration.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCUDPLinkConfiguration.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCUnconnectedInfoWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCUnconnectedInfoWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCWaypointListMulti.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCWaypointListMulti.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QGCXPlaneLink.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QGCXPlaneLink.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_QmlTestWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_QmlTestWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_RadioComponent.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_RadioComponent.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_RadioComponentController.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_RadioComponentController.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_SafetyComponent.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_SafetyComponent.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_ScreenToolsController.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_ScreenToolsController.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_ScrollZoomer.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_ScrollZoomer.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_Scrollbar.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_Scrollbar.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_SensorsComponent.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_SensorsComponent.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_SensorsComponentController.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_SensorsComponentController.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_SerialConfigurationWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_SerialConfigurationWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_SerialLink.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_SerialLink.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_SettingsDialog.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_SettingsDialog.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_SetupView.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_SetupView.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_SetupViewTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_SetupViewTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_TCPLink.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_TCPLink.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_TCPLinkTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_TCPLinkTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_TCPLoopBackServer.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_TCPLoopBackServer.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_UAS.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_UAS.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_UASControlWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_UASControlWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_UASInfoWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_UASInfoWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_UASInterface.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_UASInterface.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_UASListWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_UASListWidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_UASManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_UASManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_UASManagerInterface.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_UASManagerInterface.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_UASMessageHandler.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_UASMessageHandler.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_UASMessageView.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_UASMessageView.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_UASQuickView.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_UASQuickView.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_UASQuickViewItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_UASQuickViewItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_UASQuickViewItemSelect.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_UASQuickViewItemSelect.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_UASRawStatusView.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_UASRawStatusView.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_UASView.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_UASView.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_UASWaypointManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_UASWaypointManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_UDPLink.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_UDPLink.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_UnitTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_UnitTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_VehicleComponent.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_VehicleComponent.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_VideoItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_VideoItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_VideoReceiver.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_VideoReceiver.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_VideoSurface.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_VideoSurface.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_ViewWidgetController.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_ViewWidgetController.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_Waypoint.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_Waypoint.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_WaypointEditableView.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_WaypointEditableView.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_WaypointList.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_WaypointList.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_WaypointViewOnlyView.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_WaypointViewOnlyView.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_XbeeConfigurationWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_XbeeConfigurationWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_XbeeLink.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_XbeeLink.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_XbeeLinkInterface.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_XbeeLinkInterface.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_accessmode.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_accessmode.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_core.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_core.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_geodecoderstatus.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_geodecoderstatus.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_gpsitem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_gpsitem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_homeitem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_homeitem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_languagetype.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_languagetype.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_mapgraphicitem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_mapgraphicitem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_mapripform.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_mapripform.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_mapripper.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_mapripper.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_maptype.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_maptype.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_mousewheelzoomtype.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_mousewheelzoomtype.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_opmapwidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_opmapwidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_abstract_legend.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_abstract_legend.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_abstract_scale.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_abstract_scale.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_abstract_slider.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_abstract_slider.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_analog_clock.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_analog_clock.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_compass.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_compass.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_counter.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_counter.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_dial.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_dial.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_dyngrid_layout.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_dyngrid_layout.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_knob.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_knob.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_legend.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_legend.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_legend_label.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_legend_label.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_magnifier.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_magnifier.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_panner.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_panner.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_picker.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_picker.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_plot.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_plot.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_plot_canvas.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_plot_canvas.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_plot_magnifier.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_plot_magnifier.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_plot_panner.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_plot_panner.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_plot_picker.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_plot_picker.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_plot_zoomer.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_plot_zoomer.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_scale_widget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_scale_widget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_slider.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_slider.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_text_label.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_text_label.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_thermo.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_thermo.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_qwt_wheel.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_qwt_wheel.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_tilecachequeue.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_tilecachequeue.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_trailitem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_trailitem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_traillineitem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_traillineitem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_uavitem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_uavitem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_uavmapfollowtype.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_uavmapfollowtype.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_uavtrailtype.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_uavtrailtype.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_urlfactory.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_urlfactory.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_waypointitem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_waypointitem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\moc\moc_waypointlineitem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\moc\moc_waypointlineitem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\rcc\qrc_mapresources.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\rcc\qrc_mapresources.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-debug\rcc\qrc_qgroundcontrol.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="build-release\rcc\qrc_qgroundcontrol.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClInclude Include="build-debug\ui\ui_HDDisplay.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_HDDisplay.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_JoystickAxis.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_JoystickAxis.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_JoystickButton.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_JoystickButton.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_JoystickWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_JoystickWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_Linechart.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_Linechart.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_MAVLinkSettingsWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_MAVLinkSettingsWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_MainWindow.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_MainWindow.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCCommConfiguration.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCCommConfiguration.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCDataPlot2D.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCDataPlot2D.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCHilConfiguration.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCHilConfiguration.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCHilFlightGearConfiguration.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCHilFlightGearConfiguration.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCHilJSBSimConfiguration.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCHilJSBSimConfiguration.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCHilXPlaneConfiguration.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCHilXPlaneConfiguration.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCLinkConfiguration.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCLinkConfiguration.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCMAVLinkInspector.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCMAVLinkInspector.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCMAVLinkLogPlayer.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCMAVLinkLogPlayer.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCMAVLinkMessageSender.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCMAVLinkMessageSender.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCMapRCToParamDialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCMapRCToParamDialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCMapTool.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCMapTool.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCMapToolBar.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCMapToolBar.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCMissionConditionDelay.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCMissionConditionDelay.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCMissionDoFinishSearch.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCMissionDoFinishSearch.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCMissionDoJump.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCMissionDoJump.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCMissionDoStartSearch.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCMissionDoStartSearch.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCMissionNavLand.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCMissionNavLand.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCMissionNavLoiterTime.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCMissionNavLoiterTime.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCMissionNavLoiterTurns.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCMissionNavLoiterTurns.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCMissionNavLoiterUnlim.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCMissionNavLoiterUnlim.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCMissionNavReturnToLaunch.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCMissionNavReturnToLaunch.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCMissionNavSweep.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCMissionNavSweep.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCMissionNavTakeoff.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCMissionNavTakeoff.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCMissionNavWaypoint.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCMissionNavWaypoint.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCMissionOther.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCMissionOther.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCPluginHost.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCPluginHost.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCQmlWidgetHolder.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCQmlWidgetHolder.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCTCPLinkConfiguration.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCTCPLinkConfiguration.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCTabbedInfoView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCTabbedInfoView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCUASFileView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCUASFileView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCUASFileViewMulti.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCUASFileViewMulti.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCUDPLinkConfiguration.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCUDPLinkConfiguration.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCUnconnectedInfoWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCUnconnectedInfoWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_QGCWaypointListMulti.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_QGCWaypointListMulti.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_SerialSettings.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_SerialSettings.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_SettingsDialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_SettingsDialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_UASControl.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_UASControl.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_UASInfo.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_UASInfo.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_UASList.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_UASList.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_UASMessageView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_UASMessageView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_UASQuickView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_UASQuickView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_UASQuickViewItemSelect.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_UASQuickViewItemSelect.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_UASRawStatusView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_UASRawStatusView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_UASView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_UASView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_WaypointEditableView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_WaypointEditableView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_WaypointList.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_WaypointList.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_WaypointViewOnlyView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_WaypointViewOnlyView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-debug\ui\ui_mapripform.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="build-release\ui\ui_mapripform.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="src\ui\HDDisplay.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\JoystickAxis.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\JoystickButton.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\JoystickWidget.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\Linechart.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\MAVLinkSettingsWidget.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\MainWindow.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCCommConfiguration.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCDataPlot2D.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCHilConfiguration.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCHilFlightGearConfiguration.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCHilJSBSimConfiguration.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCHilXPlaneConfiguration.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCLinkConfiguration.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCMAVLinkInspector.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCMAVLinkLogPlayer.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mavlink\QGCMAVLinkMessageSender.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCMapRCToParamDialog.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\map\QGCMapTool.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\map\QGCMapToolBar.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionConditionDelay.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionDoFinishSearch.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionDoJump.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionDoStartSearch.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionNavLand.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionNavLoiterTime.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionNavLoiterTurns.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionNavLoiterUnlim.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionNavReturnToLaunch.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionNavSweep.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionNavTakeoff.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionNavWaypoint.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\mission\QGCMissionOther.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCPluginHost.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\QGCQmlWidgetHolder.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCTCPLinkConfiguration.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCTabbedInfoView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCUASFileView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCUASFileViewMulti.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCUDPLinkConfiguration.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\uas\QGCUnconnectedInfoWidget.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\QGCWaypointListMulti.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\SerialSettings.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\SettingsDialog.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\UASControl.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\UASInfo.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\UASList.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\uas\UASMessageView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\uas\UASQuickView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\uas\UASQuickViewItemSelect.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\UASRawStatusView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\UASView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\WaypointEditableView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\WaypointList.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\ui\WaypointViewOnlyView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libs\opmapcontrol\src\mapwidget\mapripform.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\firmware\3drradio.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\AirframeComponent.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\AirframeComponentIcon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\AirframeComponentSummary.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\AirframeFlyingWing.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\AirframeHexaRotorPlus.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\AirframeHexaRotorX.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\AirframeOctoRotorPlus.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\AirframeOctoRotorX.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\AirframeQuadRotorH.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\AirframeQuadRotorPlus.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\AirframeQuadRotorX.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\AirframeSimulation.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\AirframeStandardPlane.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\Antenna_RC.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\Antenna_T.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\Battery_0.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\Battery_100.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\Battery_20.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\Battery_40.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\Battery_60.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\Battery_80.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\BottomArrow.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\CogWheels.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ViewWidgets\CustomCommandWidget.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\DownArrow.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="libs\opmapcontrol\src\mapwidget\images\EasystarBlue.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\FactSystem\FactControls\FactCheckBox.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\FactSystem\FactControls\FactComboBox.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\FactSystem\FactControls\FactLabel.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\FactSystem\FactControls\FactPanel.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\FactSystem\FactSystemTest.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\FactSystem\FactControls\FactTextField.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\VehicleSetup\FirmwareUpgrade.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\VehicleSetup\FirmwareUpgradeIcon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\flightdisplay\FlightDisplay.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\FlightModesComponent.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\FlightModesComponentIcon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\FlightModesComponentSummary.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\Gps.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\IndicatorButton.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\JumpArrow.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\Kill.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\Land.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\Launch.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\LeftArrow.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\toolbar\MainToolBar.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\mapdisplay\MapDisplay.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\Megaphone.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\MinusSign.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\comm\MockLink.params">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\ModeSwitchDisplay.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\ParameterEditor.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\ParameterEditorDialog.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ViewWidgets\ParameterEditorWidget.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\ParameterFactMetaData.xml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\Pause.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\Play.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\PlusSign.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\PowerComponent.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\PowerComponentBattery_01cell.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\PowerComponentBattery_02cell.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\PowerComponentBattery_03cell.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\PowerComponentBattery_04cell.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\PowerComponentBattery_05cell.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\PowerComponentBattery_06cell.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\PowerComponentIcon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\PowerComponentSummary.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\QGCAltitudeWidget.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\QGCArtificialHorizon.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\QGCAttitudeInstrument.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\QGCAttitudeWidget.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\QGCButton.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\QGCCheckBox.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\QGCColoredImage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\QGCComboBox.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\QGCCompass.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\QGCCompassInstrument.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\QGCCurrentAltitude.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\QGCCurrentSpeed.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\QGCHudMessage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\QGCLabel.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\QGCMapBackground.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\QGCMapToolButton.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\QGCMovableItem.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\QGCPitchWidget.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\QGCRadioButton.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\QGCSlider.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\QGCSpeedWidget.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\QGCTextField.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\QGCToolBarButton.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\QGCVideoBackground.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\QGCView.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\QGCViewDialog.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\QGCViewMessage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\QGCViewPanel.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\QGCWaypoint.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\QGCWaypointEditor.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\QGroundControl.Controls.qmldir">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\QGroundControl.ScreenTools.qmldir">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\QGroundControlConnect.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\QmlTest.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\RadioComponent.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\RadioComponentIcon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\RadioComponentSummary.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\RightArrow.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\SafetyComponent.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\SafetyComponentArrowDown.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\SafetyComponentHome.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\SafetyComponentIcon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\SafetyComponentPlane.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\SafetyComponentSummary.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\SafetyComponentTree.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\ScreenTools.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\ScreenToolsFontQuery.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\SensorsComponent.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\SensorsComponentIcon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\SensorsComponentSummary.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\SensorsComponentSummaryFixedWing.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\VehicleSetup\SetupParameterEditor.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\VehicleSetup\SetupView.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\VehicleSetup\SetupViewButtonsConnected.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\VehicleSetup\SetupViewButtonsDisconnected.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\Shutdown.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\SplashScreen.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\Stop.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\SubMenuButton.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\SystemLockScreen.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\UpArrow.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\VehicleDown.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\VehicleDownRotate.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\VehicleLeft.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\VehicleLeftRotate.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\VehicleNoseDown.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\VehicleNoseDownRotate.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\VehicleRight.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\VehicleRotationCal.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\VehicleSetup\VehicleSummary.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\VehicleSetup\VehicleSummaryIcon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\VehicleSummaryRow.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\VehicleTailDown.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\AutoPilotPlugins\PX4\Images\VehicleUpsideDown.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\styles\Vera.ttf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ViewWidgets\ViewWidget.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\Yield.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\accel_back.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\accel_down.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\accel_front.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\accel_left.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\accel_right.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\accel_up.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="libs\opmapcontrol\src\mapwidget\images\airplane.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="libs\opmapcontrol\src\mapwidget\images\airplanepip.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\mavs\airship.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\audio\alert.wav">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\mavs\antenna-tracker.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\firmware\apm.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\QmlControls\arrow-down.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\attitudeDial.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\attitudeInstrument.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\attitudePointer.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="libs\opmapcontrol\src\mapwidget\images\bigMarkerGreen.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\buttonHome.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\buttonLeft.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\buttonMore.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\buttonRight.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\mavs\coaxial.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="libs\opmapcontrol\src\mapwidget\images\compas.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\compass.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\compassInstrumentAirplane.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\compassInstrumentDial.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\compassNeedle.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\crossHair.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="libs\opmapcontrol\src\mapwidget\images\dragons1.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="libs\opmapcontrol\src\mapwidget\images\dragons2.jpeg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\mavs\fixed-wing.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\mavs\flapping-wing.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\mavs\free-balloon.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\mavs\generic.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\mapproviders\google.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\mapproviders\googleearth.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\mavs\ground-rover.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\mavs\groundstation.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\mavs\helicopter.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\mavs\hexarotor.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="libs\opmapcontrol\src\mapwidget\images\home.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="libs\opmapcontrol\src\mapwidget\images\home.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="libs\opmapcontrol\src\mapwidget\images\home2.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\mavs\kite.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="libs\opmapcontrol\src\mapwidget\images\mapquad.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <CustomBuild Include="libs\opmapcontrol\src\mapwidget\mapresources.qrc">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <None Include="libs\opmapcontrol\src\mapwidget\images\marker.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\mavs\octorotor.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\mapproviders\openstreetmap.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\firmware\px4.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <CustomBuild Include="qgroundcontrol.qrc">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <None Include="src\FactSystem\FactControls\qmldir">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\qmldir">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\mavs\quadrotor.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\mode1\radioCenter.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\mode2\radioCenter.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\mode1\radioHome.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\mode2\radioHome.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\mode1\radioPitchDown.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\mode2\radioPitchDown.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\mode1\radioPitchUp.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\mode2\radioPitchUp.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\mode1\radioRollLeft.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\mode2\radioRollLeft.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\mode1\radioRollRight.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\mode2\radioRollRight.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\mode1\radioSwitchMinMax.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\mode2\radioSwitchMinMax.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\mode1\radioThrottleDown.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\mode2\radioThrottleDown.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\mode1\radioThrottleUp.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\mode2\radioThrottleUp.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\mode1\radioYawLeft.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\mode2\radioYawLeft.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\mode1\radioYawRight.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\calibration\mode2\radioYawRight.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\mavs\rocket.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\rollDialWhite.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\rollPointerWhite.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\scale.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\ui\qmlcommon\scale_end.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\styles\style-dark.css">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\styles\style-light.css">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\mavs\submarine.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\mavs\surface-boat.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="src\test.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\mavs\tricopter.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\mavs\unknown.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\mapproviders\yahoo.png">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C:\Users\sharon\Documents\GitHub\qgroundcontrol\qgroundcontrol.rc" />
+  </ItemGroup>
+</Project>

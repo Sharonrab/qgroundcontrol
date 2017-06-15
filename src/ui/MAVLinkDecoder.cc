@@ -27,6 +27,7 @@ MAVLinkDecoder::MAVLinkDecoder(MAVLinkProtocol* protocol, QObject *parent) :
     // Allow system status
 //    messageFilter.insert(MAVLINK_MSG_ID_HEARTBEAT, false);
 //    messageFilter.insert(MAVLINK_MSG_ID_SYS_STATUS, false);
+#ifndef SLUGS2
     messageFilter.insert(MAVLINK_MSG_ID_STATUSTEXT, false);
     messageFilter.insert(MAVLINK_MSG_ID_COMMAND_LONG, false);
     messageFilter.insert(MAVLINK_MSG_ID_COMMAND_ACK, false);
@@ -38,6 +39,7 @@ MAVLinkDecoder::MAVLinkDecoder(MAVLinkProtocol* protocol, QObject *parent) :
     messageFilter.insert(MAVLINK_MSG_ID_DATA_STREAM, false);
     messageFilter.insert(MAVLINK_MSG_ID_GPS_STATUS, false);
     messageFilter.insert(MAVLINK_MSG_ID_RC_CHANNELS_RAW, false);
+#endif
     #ifdef MAVLINK_MSG_ID_ENCAPSULATED_DATA
     messageFilter.insert(MAVLINK_MSG_ID_ENCAPSULATED_DATA, false);
     #endif
@@ -215,7 +217,8 @@ void MAVLinkDecoder::emitFieldValue(mavlink_message_t* msg, int fieldid, quint64
 
     // Add field tree widget item
     uint8_t msgid = msg->msgid;
-    if (messageFilter.contains(msgid)) return;
+    if (messageFilter.contains(msgid)) 
+		return;
     QString fieldName(messageInfo[msgid].fields[fieldid].name);
     QString fieldType;
     uint8_t* m = ((uint8_t*)(receivedMessages+msgid))+8;

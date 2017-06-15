@@ -985,6 +985,38 @@ void UAS::receiveMessage(LinkInterface* link, mavlink_message_t message)
         }
             break;
 
+#ifdef SLUGS2
+		case MAVLINK_MSG_ID_RC_CHANNELS_RAW:
+		{
+			mavlink_rc_channels_raw_t channels;
+			mavlink_msg_rc_channels_raw_decode(&message, &channels);
+
+			emit remoteControlRSSIChanged(channels.rssi);
+
+			if (channels.chan1_raw != UINT16_MAX && channels.port > 0)
+				emit remoteControlChannelRawChanged(0, channels.chan1_raw);
+			if (channels.chan2_raw != UINT16_MAX && channels.port > 1)
+				emit remoteControlChannelRawChanged(1, channels.chan2_raw);
+			if (channels.chan3_raw != UINT16_MAX && channels.port > 2)
+				emit remoteControlChannelRawChanged(2, channels.chan3_raw);
+			if (channels.chan4_raw != UINT16_MAX && channels.port > 3)
+				emit remoteControlChannelRawChanged(3, channels.chan4_raw);
+			if (channels.chan5_raw != UINT16_MAX && channels.port > 4)
+				emit remoteControlChannelRawChanged(4, channels.chan5_raw);
+			if (channels.chan6_raw != UINT16_MAX && channels.port > 5)
+				emit remoteControlChannelRawChanged(5, channels.chan6_raw);
+			if (channels.chan7_raw != UINT16_MAX && channels.port > 6)
+				emit remoteControlChannelRawChanged(6, channels.chan7_raw);
+			if (channels.chan8_raw != UINT16_MAX && channels.port > 7)
+				emit remoteControlChannelRawChanged(7, channels.chan8_raw);
+			
+
+		}
+		break;
+
+#endif
+
+
         // TODO: (gg 20150420) PX4 Firmware does not seem to send this message. Don't know what to do about it.
         case MAVLINK_MSG_ID_RC_CHANNELS_SCALED:
         {
@@ -1262,7 +1294,7 @@ void UAS::receiveMessage(LinkInterface* link, mavlink_message_t message)
             }
         }
             break;
-#if 0
+#if SLUGS2
         case MAVLINK_MSG_ID_SERVO_OUTPUT_RAW:
         {
             mavlink_servo_output_raw_t raw;
@@ -1343,6 +1375,19 @@ void UAS::receiveMessage(LinkInterface* link, mavlink_message_t message)
             emit NavigationControllerDataChanged(this, p.nav_roll, p.nav_pitch, p.nav_bearing, p.target_bearing, p.wp_dist);
         }
             break;
+
+#ifdef SLUGS2
+		case MAVLINK_MSG_ID_SLUGS_NAVIGATION:
+		{
+			mavlink_slugs_navigation_t p;
+			mavlink_msg_slugs_navigation_decode(&message, &p);
+			setDistToWaypoint(p.dist2Go);
+			//setBearingToWaypoint(p.);
+			emit navigationControllerErrorsChanged(this, 0, 0, 0);
+			emit NavigationControllerDataChanged(this, p.phi_c, p.theta_c, 0, 0, p.dist2Go);
+		}
+		break;
+#endif
         // Messages to ignore
         case MAVLINK_MSG_ID_RAW_IMU:
         case MAVLINK_MSG_ID_SCALED_IMU:

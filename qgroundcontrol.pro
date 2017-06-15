@@ -21,6 +21,8 @@ TEMPLATE =  subdirs
 CONFIG  +=  ordered
 SUBDIRS  =  ./QGCLocationPlugin.pro
 SUBDIRS +=  ./QGCApplication.pro
+MAVLINK_CONF="slugs"
+DEFINES += SLUGS2
 
 QGCApplication.depends = QGCLocationPlugin
 
