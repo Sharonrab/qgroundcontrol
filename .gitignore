@@ -4,7 +4,6 @@ libs/lib/Frameworks/GStreamer.framework
 CMakeFiles
 *Makefile*
 tags
-build*/
 Info.plist
 obj
 .DS_Store
@@ -53,8 +52,6 @@ GeneratedFiles/
 .settings/
 
 # Generated files
-moc_*
-ui_*
 *.o
 *.a
 *.so*
