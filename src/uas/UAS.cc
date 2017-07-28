@@ -149,6 +149,9 @@ UAS::UAS(MAVLinkProtocol* protocol, int id) : UASInterface(),
 
     // The protected members.
     connectionLost(false),
+#ifdef SLUGS2
+	GPS_connectionLost(false),
+#endif
     lastVoltageWarning(0),
     lastNonNullTime(0),
     onboardTimeOffsetInvalidCount(0),
@@ -348,6 +351,34 @@ void UAS::updateState()
         emit heartbeatTimeout(false, 0);
     }
 
+#ifdef SLUGS2
+	// Check if heartbeat timed out
+	quint64 GPS_fixed_Interval = QGC::groundTimeUsecs() - lastGPS_fix_time;
+	if (!GPS_connectionLost && (GPS_fixed_Interval > timeoutIntervalGPS_fixed))
+	{
+		GPS_connectionLost = true;
+		//receivedMode = false;
+		QString audiostring = QString("GPS Link lost to system %1").arg(this->getUASID());
+		GAudioOutput::instance()->say(audiostring.toLower(), GAudioOutput::AUDIO_SEVERITY_ALERT);
+	}
+
+	// Update connection loss time on each iteration
+	if (GPS_connectionLost && (GPS_fixed_Interval > timeoutIntervalGPS_fixed))
+	{
+		GPS_connectionLossTime = GPS_fixed_Interval;
+		//emit heartbeatTimeout(true, heartbeatInterval / 1000);
+	}
+
+	// GPS Connection gained
+	if (GPS_connectionLost && (GPS_fixed_Interval < timeoutIntervalGPS_fixed))
+	{
+		QString audiostring = QString("GPS Link regained to system %1").arg(this->getUASID());
+		GAudioOutput::instance()->say(audiostring.toLower(), GAudioOutput::AUDIO_SEVERITY_NOTICE);
+		GPS_connectionLost = false;
+		GPS_connectionLossTime = 0;
+		//emit heartbeatTimeout(false, 0);
+	}
+#endif
     // Position lock is set by the MAVLink message handler
     // if no position lock is available, indicate an error
     if (positionLock)
@@ -893,6 +924,9 @@ void UAS::receiveMessage(LinkInterface* link, mavlink_message_t message)
 
             if (pos.fix_type > 2)
             {
+#ifdef SLUGS2
+				lastGPS_fix_time = QGC::groundTimeUsecs();
+#endif
                 positionLock = true;
                 isGlobalPositionKnown = true;
 

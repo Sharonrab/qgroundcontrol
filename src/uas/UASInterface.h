@@ -608,7 +608,9 @@ protected:
 
     // TIMEOUT CONSTANTS
     static const unsigned int timeoutIntervalHeartbeat = 3500 * 1000; ///< Heartbeat timeout is 3.5 seconds
-
+#ifdef SLUGS2
+	static const unsigned int timeoutIntervalGPS_fixed = 3500 * 1000; ///< GPS fix timeout is 3.5 seconds
+#endif
 };
 
 Q_DECLARE_INTERFACE(UASInterface, "org.qgroundcontrol/1.0")

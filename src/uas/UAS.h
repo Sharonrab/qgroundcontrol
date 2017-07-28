@@ -351,7 +351,12 @@ protected: //COMMENTS FOR TEST UNIT
     float receiveDropRate;        ///< Percentage of packets that were dropped on the MAV's receiving link (from GCS and other MAVs)
     float sendDropRate;           ///< Percentage of packets that were not received from the MAV by the GCS
     quint64 lastHeartbeat;        ///< Time of the last heartbeat message
+#ifdef SLUGS2
+	quint64 lastGPS_fix_time;        ///< Time of the last heartbeat message
+#endif
+
     QTimer statusTimeout;       ///< Timer for various status timeouts
+
 
     /// BASIC UAS TYPE, NAME AND STATE
     QString name;                 ///< Human-friendly name of the vehicle, e.g. bravo
@@ -907,6 +912,10 @@ protected:
     bool componentMulti[256];
     bool connectionLost; ///< Flag indicates a timed out connection
     quint64 connectionLossTime; ///< Time the connection was interrupted
+#ifdef SLUGS2
+	bool GPS_connectionLost; ///< Flag indicates a GPS timed out connection
+	quint64 GPS_connectionLossTime; ///< Time the GPS connection was interrupted
+#endif
     quint64 lastVoltageWarning; ///< Time at which the last voltage warning occured
     quint64 lastNonNullTime;    ///< The last timestamp from the MAV that was not null
     unsigned int onboardTimeOffsetInvalidCount;     ///< Count when the offboard time offset estimation seemed wrong
