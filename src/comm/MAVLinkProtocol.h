@@ -154,6 +154,9 @@ public slots:
     
     /** @brief Send MAVLink message through serial interface */
     void sendMessage(mavlink_message_t message);
+	//SLUGS2 for matlab interface
+	void sendMessage_MAT_Interface(mavlink_message_t message, quint8 systemid, quint8 componentid);
+
     /** @brief Send MAVLink message */
     void sendMessage(LinkInterface* link, mavlink_message_t message);
     /** @brief Send MAVLink message with correct system / component ID */

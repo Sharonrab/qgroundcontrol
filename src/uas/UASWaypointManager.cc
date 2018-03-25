@@ -515,6 +515,34 @@ Waypoint* UASWaypointManager::createWaypoint(bool enforceFirstActive)
     return wp;
 }
 
+Waypoint* UASWaypointManager::createCP(bool enforceFirstActive)
+{
+	// Check if this is the first waypoint in an offline list
+	if (waypointsEditable.count() == 0 && uas == NULL) {
+		QGCMessageBox::critical(tr("Control point Manager"), _offlineEditingModeMessage);
+	}
+
+	Waypoint* wp = new Waypoint();
+	wp->setId(waypointsEditable.count());
+	wp->setFrame((MAV_FRAME)getFrameRecommendation());
+	wp->setAltitude(getAltitudeRecommendation());
+	wp->setAcceptanceRadius(getAcceptanceRadiusRecommendation());
+	if (enforceFirstActive && waypointsEditable.count() == 0)
+	{
+		wp->setCurrent(true);
+		currentWaypointEditable = wp;
+	}
+	waypointsEditable.append(wp);
+	connect(wp, SIGNAL(changed(Waypoint*)), this, SLOT(notifyOfChangeEditable(Waypoint*)));
+	//connect(wp, SIGNAL(changed(Waypoint*)), this, SLOT(notifyOfChangeViewOnly(Waypoint*)));
+
+	
+
+	emit waypointEditableListChanged();
+	emit waypointEditableListChanged(uasid);
+	return wp;
+}
+
 int UASWaypointManager::removeWaypoint(quint16 seq)
 {
     if (seq < waypointsEditable.count())
@@ -924,7 +952,7 @@ bool UASWaypointManager::guidedModeSupported()
 void UASWaypointManager::goToWaypoint(Waypoint *wp)
 {
     //Don't try to send a guided mode message to an AP that does not support it.
-    if (uas->getAutopilotType() == MAV_AUTOPILOT_ARDUPILOTMEGA)
+	if (uas->getAutopilotType() == MAV_AUTOPILOT_ARDUPILOTMEGA || uas->getAutopilotType() == MAV_AUTOPILOT_GENERIC) //SLUGS2 for matlab interface
     {
         mavlink_mission_item_t mission;
         memset(&mission, 0, sizeof(mavlink_mission_item_t));   //initialize with zeros

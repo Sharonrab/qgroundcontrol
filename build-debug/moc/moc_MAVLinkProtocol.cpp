@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MAVLinkProtocol_t {
-    QByteArrayData data[65];
-    char stringdata[907];
+    QByteArrayData data[66];
+    char stringdata[933];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -72,28 +72,29 @@ QT_MOC_LITERAL(39, 520, 1), // "b"
 QT_MOC_LITERAL(40, 522, 13), // "linkConnected"
 QT_MOC_LITERAL(41, 536, 16), // "linkDisconnected"
 QT_MOC_LITERAL(42, 553, 11), // "sendMessage"
-QT_MOC_LITERAL(43, 565, 8), // "systemid"
-QT_MOC_LITERAL(44, 574, 11), // "componentid"
-QT_MOC_LITERAL(45, 586, 16), // "setHeartbeatRate"
-QT_MOC_LITERAL(46, 603, 4), // "rate"
-QT_MOC_LITERAL(47, 608, 11), // "setSystemId"
-QT_MOC_LITERAL(48, 620, 2), // "id"
-QT_MOC_LITERAL(49, 623, 16), // "enableHeartbeats"
-QT_MOC_LITERAL(50, 640, 18), // "enableMultiplexing"
-QT_MOC_LITERAL(51, 659, 16), // "enableParamGuard"
-QT_MOC_LITERAL(52, 676, 17), // "enableActionGuard"
-QT_MOC_LITERAL(53, 694, 29), // "setParamRetransmissionTimeout"
-QT_MOC_LITERAL(54, 724, 22), // "setParamRewriteTimeout"
-QT_MOC_LITERAL(55, 747, 30), // "setActionRetransmissionTimeout"
-QT_MOC_LITERAL(56, 778, 18), // "enableVersionCheck"
-QT_MOC_LITERAL(57, 797, 10), // "enableAuth"
-QT_MOC_LITERAL(58, 808, 6), // "enable"
-QT_MOC_LITERAL(59, 815, 10), // "setAuthKey"
-QT_MOC_LITERAL(60, 826, 13), // "sendHeartbeat"
-QT_MOC_LITERAL(61, 840, 12), // "loadSettings"
-QT_MOC_LITERAL(62, 853, 13), // "storeSettings"
-QT_MOC_LITERAL(63, 867, 18), // "deleteTempLogFiles"
-QT_MOC_LITERAL(64, 886, 20) // "checkForLostLogFiles"
+QT_MOC_LITERAL(43, 565, 25), // "sendMessage_MAT_Interface"
+QT_MOC_LITERAL(44, 591, 8), // "systemid"
+QT_MOC_LITERAL(45, 600, 11), // "componentid"
+QT_MOC_LITERAL(46, 612, 16), // "setHeartbeatRate"
+QT_MOC_LITERAL(47, 629, 4), // "rate"
+QT_MOC_LITERAL(48, 634, 11), // "setSystemId"
+QT_MOC_LITERAL(49, 646, 2), // "id"
+QT_MOC_LITERAL(50, 649, 16), // "enableHeartbeats"
+QT_MOC_LITERAL(51, 666, 18), // "enableMultiplexing"
+QT_MOC_LITERAL(52, 685, 16), // "enableParamGuard"
+QT_MOC_LITERAL(53, 702, 17), // "enableActionGuard"
+QT_MOC_LITERAL(54, 720, 29), // "setParamRetransmissionTimeout"
+QT_MOC_LITERAL(55, 750, 22), // "setParamRewriteTimeout"
+QT_MOC_LITERAL(56, 773, 30), // "setActionRetransmissionTimeout"
+QT_MOC_LITERAL(57, 804, 18), // "enableVersionCheck"
+QT_MOC_LITERAL(58, 823, 10), // "enableAuth"
+QT_MOC_LITERAL(59, 834, 6), // "enable"
+QT_MOC_LITERAL(60, 841, 10), // "setAuthKey"
+QT_MOC_LITERAL(61, 852, 13), // "sendHeartbeat"
+QT_MOC_LITERAL(62, 866, 12), // "loadSettings"
+QT_MOC_LITERAL(63, 879, 13), // "storeSettings"
+QT_MOC_LITERAL(64, 893, 18), // "deleteTempLogFiles"
+QT_MOC_LITERAL(65, 912, 20) // "checkForLostLogFiles"
 
     },
     "MAVLinkProtocol\0messageReceived\0\0"
@@ -112,7 +113,8 @@ QT_MOC_LITERAL(64, 886, 20) // "checkForLostLogFiles"
     "rssi\0remrssi\0txbuf\0noise\0remnoise\0"
     "saveTempFlightDataLog\0tempLogfile\0"
     "receiveBytes\0b\0linkConnected\0"
-    "linkDisconnected\0sendMessage\0systemid\0"
+    "linkDisconnected\0sendMessage\0"
+    "sendMessage_MAT_Interface\0systemid\0"
     "componentid\0setHeartbeatRate\0rate\0"
     "setSystemId\0id\0enableHeartbeats\0"
     "enableMultiplexing\0enableParamGuard\0"
@@ -132,7 +134,7 @@ static const uint qt_meta_data_MAVLinkProtocol[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      39,   14, // methods
+      40,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -140,47 +142,48 @@ static const uint qt_meta_data_MAVLinkProtocol[] = {
       16,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    2,  209,    2, 0x06 /* Public */,
-       7,    1,  214,    2, 0x06 /* Public */,
-       9,    1,  217,    2, 0x06 /* Public */,
-      11,    1,  220,    2, 0x06 /* Public */,
-      13,    1,  223,    2, 0x06 /* Public */,
-      14,    1,  226,    2, 0x06 /* Public */,
-      15,    2,  229,    2, 0x06 /* Public */,
-      17,    1,  234,    2, 0x06 /* Public */,
-      19,    1,  237,    2, 0x06 /* Public */,
-      20,    1,  240,    2, 0x06 /* Public */,
-      22,    1,  243,    2, 0x06 /* Public */,
-      23,    1,  246,    2, 0x06 /* Public */,
-      24,    1,  249,    2, 0x06 /* Public */,
-      25,    2,  252,    2, 0x06 /* Public */,
-      28,    8,  257,    2, 0x06 /* Public */,
-      36,    1,  274,    2, 0x06 /* Public */,
+       1,    2,  214,    2, 0x06 /* Public */,
+       7,    1,  219,    2, 0x06 /* Public */,
+       9,    1,  222,    2, 0x06 /* Public */,
+      11,    1,  225,    2, 0x06 /* Public */,
+      13,    1,  228,    2, 0x06 /* Public */,
+      14,    1,  231,    2, 0x06 /* Public */,
+      15,    2,  234,    2, 0x06 /* Public */,
+      17,    1,  239,    2, 0x06 /* Public */,
+      19,    1,  242,    2, 0x06 /* Public */,
+      20,    1,  245,    2, 0x06 /* Public */,
+      22,    1,  248,    2, 0x06 /* Public */,
+      23,    1,  251,    2, 0x06 /* Public */,
+      24,    1,  254,    2, 0x06 /* Public */,
+      25,    2,  257,    2, 0x06 /* Public */,
+      28,    8,  262,    2, 0x06 /* Public */,
+      36,    1,  279,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      38,    2,  277,    2, 0x0a /* Public */,
-      40,    0,  282,    2, 0x0a /* Public */,
-      41,    0,  283,    2, 0x0a /* Public */,
-      42,    1,  284,    2, 0x0a /* Public */,
-      42,    2,  287,    2, 0x0a /* Public */,
-      42,    4,  292,    2, 0x0a /* Public */,
-      45,    1,  301,    2, 0x0a /* Public */,
-      47,    1,  304,    2, 0x0a /* Public */,
-      49,    1,  307,    2, 0x0a /* Public */,
-      50,    1,  310,    2, 0x0a /* Public */,
-      51,    1,  313,    2, 0x0a /* Public */,
-      52,    1,  316,    2, 0x0a /* Public */,
-      53,    1,  319,    2, 0x0a /* Public */,
-      54,    1,  322,    2, 0x0a /* Public */,
-      55,    1,  325,    2, 0x0a /* Public */,
-      56,    1,  328,    2, 0x0a /* Public */,
-      57,    1,  331,    2, 0x0a /* Public */,
-      59,    1,  334,    2, 0x0a /* Public */,
-      60,    0,  337,    2, 0x0a /* Public */,
-      61,    0,  338,    2, 0x0a /* Public */,
-      62,    0,  339,    2, 0x0a /* Public */,
-      63,    0,  340,    2, 0x0a /* Public */,
-      64,    0,  341,    2, 0x0a /* Public */,
+      38,    2,  282,    2, 0x0a /* Public */,
+      40,    0,  287,    2, 0x0a /* Public */,
+      41,    0,  288,    2, 0x0a /* Public */,
+      42,    1,  289,    2, 0x0a /* Public */,
+      43,    3,  292,    2, 0x0a /* Public */,
+      42,    2,  299,    2, 0x0a /* Public */,
+      42,    4,  304,    2, 0x0a /* Public */,
+      46,    1,  313,    2, 0x0a /* Public */,
+      48,    1,  316,    2, 0x0a /* Public */,
+      50,    1,  319,    2, 0x0a /* Public */,
+      51,    1,  322,    2, 0x0a /* Public */,
+      52,    1,  325,    2, 0x0a /* Public */,
+      53,    1,  328,    2, 0x0a /* Public */,
+      54,    1,  331,    2, 0x0a /* Public */,
+      55,    1,  334,    2, 0x0a /* Public */,
+      56,    1,  337,    2, 0x0a /* Public */,
+      57,    1,  340,    2, 0x0a /* Public */,
+      58,    1,  343,    2, 0x0a /* Public */,
+      60,    1,  346,    2, 0x0a /* Public */,
+      61,    0,  349,    2, 0x0a /* Public */,
+      62,    0,  350,    2, 0x0a /* Public */,
+      63,    0,  351,    2, 0x0a /* Public */,
+      64,    0,  352,    2, 0x0a /* Public */,
+      65,    0,  353,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3, 0x80000000 | 5,    4,    6,
@@ -205,10 +208,11 @@ static const uint qt_meta_data_MAVLinkProtocol[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 5,    6,
+    QMetaType::Void, 0x80000000 | 5, QMetaType::UChar, QMetaType::UChar,    6,   44,   45,
     QMetaType::Void, 0x80000000 | 3, 0x80000000 | 5,    4,    6,
-    QMetaType::Void, 0x80000000 | 3, 0x80000000 | 5, QMetaType::UChar, QMetaType::UChar,    4,    6,   43,   44,
-    QMetaType::Void, QMetaType::Int,   46,
-    QMetaType::Void, QMetaType::Int,   48,
+    QMetaType::Void, 0x80000000 | 3, 0x80000000 | 5, QMetaType::UChar, QMetaType::UChar,    4,    6,   44,   45,
+    QMetaType::Void, QMetaType::Int,   47,
+    QMetaType::Void, QMetaType::Int,   49,
     QMetaType::Void, QMetaType::Bool,   10,
     QMetaType::Void, QMetaType::Bool,   10,
     QMetaType::Void, QMetaType::Bool,   10,
@@ -217,7 +221,7 @@ static const uint qt_meta_data_MAVLinkProtocol[] = {
     QMetaType::Void, QMetaType::Int,   21,
     QMetaType::Void, QMetaType::Int,   21,
     QMetaType::Void, QMetaType::Bool,   10,
-    QMetaType::Void, QMetaType::Bool,   58,
+    QMetaType::Void, QMetaType::Bool,   59,
     QMetaType::Void, QMetaType::QString,   12,
     QMetaType::Void,
     QMetaType::Void,
@@ -253,25 +257,26 @@ void MAVLinkProtocol::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 17: _t->linkConnected(); break;
         case 18: _t->linkDisconnected(); break;
         case 19: _t->sendMessage((*reinterpret_cast< mavlink_message_t(*)>(_a[1]))); break;
-        case 20: _t->sendMessage((*reinterpret_cast< LinkInterface*(*)>(_a[1])),(*reinterpret_cast< mavlink_message_t(*)>(_a[2]))); break;
-        case 21: _t->sendMessage((*reinterpret_cast< LinkInterface*(*)>(_a[1])),(*reinterpret_cast< mavlink_message_t(*)>(_a[2])),(*reinterpret_cast< quint8(*)>(_a[3])),(*reinterpret_cast< quint8(*)>(_a[4]))); break;
-        case 22: _t->setHeartbeatRate((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 23: _t->setSystemId((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 24: _t->enableHeartbeats((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 25: _t->enableMultiplexing((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 26: _t->enableParamGuard((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 27: _t->enableActionGuard((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 28: _t->setParamRetransmissionTimeout((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 29: _t->setParamRewriteTimeout((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 30: _t->setActionRetransmissionTimeout((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 31: _t->enableVersionCheck((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 32: _t->enableAuth((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 33: _t->setAuthKey((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 34: _t->sendHeartbeat(); break;
-        case 35: _t->loadSettings(); break;
-        case 36: _t->storeSettings(); break;
-        case 37: _t->deleteTempLogFiles(); break;
-        case 38: _t->checkForLostLogFiles(); break;
+        case 20: _t->sendMessage_MAT_Interface((*reinterpret_cast< mavlink_message_t(*)>(_a[1])),(*reinterpret_cast< quint8(*)>(_a[2])),(*reinterpret_cast< quint8(*)>(_a[3]))); break;
+        case 21: _t->sendMessage((*reinterpret_cast< LinkInterface*(*)>(_a[1])),(*reinterpret_cast< mavlink_message_t(*)>(_a[2]))); break;
+        case 22: _t->sendMessage((*reinterpret_cast< LinkInterface*(*)>(_a[1])),(*reinterpret_cast< mavlink_message_t(*)>(_a[2])),(*reinterpret_cast< quint8(*)>(_a[3])),(*reinterpret_cast< quint8(*)>(_a[4]))); break;
+        case 23: _t->setHeartbeatRate((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 24: _t->setSystemId((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 25: _t->enableHeartbeats((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 26: _t->enableMultiplexing((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 27: _t->enableParamGuard((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 28: _t->enableActionGuard((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 29: _t->setParamRetransmissionTimeout((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 30: _t->setParamRewriteTimeout((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 31: _t->setActionRetransmissionTimeout((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 32: _t->enableVersionCheck((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 33: _t->enableAuth((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 34: _t->setAuthKey((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 35: _t->sendHeartbeat(); break;
+        case 36: _t->loadSettings(); break;
+        case 37: _t->storeSettings(); break;
+        case 38: _t->deleteTempLogFiles(); break;
+        case 39: _t->checkForLostLogFiles(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -298,14 +303,14 @@ void MAVLinkProtocol::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
                 *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< LinkInterface* >(); break;
             }
             break;
-        case 20:
+        case 21:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
                 *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< LinkInterface* >(); break;
             }
             break;
-        case 21:
+        case 22:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
@@ -440,13 +445,13 @@ int MAVLinkProtocol::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 39)
+        if (_id < 40)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 39;
+        _id -= 40;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 39)
+        if (_id < 40)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 39;
+        _id -= 40;
     }
     return _id;
 }

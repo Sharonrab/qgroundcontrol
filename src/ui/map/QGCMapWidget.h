@@ -4,6 +4,7 @@
 #include <QMap>
 #include <QTimer>
 #include "opmapcontrol.h"
+#include "WaypointList.h"
 
 // Choose one default map type
 //#define MAP_DEFAULT_TYPE_BING
@@ -44,6 +45,9 @@ signals:
     void waypointCreated(Waypoint* wp);
     void waypointChanged(Waypoint* wp);
 
+	void CP_Created(Waypoint* wp);
+	void CP_Changed(Waypoint* wp);
+
 public slots:
     /** @brief Action triggered when guided action is selected from the context menu */
     void guidedActionTriggered();
@@ -71,8 +75,14 @@ public slots:
     void goHome();
     /** @brief Update this waypoint for this UAS */
     void updateWaypoint(int uas, Waypoint* wp);
+
+	void updateCP(int uas, Waypoint* wp);
+
     /** @brief Update the whole waypoint */
     void updateWaypointList(int uas);
+	//SLUGS2
+	void updateCP_List(int uas);
+
     /** @brief Update the home position on the map */
     void updateHomePosition(double latitude, double longitude, double altitude);
     /** @brief Set update rate limit */
@@ -150,10 +160,17 @@ protected:
     //void contextMenuEvent(QContextMenuEvent *);
 
     UASWaypointManager* currWPManager; ///< The current waypoint manager
+	UASWaypointManager* currCPManager; ///< The current control point manager
+	WaypointList* CP_list;
+
     bool offlineMode;
     QMap<Waypoint* , mapcontrol::WayPointItem*> waypointsToIcons;
     QMap<mapcontrol::WayPointItem*, Waypoint*> iconsToWaypoints;
     Waypoint* firingWaypointChange;
+
+	QMap<Waypoint*, mapcontrol::WayPointItem*> CPs_ToIcons;
+	QMap<mapcontrol::WayPointItem*, Waypoint*> iconsToCPs;
+	Waypoint* firingCP_Change;
     QTimer updateTimer;
     float maxUpdateInterval;
     enum editMode {

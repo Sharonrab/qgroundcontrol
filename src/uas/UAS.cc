@@ -1171,6 +1171,20 @@ void UAS::receiveMessage(LinkInterface* link, mavlink_message_t message)
             }
         }
             break;
+			//SLUGS2 for Matlab interface
+		case MAVLINK_MSG_ID_MISSION_CLEAR_ALL:
+		{
+			// Delete all mission items
+			mavlink_mission_clear_all_t mi;
+			mavlink_msg_mission_clear_all_decode(&message, &mi);
+			if (message.sysid == 200)
+			{
+				UASInterface* next_uasid = UASManager::instance()->getUASForId(mi.target_system);//set 101 or 102
+				UASManager::instance()->setActiveUAS(next_uasid);
+				next_uasid->getWaypointManager()->clearWaypointList();
+			}
+		}
+		break;
 
         case MAVLINK_MSG_ID_MISSION_ITEM:
         {
@@ -1196,6 +1210,31 @@ void UAS::receiveMessage(LinkInterface* link, mavlink_message_t message)
 
                 waypointManager.handleWaypoint(message.sysid, message.compid, &mi);
             }
+			//SLUGS2 for Matlab interface
+			else if (message.sysid == 200)
+			{
+				UASInterface* next_uasid = UASManager::instance()->getUASForId(mi.target_system);//set 101 or 102
+				UASManager::instance()->setActiveUAS(next_uasid);
+				//next_uasid->getWaypointManager()->clearWaypointList();
+				Waypoint *lwp_vo = new Waypoint(
+					NULL,
+					mi.seq, 
+					mi.x,
+					mi.y,
+					mi.z,
+					mi.param1,
+					mi.param2,
+					mi.param3,
+					mi.param4,
+					mi.autocontinue,
+					mi.current,
+					(MAV_FRAME)mi.frame,
+					(MAV_CMD)mi.command);
+
+				next_uasid->getWaypointManager()->goToWaypoint(lwp_vo);
+
+				//waypointManager.handleWaypoint(mi.target_system, mi.target_component, &mi);
+			}
             else
             {
                 qDebug() << QString("Received mission item message, but was wrong system id. Expected %1, received %2").arg(mavlink->getSystemId()).arg(mi.target_system);

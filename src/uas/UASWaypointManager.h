@@ -138,6 +138,8 @@ public slots:
     void addWaypointEditable(Waypoint *wp, bool enforceFirstActive=true);                 ///< adds a new waypoint to the end of the editable list and changes its sequence number accordingly
     void addWaypointViewOnly(Waypoint *wp);                                               ///< adds a new waypoint to the end of the view-only list and changes its sequence number accordingly
     Waypoint* createWaypoint(bool enforceFirstActive=true);     ///< Creates a waypoint
+	Waypoint* createCP(bool enforceFirstActive = true);     ///< Creates a control point
+
     int removeWaypoint(quint16 seq);                       ///< locally remove the specified waypoint from the storage
     void moveWaypoint(quint16 cur_seq, quint16 new_seq);   ///< locally move a waypoint from its current position cur_seq to a new position new_seq
     void saveWaypoints(const QString &saveFile);           ///< saves the local waypoint list to saveFile

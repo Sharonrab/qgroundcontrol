@@ -110,6 +110,11 @@ public:
     virtual double getLocalX() const = 0;
     virtual double getLocalY() const = 0;
     virtual double getLocalZ() const = 0;
+	//SLUGS2
+	virtual double getLocalspeedX() const = 0;
+	virtual double getLocalspeedY() const = 0;
+	virtual double getLocalspeedZ() const = 0;
+
     virtual bool localPositionKnown() const = 0;
 
     virtual double getLatitude() const = 0;

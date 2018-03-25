@@ -536,6 +536,20 @@ void MAVLinkProtocol::sendMessage(LinkInterface* link, mavlink_message_t message
     }
 }
 
+void MAVLinkProtocol::sendMessage_MAT_Interface(mavlink_message_t message, quint8 systemid, quint8 componentid)
+{
+	// Get all links connected to this unit
+	QList<LinkInterface*> links = _linkMgr->getLinks();
+
+	// Emit message on all links that are currently connected
+	QList<LinkInterface*>::iterator i;
+	for (i = links.begin(); i != links.end(); ++i)
+	{
+		sendMessage(*i, message, systemid, componentid);
+		//        qDebug() << __FILE__ << __LINE__ << "SENT MESSAGE OVER" << ((LinkInterface*)*i)->getName() << "LIST SIZE:" << links.size();
+	}
+}
+
 /**
  * The heartbeat is sent out of order and does not reset the
  * periodic heartbeat emission. It will be just sent in addition.
@@ -543,21 +557,45 @@ void MAVLinkProtocol::sendMessage(LinkInterface* link, mavlink_message_t message
  */
 void MAVLinkProtocol::sendHeartbeat()
 {
-    if (_heartbeatsEnabled)
-    {
-        mavlink_message_t beat;
-        mavlink_msg_heartbeat_pack(getSystemId(), getComponentId(),&beat, MAV_TYPE_GCS, MAV_AUTOPILOT_INVALID, MAV_MODE_MANUAL_ARMED, 0, MAV_STATE_ACTIVE);
-        sendMessage(beat);
-    }
-    if (m_authEnabled)
-    {
-        mavlink_message_t msg;
-        mavlink_auth_key_t auth;
-        memset(&auth, 0, sizeof(auth));
-        memcpy(auth.key, m_authKey.toStdString().c_str(), qMin(m_authKey.length(), MAVLINK_MSG_AUTH_KEY_FIELD_KEY_LEN));
-        mavlink_msg_auth_key_encode(getSystemId(), getComponentId(), &msg, &auth);
-        sendMessage(msg);
-    }
+	if (_heartbeatsEnabled)
+	{
+		mavlink_message_t beat;
+		mavlink_msg_heartbeat_pack(getSystemId(), getComponentId(), &beat, MAV_TYPE_GCS, MAV_AUTOPILOT_INVALID, MAV_MODE_MANUAL_ARMED, 0, MAV_STATE_ACTIVE);
+		sendMessage(beat);
+
+		//SLUGS2 for matlab interface
+		int number_of_UAVs = 2;
+		for (uint8_t i = 0; i < number_of_UAVs; i++)
+		{
+			UASInterface* uas = UASManager::instance()->getUASForId(101 + i);
+			if (uas != NULL)
+			{
+				mavlink_message_t connected_uav;
+				uint8_t system_id = i + 1;
+				uint8_t component_id = 2;
+				uint32_t time_boot_ms = 3;
+				float x = uas->getLocalX();
+				float y = uas->getLocalY();
+				float z = uas->getLocalZ();
+				float vx = uas->getLocalspeedX();
+				float vy = uas->getLocalspeedY();
+				float vz = uas->getLocalspeedZ();
+				mavlink_msg_local_position_ned_pack(system_id, component_id, &connected_uav, time_boot_ms, x, y, z, vx, vy, vz);
+				sendMessage_MAT_Interface(connected_uav, system_id, component_id);
+			}
+		}
+		//SLUGS2 for matlab interface
+
+	}
+	if (m_authEnabled)
+	{
+		mavlink_message_t msg;
+		mavlink_auth_key_t auth;
+		memset(&auth, 0, sizeof(auth));
+		memcpy(auth.key, m_authKey.toStdString().c_str(), qMin(m_authKey.length(), MAVLINK_MSG_AUTH_KEY_FIELD_KEY_LEN));
+		mavlink_msg_auth_key_encode(getSystemId(), getComponentId(), &msg, &auth);
+		sendMessage(msg);
+	}
 }
 
 /** @param enabled true to enable heartbeats emission at _heartbeatRate, false to disable */

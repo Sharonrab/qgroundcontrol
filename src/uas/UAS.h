@@ -137,6 +137,21 @@ public:
         return airSpeed;
     }
 
+	//SLUGS2
+	double getLocalspeedX() const
+	{
+		return speedX;
+	}
+	double getLocalspeedY() const
+	{
+		return speedY;
+	}
+	double getLocalspeedZ() const
+	{
+		return speedZ;
+	}
+	//SLUGS2
+
     void setLocalX(double val)
     {
         localX = val;

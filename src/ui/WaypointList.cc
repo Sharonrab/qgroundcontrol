@@ -508,6 +508,8 @@ void WaypointList::waypointViewOnlyListChanged()
 }
 
 
+
+
 void WaypointList::waypointEditableListChanged()
 {
     // Prevent updates to prevent visual flicker
